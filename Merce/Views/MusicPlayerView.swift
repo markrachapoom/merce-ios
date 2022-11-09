@@ -202,7 +202,7 @@ struct MusicPlayerView: View {
             }//: ZSTACK
 //            .frame(width: geo.frame(in: .global).width, height: geo.frame(in: .global).height)
             .foregroundColor(.white)
-            .background(.red)
+            .background(Color.accentColor)
             .preferredColorScheme(.dark)
             .edgesIgnoringSafeArea(.all)
             .cornerRadius(21)

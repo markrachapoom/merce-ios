@@ -38,7 +38,7 @@ struct HomeView: View {
                     
                     Button(action: {
                         K.impactOccur()
-                        withAnimation {
+                        withAnimation(.easeInOut(duration: 0.3)) {
                             self.translation = .zero
                             self.showMusicPlayerModal = true
                         }
@@ -93,6 +93,7 @@ struct HomeView: View {
                         .padding(.bottom, K.bottomSafeArea)
                         .background(Color.secondaryBackgroundColor)
                     })//: BUTTON
+                    .opacity(showMusicPlayerModal ? 0 : 1)
                     
                 }//: VSTACK
                 
