@@ -1,0 +1,636 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA778CC4291A878900452C20 /* MerceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA778CC3291A878900452C20 /* MerceApp.swift */; };
+		FA778CC6291A878900452C20 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA778CC5291A878900452C20 /* ContentView.swift */; };
+		FA778CC8291A878A00452C20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA778CC7291A878A00452C20 /* Assets.xcassets */; };
+		FA778CCB291A878A00452C20 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA778CCA291A878A00452C20 /* Preview Assets.xcassets */; };
+		FA778CD5291A878A00452C20 /* MerceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA778CD4291A878A00452C20 /* MerceTests.swift */; };
+		FA778CDF291A878A00452C20 /* MerceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA778CDE291A878A00452C20 /* MerceUITests.swift */; };
+		FA778CE1291A878A00452C20 /* MerceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA778CE0291A878A00452C20 /* MerceUITestsLaunchTests.swift */; };
+		FA778CEE291A87E600452C20 /* MusicPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA778CED291A87E600452C20 /* MusicPlayerView.swift */; };
+		FA778CF6291A926B00452C20 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA778CF3291A926B00452C20 /* Constant.swift */; };
+		FA778CF7291A926B00452C20 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA778CF4291A926B00452C20 /* Extensions.swift */; };
+		FA778CF8291A926B00452C20 /* SRDPSecret.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA778CF5291A926B00452C20 /* SRDPSecret.swift */; };
+		FA778CFA291A929C00452C20 /* Impact.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA778CF9291A929B00452C20 /* Impact.swift */; };
+		FAC2FC66291BE0A1007B1A6C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC2FC65291BE0A1007B1A6C /* HomeView.swift */; };
+		FAC2FC68291BE10A007B1A6C /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC2FC67291BE10A007B1A6C /* SearchView.swift */; };
+		FAC2FC6A291BE126007B1A6C /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC2FC69291BE126007B1A6C /* UserView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FA778CD1291A878A00452C20 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA778CB8291A878900452C20 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA778CBF291A878900452C20;
+			remoteInfo = Merce;
+		};
+		FA778CDB291A878A00452C20 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA778CB8291A878900452C20 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA778CBF291A878900452C20;
+			remoteInfo = Merce;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FA778CC0291A878900452C20 /* Merce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Merce.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA778CC3291A878900452C20 /* MerceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerceApp.swift; sourceTree = "<group>"; };
+		FA778CC5291A878900452C20 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FA778CC7291A878A00452C20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA778CCA291A878A00452C20 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FA778CD0291A878A00452C20 /* MerceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MerceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA778CD4291A878A00452C20 /* MerceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerceTests.swift; sourceTree = "<group>"; };
+		FA778CDA291A878A00452C20 /* MerceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MerceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA778CDE291A878A00452C20 /* MerceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerceUITests.swift; sourceTree = "<group>"; };
+		FA778CE0291A878A00452C20 /* MerceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerceUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FA778CED291A87E600452C20 /* MusicPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerView.swift; sourceTree = "<group>"; };
+		FA778CF3291A926B00452C20 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		FA778CF4291A926B00452C20 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FA778CF5291A926B00452C20 /* SRDPSecret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRDPSecret.swift; sourceTree = "<group>"; };
+		FA778CF9291A929B00452C20 /* Impact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Impact.swift; sourceTree = "<group>"; };
+		FAC2FC65291BE0A1007B1A6C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		FAC2FC67291BE10A007B1A6C /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		FAC2FC69291BE126007B1A6C /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA778CBD291A878900452C20 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA778CCD291A878A00452C20 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA778CD7291A878A00452C20 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FA778CB7291A878900452C20 = {
+			isa = PBXGroup;
+			children = (
+				FA778CC2291A878900452C20 /* Merce */,
+				FA778CD3291A878A00452C20 /* MerceTests */,
+				FA778CDD291A878A00452C20 /* MerceUITests */,
+				FA778CC1291A878900452C20 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FA778CC1291A878900452C20 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA778CC0291A878900452C20 /* Merce.app */,
+				FA778CD0291A878A00452C20 /* MerceTests.xctest */,
+				FA778CDA291A878A00452C20 /* MerceUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA778CC2291A878900452C20 /* Merce */ = {
+			isa = PBXGroup;
+			children = (
+				FA778CC3291A878900452C20 /* MerceApp.swift */,
+				FA778CC5291A878900452C20 /* ContentView.swift */,
+				FA778CEF291A882500452C20 /* Views */,
+				FA778CC7291A878A00452C20 /* Assets.xcassets */,
+				FA778CF2291A926B00452C20 /* Helpers */,
+				FA778CC9291A878A00452C20 /* Preview Content */,
+			);
+			path = Merce;
+			sourceTree = "<group>";
+		};
+		FA778CC9291A878A00452C20 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				FA778CCA291A878A00452C20 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FA778CD3291A878A00452C20 /* MerceTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA778CD4291A878A00452C20 /* MerceTests.swift */,
+			);
+			path = MerceTests;
+			sourceTree = "<group>";
+		};
+		FA778CDD291A878A00452C20 /* MerceUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FA778CDE291A878A00452C20 /* MerceUITests.swift */,
+				FA778CE0291A878A00452C20 /* MerceUITestsLaunchTests.swift */,
+			);
+			path = MerceUITests;
+			sourceTree = "<group>";
+		};
+		FA778CEF291A882500452C20 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA778CED291A87E600452C20 /* MusicPlayerView.swift */,
+				FAC2FC65291BE0A1007B1A6C /* HomeView.swift */,
+				FAC2FC67291BE10A007B1A6C /* SearchView.swift */,
+				FAC2FC69291BE126007B1A6C /* UserView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FA778CF2291A926B00452C20 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FA778CF3291A926B00452C20 /* Constant.swift */,
+				FA778CF9291A929B00452C20 /* Impact.swift */,
+				FA778CF4291A926B00452C20 /* Extensions.swift */,
+				FA778CF5291A926B00452C20 /* SRDPSecret.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA778CBF291A878900452C20 /* Merce */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA778CE4291A878A00452C20 /* Build configuration list for PBXNativeTarget "Merce" */;
+			buildPhases = (
+				FA778CBC291A878900452C20 /* Sources */,
+				FA778CBD291A878900452C20 /* Frameworks */,
+				FA778CBE291A878900452C20 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Merce;
+			productName = Merce;
+			productReference = FA778CC0291A878900452C20 /* Merce.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FA778CCF291A878A00452C20 /* MerceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA778CE7291A878A00452C20 /* Build configuration list for PBXNativeTarget "MerceTests" */;
+			buildPhases = (
+				FA778CCC291A878A00452C20 /* Sources */,
+				FA778CCD291A878A00452C20 /* Frameworks */,
+				FA778CCE291A878A00452C20 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA778CD2291A878A00452C20 /* PBXTargetDependency */,
+			);
+			name = MerceTests;
+			productName = MerceTests;
+			productReference = FA778CD0291A878A00452C20 /* MerceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FA778CD9291A878A00452C20 /* MerceUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA778CEA291A878A00452C20 /* Build configuration list for PBXNativeTarget "MerceUITests" */;
+			buildPhases = (
+				FA778CD6291A878A00452C20 /* Sources */,
+				FA778CD7291A878A00452C20 /* Frameworks */,
+				FA778CD8291A878A00452C20 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA778CDC291A878A00452C20 /* PBXTargetDependency */,
+			);
+			name = MerceUITests;
+			productName = MerceUITests;
+			productReference = FA778CDA291A878A00452C20 /* MerceUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA778CB8291A878900452C20 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					FA778CBF291A878900452C20 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+					FA778CCF291A878A00452C20 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = FA778CBF291A878900452C20;
+					};
+					FA778CD9291A878A00452C20 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = FA778CBF291A878900452C20;
+					};
+				};
+			};
+			buildConfigurationList = FA778CBB291A878900452C20 /* Build configuration list for PBXProject "Merce" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FA778CB7291A878900452C20;
+			productRefGroup = FA778CC1291A878900452C20 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA778CBF291A878900452C20 /* Merce */,
+				FA778CCF291A878A00452C20 /* MerceTests */,
+				FA778CD9291A878A00452C20 /* MerceUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA778CBE291A878900452C20 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA778CCB291A878A00452C20 /* Preview Assets.xcassets in Resources */,
+				FA778CC8291A878A00452C20 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA778CCE291A878A00452C20 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA778CD8291A878A00452C20 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA778CBC291A878900452C20 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA778CF7291A926B00452C20 /* Extensions.swift in Sources */,
+				FAC2FC68291BE10A007B1A6C /* SearchView.swift in Sources */,
+				FA778CEE291A87E600452C20 /* MusicPlayerView.swift in Sources */,
+				FA778CC6291A878900452C20 /* ContentView.swift in Sources */,
+				FA778CC4291A878900452C20 /* MerceApp.swift in Sources */,
+				FA778CFA291A929C00452C20 /* Impact.swift in Sources */,
+				FAC2FC66291BE0A1007B1A6C /* HomeView.swift in Sources */,
+				FAC2FC6A291BE126007B1A6C /* UserView.swift in Sources */,
+				FA778CF8291A926B00452C20 /* SRDPSecret.swift in Sources */,
+				FA778CF6291A926B00452C20 /* Constant.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA778CCC291A878A00452C20 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA778CD5291A878A00452C20 /* MerceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA778CD6291A878A00452C20 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA778CDF291A878A00452C20 /* MerceUITests.swift in Sources */,
+				FA778CE1291A878A00452C20 /* MerceUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA778CD2291A878A00452C20 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA778CBF291A878900452C20 /* Merce */;
+			targetProxy = FA778CD1291A878A00452C20 /* PBXContainerItemProxy */;
+		};
+		FA778CDC291A878A00452C20 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA778CBF291A878900452C20 /* Merce */;
+			targetProxy = FA778CDB291A878A00452C20 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		FA778CE2291A878A00452C20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FA778CE3291A878A00452C20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FA778CE5291A878A00452C20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Merce/Preview Content\"";
+				DEVELOPMENT_TEAM = N9D8WLVRMB;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.merce.mobile.Merce;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FA778CE6291A878A00452C20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Merce/Preview Content\"";
+				DEVELOPMENT_TEAM = N9D8WLVRMB;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.merce.mobile.Merce;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FA778CE8291A878A00452C20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N9D8WLVRMB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.merce.mobile.MerceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Merce.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Merce";
+			};
+			name = Debug;
+		};
+		FA778CE9291A878A00452C20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N9D8WLVRMB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.merce.mobile.MerceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Merce.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Merce";
+			};
+			name = Release;
+		};
+		FA778CEB291A878A00452C20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N9D8WLVRMB;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.merce.mobile.MerceUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Merce;
+			};
+			name = Debug;
+		};
+		FA778CEC291A878A00452C20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N9D8WLVRMB;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.merce.mobile.MerceUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Merce;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA778CBB291A878900452C20 /* Build configuration list for PBXProject "Merce" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA778CE2291A878A00452C20 /* Debug */,
+				FA778CE3291A878A00452C20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA778CE4291A878A00452C20 /* Build configuration list for PBXNativeTarget "Merce" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA778CE5291A878A00452C20 /* Debug */,
+				FA778CE6291A878A00452C20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA778CE7291A878A00452C20 /* Build configuration list for PBXNativeTarget "MerceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA778CE8291A878A00452C20 /* Debug */,
+				FA778CE9291A878A00452C20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA778CEA291A878A00452C20 /* Build configuration list for PBXNativeTarget "MerceUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA778CEB291A878A00452C20 /* Debug */,
+				FA778CEC291A878A00452C20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA778CB8291A878900452C20 /* Project object */;
+}
