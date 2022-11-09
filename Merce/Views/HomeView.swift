@@ -8,19 +8,31 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @EnvironmentObject private var playerVM: PlayerViewModel
+    
     @State private var translation: CGSize = .zero
     @State private var showMusicPlayerModal: Bool = false
     
     @State private var isPlaying: Bool = false
     
-    @Namespace private var musicPlayer
+    @Namespace private var musicPlayerNamespace
+    
     
     var body: some View {
         GeometryReader { geo in
             ZStack {
                 
-                VStack {
-                    Text("Home View")
+                VStack(spacing: 0) {
+                    
+                    List(0..<100, id: \.self) { number in
+                        HStack {
+                            Text("\(number)")
+                            Spacer()
+                        }
+                        .padding(.all)
+                    }
+                    .listStyle(PlainListStyle())
                     
                     Spacer()
                     
@@ -58,16 +70,18 @@ struct HomeView: View {
                             Spacer()
                             
                             Button(action: {
+                                K.impactOccur()
                                 withAnimation(.none) {
-                                    K.impactOccur()
-                                    isPlaying.toggle()
+                                    withAnimation(.none) {
+                                        playerVM.togglePlay()
+                                    }
                                 }
                             }, label: {
                                 Circle()
                                     .frame(width: 40, height: 40)
                                     .foregroundColor(.white.opacity(0.1))
                                     .overlay {
-                                        Image(systemName: isPlaying ? "pause.fill" : "play.fill")
+                                        Image(systemName: playerVM.isPlaying ? "pause.fill" : "play.fill")
                                             .font(.title2)
                                             .foregroundColor(.white)
                                     }
@@ -76,15 +90,43 @@ struct HomeView: View {
                         }//: HSTACK
                         .padding(.horizontal)
                         .padding(.vertical, 8)
+                        .padding(.bottom, K.bottomSafeArea)
                         .background(Color.secondaryBackgroundColor)
-                    })
-                    .matchedGeometryEffect(id: "MusicPlayer", in: musicPlayer)
+                    })//: BUTTON
                     
                 }//: VSTACK
+                
+                    MusicPlayerView(playerVM: playerVM)
+                        .offset(y: translation.height)
+                        .offset(y: showMusicPlayerModal ? 0 : geo.frame(in: .global).height)
+                        .gesture(
+                            DragGesture()
+                                .onChanged({ value in
+                                    withAnimation(.easeInOut(duration: 0.03)) {
+                                        if (value.translation.height >= 0) {
+                                            self.translation = value.translation
+                                        }
+                                    }
+                                })
+                                .onEnded({ value in
+                                    if (value.translation.height > 100) {
+                                        withAnimation(.easeInOut(duration: 0.2)) {
+                                            self.showMusicPlayerModal = false
+                                        }
+                                    } else {
+                                        withAnimation {
+                                            self.translation = .zero
+                                        }
+                                    }
+                                })
+                        )//: GESTURE
+                        .opacity(showMusicPlayerModal ? 1 : 0)
+                
             }//: ZSTACK
-            .sheet(isPresented: $showMusicPlayerModal) {
-                MusicPlayerView(translation: .constant(.zero))
-            }
+            .edgesIgnoringSafeArea(.all)
+//            .sheet(isPresented: $showMusicPlayerModal) {
+//                MusicPlayerView(playerVM: playerVM)
+//            }
         }
     }
 }
@@ -93,5 +135,6 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
             .preferredColorScheme(.dark)
+            .environmentObject(PlayerViewModel())
     }
 }

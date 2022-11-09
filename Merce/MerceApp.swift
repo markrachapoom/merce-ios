@@ -13,6 +13,7 @@ struct MerceApp: App {
         WindowGroup {
             ContentView()
                 .preferredColorScheme(.dark)
+                .environmentObject(PlayerViewModel())
         }
     }
 }

@@ -11,28 +11,33 @@ struct ContentView: View {
     
     init() {
         UITabBar.appearance().backgroundColor = .black
+        UITabBar.appearance().isOpaque = true
     }
     
     var body: some View {
-        TabView {
-            
-            HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "house")
-                }
-            
-            SearchView()
-                .tabItem {
-                    Label("Search", systemImage: "magnifyingglass")
-                }
-            
-            UserView()
-                .tabItem {
-                    Label("Account", systemImage: "person")
-                }
-            
-        }//: TABVIEW
-        .tint(.white)
+        HomeView()
+            .tabItem {
+                Label("Home", systemImage: "house")
+            }
+//        TabView {
+//
+//            HomeView()
+//                .tabItem {
+//                    Label("Home", systemImage: "house")
+//                }
+//
+//            SearchView()
+//                .tabItem {
+//                    Label("Search", systemImage: "magnifyingglass")
+//                }
+//
+//            UserView()
+//                .tabItem {
+//                    Label("Account", systemImage: "person")
+//                }
+//
+//        }//: TABVIEW
+//        .tint(.white)
     }
 }
 
