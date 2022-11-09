@@ -15,11 +15,15 @@ class PlayerViewModel: ObservableObject {
     
     @Published var isPlaying: Bool = false
     
-    @Published var currentTime: TimeInterval = .zero
+//    @Published var currentTime: TimeInterval = .zero
     
     init() {
         let musicPath = Bundle.main.path(forResource: "society-always-wants-new-things", ofType: "mp3")
         self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(filePath: musicPath!))
+    }
+    
+    var currentTime: TimeInterval {
+        audioPlayer?.currentTime ?? 0.0
     }
 
 

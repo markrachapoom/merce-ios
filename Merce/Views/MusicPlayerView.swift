@@ -21,6 +21,9 @@ struct MusicPlayerView: View {
     
     @Environment(\.dismiss) private var dismiss
     
+    @State private var currentTime: TimeInterval = .zero
+    @State private var totalDuration: TimeInterval = .zero
+    
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -119,11 +122,13 @@ struct MusicPlayerView: View {
                                                 .frame(width: 200)
                                         }
                                     
-                                    //                            HStack {
-                                    //                                Text("\(playerVM.audioPlayer.currentTime)")
-                                    //                                Spacer()
-                                    //                                Text("\(playerVM.audioPlayer.duration)")
-                                    //                            }
+                                    if let player = playerVM.audioPlayer {
+                                        HStack {
+                                            Text("\(playerVM.currentTime)")
+                                            Spacer()
+                                            Text("\(player.duration)")
+                                        }
+                                    }
                                 }
                                 
                                 HStack {
