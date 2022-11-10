@@ -16,8 +16,13 @@ struct ContentView: View {
     @State private var tabSelection: Int = 1
     
     init() {
-        UITabBar.appearance().backgroundColor = .black
-        UITabBar.appearance().isOpaque = true
+//        UITabBar.appearance().backgroundColor = .black
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithTransparentBackground()
+        tabBarAppearance.backgroundColor = .black
+        
+        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        UITabBar.appearance().standardAppearance = tabBarAppearance
     }
     
     var body: some View {
@@ -85,5 +90,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .preferredColorScheme(.dark)
+            .environmentObject(PlayerViewModel())
     }
 }

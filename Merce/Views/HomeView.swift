@@ -23,18 +23,36 @@ struct HomeView: View {
         GeometryReader { geo in
             ZStack {
                 
-                VStack(spacing: 0) {
+                VStack {
                     
-                    List(0..<100, id: \.self) { number in
-                        HStack {
-                            Text("\(number)")
-                            Spacer()
-                        }
-                        .padding(.all)
+//                    ScrollView {
+//                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 170))], spacing: 13) {
+//                            ForEach(1..<10, id: \.self) { number in
+//                                Button(action: {
+//                                    K.impactOccur()
+//                                }, label: {
+//                                    RoundedRectangle(cornerRadius: 0)
+//                                        .foregroundColor(Color(.secondarySystemBackground))
+//                                        .frame(height: 120)
+//                                })
+//                            }
+//                        }
+//                    }
+                    
+                    ScrollView {
+                        Color.secondaryBackgroundColor
+                            .frame(height: 10000)
                     }
-                    .listStyle(PlainListStyle())
                     
                     Spacer()
+                    
+                }//: VSTACK
+                
+                VStack {
+                    
+                    Spacer()
+                    
+//                        Divider()
                     
                     Button(action: {
                         K.impactOccur()
@@ -43,60 +61,62 @@ struct HomeView: View {
                             showMusicPlayerModal = true
                         }
                     }, label: {
-                            
-                        HStack {
-                            
+                        VStack(spacing: 0) {
                             HStack {
                                 
-                                Image("naval-cover")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 48, height: 48)
-                                
-                                VStack(alignment: .leading) {
+                                HStack {
                                     
-                                    Text("Society Always Wants New Things")
-                                        .foregroundColor(Color(.label))
-                                        .font(.callout)
-                                        .lineLimit(1)
+                                    Image("naval-cover")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 48, height: 48)
                                     
-                                    Text("Akira The Don, Naval Ravikant")
-                                        .foregroundColor(Color(.secondaryLabel))
-                                        .font(.subheadline)
-                                        .lineLimit(1)
-                                    
-                                }//: VSTACK
-                            }
-                            
-                            Spacer()
-                            
-                            Button(action: {
-                                K.impactOccur()
-                                withAnimation(.none) {
-                                    withAnimation(.none) {
-                                        playerVM.togglePlay()
-                                    }
+                                    VStack(alignment: .leading) {
+                                        
+                                        Text("Society Always Wants New Things")
+                                            .foregroundColor(Color(.label))
+                                            .font(.callout)
+                                            .lineLimit(1)
+                                        
+                                        Text("Akira The Don, Naval Ravikant")
+                                            .foregroundColor(Color(.secondaryLabel))
+                                            .font(.subheadline)
+                                            .lineLimit(1)
+                                        
+                                    }//: VSTACK
                                 }
-                            }, label: {
-                                Circle()
-                                    .frame(width: 40, height: 40)
-                                    .foregroundColor(.white.opacity(0.1))
-                                    .overlay {
-                                        Image(systemName: playerVM.isPlaying ? "pause.fill" : "play.fill")
-                                            .font(.title2)
-                                            .foregroundColor(.white)
+                                
+                                Spacer()
+                                
+                                Button(action: {
+                                    K.impactOccur()
+                                    withAnimation(.none) {
+                                        withAnimation(.none) {
+                                            playerVM.togglePlay()
+                                        }
                                     }
-                            })
-                            
-                        }//: HSTACK
-                        .padding(.horizontal)
-                        .padding(.vertical, 8)
-                        .background(Color.secondaryBackgroundColor)
+                                }, label: {
+                                    Circle()
+                                        .frame(width: 40, height: 40)
+                                        .foregroundColor(.white.opacity(0.1))
+                                        .overlay {
+                                            Image(systemName: playerVM.isPlaying ? "pause.fill" : "play.fill")
+                                                .font(.title2)
+                                                .foregroundColor(.white)
+                                        }
+                                })
+                                
+                            }//: HSTACK
+                            .padding(.horizontal)
+                            .padding(.vertical, 8)
+                            .background(Color(.systemBackground))
+                            Divider()
+                        }
                     })//: BUTTON
-                    .opacity(showMusicPlayerModal ? 0 : 1)
-                    .offset(y: showMusicPlayerModal ? 150 : 0)
                     
-                }//: VSTACK
+                }//: VSTACK WITH DIVIDER
+                .opacity(showMusicPlayerModal ? 0 : 1)
+                .offset(y: showMusicPlayerModal ? 150 : 0)
                 
             }//: ZSTACK
 //            .edgesIgnoringSafeArea(.all)
