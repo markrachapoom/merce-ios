@@ -13,34 +13,35 @@ struct ContentView: View {
     @State private var translation: CGSize = .zero
     @State private var showMusicPlayerModal: Bool = false
     
+    @State private var tabSelection: Int = 1
+    
     init() {
         UITabBar.appearance().backgroundColor = .black
         UITabBar.appearance().isOpaque = true
     }
     
     var body: some View {
-//        HomeView()
-//            .tabItem {
-//                Label("Home", systemImage: "house")
-//            }
         GeometryReader { geo in
             ZStack {
-                TabView {
+                TabView(selection: $tabSelection) {
                     
                     HomeView(showMusicPlayerModal: $showMusicPlayerModal, translation: $translation)
                         .tabItem {
                             Label("Home", systemImage: "house")
                         }
+                        .tag(1)
                     
                     SearchView()
                         .tabItem {
                             Label("Search", systemImage: "magnifyingglass")
                         }
+                        .tag(2)
                     
                     UserView()
                         .tabItem {
                             Label("Account", systemImage: "person")
                         }
+                        .tag(3)
                     
                 }//: TABVIEW
                 .tint(.white)
@@ -73,6 +74,9 @@ struct ContentView: View {
                     .edgesIgnoringSafeArea(.all)
                 
             }//: ZSTACK
+            .onChange(of: tabSelection) { _ in
+                K.impactOccur()
+            }
         }
     }
 }
