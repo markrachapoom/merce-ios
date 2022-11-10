@@ -11,10 +11,10 @@ struct HomeView: View {
     
     @EnvironmentObject private var playerVM: PlayerViewModel
     
-    @State private var translation: CGSize = .zero
-    @State private var showMusicPlayerModal: Bool = false
-    
-    @State private var isPlaying: Bool = false
+    @Binding var showMusicPlayerModal: Bool
+    @Binding var translation: CGSize
+//    @State private var translation: CGSize = .zero
+//    @State private var showMusicPlayerModal: Bool = false
     
     @Namespace private var musicPlayerNamespace
     
@@ -39,12 +39,13 @@ struct HomeView: View {
                     Button(action: {
                         K.impactOccur()
                         withAnimation(.easeInOut(duration: 0.3)) {
-                            self.translation = .zero
-                            self.showMusicPlayerModal = true
+                            translation = .zero
+                            showMusicPlayerModal = true
                         }
                     }, label: {
                             
                         HStack {
+                            
                             HStack {
                                 
                                 Image("naval-cover")
@@ -90,41 +91,15 @@ struct HomeView: View {
                         }//: HSTACK
                         .padding(.horizontal)
                         .padding(.vertical, 8)
-                        .padding(.bottom, K.bottomSafeArea)
                         .background(Color.secondaryBackgroundColor)
                     })//: BUTTON
                     .opacity(showMusicPlayerModal ? 0 : 1)
+                    .offset(y: showMusicPlayerModal ? 150 : 0)
                     
                 }//: VSTACK
                 
-                    MusicPlayerView(playerVM: playerVM)
-                        .offset(y: translation.height)
-                        .offset(y: showMusicPlayerModal ? 0 : geo.frame(in: .global).height)
-                        .gesture(
-                            DragGesture()
-                                .onChanged({ value in
-                                    withAnimation(.easeInOut(duration: 0.03)) {
-                                        if (value.translation.height >= 0) {
-                                            self.translation = value.translation
-                                        }
-                                    }
-                                })
-                                .onEnded({ value in
-                                    if (value.translation.height > 100) {
-                                        withAnimation(.easeInOut(duration: 0.2)) {
-                                            self.showMusicPlayerModal = false
-                                        }
-                                    } else {
-                                        withAnimation {
-                                            self.translation = .zero
-                                        }
-                                    }
-                                })
-                        )//: GESTURE
-                        .opacity(showMusicPlayerModal ? 1 : 0)
-                
             }//: ZSTACK
-            .edgesIgnoringSafeArea(.all)
+//            .edgesIgnoringSafeArea(.all)
 //            .sheet(isPresented: $showMusicPlayerModal) {
 //                MusicPlayerView(playerVM: playerVM)
 //            }
@@ -134,7 +109,7 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(showMusicPlayerModal: .constant(false), translation: .constant(.zero))
             .preferredColorScheme(.dark)
             .environmentObject(PlayerViewModel())
     }
