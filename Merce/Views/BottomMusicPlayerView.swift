@@ -27,6 +27,9 @@ struct BottomMusicPlayerView: View {
                 }
             }, label: {
                 VStack(spacing: 0) {
+                    
+                    Divider()
+                    
                     HStack {
                         
                         HStack {

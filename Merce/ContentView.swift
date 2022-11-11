@@ -51,7 +51,7 @@ struct ContentView: View {
                 }//: TABVIEW
                 .tint(.white)
                 
-                MusicPlayerView(playerVM: playerVM)
+                MusicPlayerView(playerVM: playerVM, showMusicPlayerModal: $showMusicPlayerModal)
                     .offset(y: translation.height)
                     .offset(y: showMusicPlayerModal ? 0 : geo.frame(in: .global).height)
                     .gesture(
@@ -77,7 +77,7 @@ struct ContentView: View {
                     )//: GESTURE
                     .opacity(showMusicPlayerModal ? 1 : 0)
                     .edgesIgnoringSafeArea(.all)
-                
+//
             }//: ZSTACK
             .onChange(of: tabSelection) { _ in
                 K.impactOccur()

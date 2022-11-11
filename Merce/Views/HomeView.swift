@@ -51,10 +51,6 @@ struct HomeView: View {
                 BottomMusicPlayerView(translation: $translation, showMusicPlayerModal: $showMusicPlayerModal)
                 
             }//: ZSTACK
-//            .edgesIgnoringSafeArea(.all)
-//            .sheet(isPresented: $showMusicPlayerModal) {
-//                MusicPlayerView(playerVM: playerVM)
-//            }
         }
     }
 }
