@@ -36,13 +36,13 @@ struct ContentView: View {
                         }
                         .tag(1)
                     
-                    SearchView()
+                    SearchView(showMusicPlayerModal: $showMusicPlayerModal, translation: $translation)
                         .tabItem {
                             Label("Search", systemImage: "magnifyingglass")
                         }
                         .tag(2)
                     
-                    UserView()
+                    UserView(showMusicPlayerModal: $showMusicPlayerModal, translation: $translation)
                         .tabItem {
                             Label("Account", systemImage: "person")
                         }
