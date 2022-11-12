@@ -33,7 +33,7 @@ struct SettingsRowView<Content: View>: View {
         }//: HSTACK
         .foregroundColor(color)
         .padding(.horizontal)
-        .frame(height: 48)
+        .frame(height: 40)
         .background(Color(.systemBackground))
     }
 }

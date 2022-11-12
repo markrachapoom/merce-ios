@@ -10,10 +10,14 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject private var playerVM: PlayerViewModel
+    @EnvironmentObject private var authVM: AuthenticationViewModel
+    
     @State private var translation: CGSize = .zero
     @State private var showMusicPlayerModal: Bool = false
     
     @State private var tabSelection: Int = 1
+    
+    @State private var showLoginScreen: Bool = true
     
     init() {
         let tabBarAppearance = UITabBarAppearance()
@@ -103,7 +107,10 @@ struct ContentView: View {
                     .padding(.bottom, 48)
                     .ignoresSafeArea(.keyboard)
                     .opacity(tabSelection == 3 ? 0 : 1)
-//
+                
+                AuthenticationView()
+                    .offset(y: authVM.isAuthenticated ? geo.frame(in: .global).height + 1000 : 0)
+                
             }//: ZSTACK
             .onChange(of: tabSelection) { _ in
                 K.impactOccur()
@@ -117,5 +124,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
             .preferredColorScheme(.dark)
             .environmentObject(PlayerViewModel())
+            .environmentObject(AuthenticationViewModel())
     }
 }

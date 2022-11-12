@@ -10,6 +10,8 @@ import MessageUI
 
 struct SettingsView: View {
     
+    @EnvironmentObject private var authVM: AuthenticationViewModel
+    
     @State private var isLogoutAlertShown: Bool = false
     
     var body: some View {
@@ -20,11 +22,13 @@ struct SettingsView: View {
                     
                     SettingsRowView(label: "Haptics", iconName: "hand.tap", trailingContent: {
                         Image(systemName: "chevron.right")
+                            .font(.system(size: 14))
                             .foregroundColor(Color(.secondaryLabel))
                     })
                     
                     SettingsRowView(label: "Story of Merce", iconName: "book.closed", trailingContent: {
                         Image(systemName: "chevron.right")
+                            .font(.system(size: 14))
                             .foregroundColor(Color(.secondaryLabel))
                     })
                     
@@ -34,6 +38,7 @@ struct SettingsView: View {
                     }, label: {
                         SettingsRowView(label: "Log Out", iconName: "rectangle.portrait.and.arrow.right", color: .red, trailingContent: {
                             Image(systemName: "ellipsis")
+                                .font(.system(size: 14))
                                 .rotationEffect(Angle(degrees: 90))
                                 .foregroundColor(.red)
                         })
@@ -49,6 +54,9 @@ struct SettingsView: View {
         .alert("Log Out?", isPresented: $isLogoutAlertShown) {
             Button("Logout", role: .destructive, action: {
 //                authVM.signOut()
+                withAnimation {
+                    authVM.isAuthenticated = false
+                }
             })
         } message: {
             Text("Are you sure you want to log out?")
@@ -59,5 +67,6 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
+            .environmentObject(AuthenticationViewModel())
     }
 }
