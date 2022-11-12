@@ -59,7 +59,13 @@ struct HomeView: View {
                                                     }
                                                     .frame(width: 90, height: 90)
                                                     .clipShape(Circle())
-                                                }
+                                                }//: NAVIGATIONLINK
+                                                .simultaneousGesture(
+                                                    TapGesture()
+                                                        .onEnded({ _ in
+                                                            K.impactOccur()
+                                                        })
+                                                )//: SIMULTANIOUS
                                             }//: LOOP
                                         }//: HSTACK
                                         .padding(.horizontal)

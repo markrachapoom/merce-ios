@@ -10,11 +10,11 @@ import SwiftUI
 struct ProfileView: View {
     
     let userData: MerceUser
-    let withBackButton: Bool
+    let isProfileOwner: Bool
     
-    init(userData: MerceUser, withBackButton: Bool = true) {
+    init(userData: MerceUser, isProfileOwner: Bool = false) {
         self.userData = userData
-        self.withBackButton = withBackButton
+        self.isProfileOwner = isProfileOwner
     }
     
     @Environment(\.dismiss) private var dismiss
@@ -66,6 +66,23 @@ struct ProfileView: View {
                                 
                                 Spacer()
                                 
+                                if (isProfileOwner) {
+                                    Button(action: {
+                                        K.impactOccur()
+                                    }, label: {
+                                        Text("Edit Profile")
+                                            .foregroundColor(Color(.label))
+                                            .fontWeight(.semibold)
+                                            .font(.system(size: K.fontSize))
+                                            .frame(height: 40)
+                                        //                                        .padding(.vertical, 11)
+                                            .padding(.horizontal, 13)
+                                            .background(Color.secondaryBackgroundColor)
+                                            .clipShape(Capsule())
+                                            .offset(y: 20 + 13)
+                                    })//: EDIT PROFILE BUTTON
+                                }
+                                
                             }//: HSTACK
                             
                             VStack(alignment: .leading) {
@@ -93,48 +110,43 @@ struct ProfileView: View {
             .navigationBarBackButtonHidden(true)
             .toolbar {
                 
-                if (withBackButton) {
+                if (!isProfileOwner) {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: {
                             K.impactOccur()
                             dismiss()
                         }, label: {
-                            
-                            Circle()
-                                .frame(width: 32, height: 32)
-                                .foregroundColor(.black.opacity(0.5))
-                                .overlay {
-                                    Image(systemName: "arrow.left")
-                                        .font(.system(size: 12, weight: .semibold, design: .rounded))
-                                        .foregroundColor(.white)
-                                }
-                            
+                            CircleIcon(iconName: "arrow.left")
                         })
                     }//: BACK BUTTON
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Menu {
+                    HStack(spacing: 4) {
                         
-                        Button(action: {}, label: {
-                            Label("Share Profile", systemImage: "square.and.arrow.up")
-                        })
+                        if (isProfileOwner) {
+                            NavigationLink(destination: SettingsView()) {
+                                CircleIcon(iconName: "gearshape")
+                            }//: NAVIGATIONLINK
+                            .simultaneousGesture(
+                                TapGesture()
+                                    .onEnded({ _ in
+                                        K.impactOccur()
+                                    })
+                            )//: SIMULTANIOUS
+                        }//: CONDITION
                         
-                    } label: {
-                        
-                        Circle()
-                            .frame(width: 32, height: 32)
-                            .foregroundColor(.black.opacity(0.5))
-                            .overlay {
-                                Image(systemName: "ellipsis")
-                                    .font(.system(size: 12, weight: .semibold, design: .rounded))
-                                    .foregroundColor(.white)
-                            }
-                        
-                    }//: ELLIPSIS MENU
-                    .onTapGesture {
-                        K.impactOccur()
-                    }//: TAP GESTURE
+                        Menu {
+                            Button(action: {}, label: {
+                                Label("Share Profile", systemImage: "square.and.arrow.up")
+                            })
+                        } label: {
+                            CircleIcon(iconName: "ellipsis")
+                        }//: ELLIPSIS MENU
+                        .onTapGesture {
+                            K.impactOccur()
+                        }//: TAP GESTURE
+                    }//: HSTACK
                 }
             }
         }//: GEOMETRYREADER
