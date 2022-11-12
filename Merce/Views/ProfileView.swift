@@ -10,9 +10,11 @@ import SwiftUI
 struct ProfileView: View {
     
     let userData: MerceUser
+    let withBackButton: Bool
     
-    init(userData: MerceUser) {
+    init(userData: MerceUser, withBackButton: Bool = true) {
         self.userData = userData
+        self.withBackButton = withBackButton
     }
     
     @Environment(\.dismiss) private var dismiss
@@ -116,32 +118,32 @@ struct ProfileView: View {
             .edgesIgnoringSafeArea(.all)
             .navigationBarBackButtonHidden(true)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        K.impactOccur()
-                        dismiss()
-                    }, label: {
-                        
-                        Circle()
-                            .frame(width: 32, height: 32)
-                            .foregroundColor(.black.opacity(0.5))
-                            .overlay {
-                                Image(systemName: "arrow.left")
-                                    .font(.system(size: 12, weight: .semibold, design: .rounded))
-                                    .foregroundColor(.white)
-                            }
-                    })
-                }//: BACK BUTTON
+                
+                if (withBackButton) {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {
+                            K.impactOccur()
+                            dismiss()
+                        }, label: {
+                            
+                            Circle()
+                                .frame(width: 32, height: 32)
+                                .foregroundColor(.black.opacity(0.5))
+                                .overlay {
+                                    Image(systemName: "arrow.left")
+                                        .font(.system(size: 12, weight: .semibold, design: .rounded))
+                                        .foregroundColor(.white)
+                                }
+                            
+                        })
+                    }//: BACK BUTTON
+                }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
                         
                         Button(action: {}, label: {
-                            Label("Add to queue", systemImage: "text.append")
-                        })
-                        
-                        Button(action: {}, label: {
-                            Label("Add to Playlist", systemImage: "text.badge.plus")
+                            Label("Share Profile", systemImage: "square.and.arrow.up")
                         })
                         
                     } label: {

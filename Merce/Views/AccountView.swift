@@ -9,7 +9,9 @@ import SwiftUI
 
 struct AccountView: View {
     var body: some View {
-        Text("Hello, World!")
+        NavigationView {
+            ProfileView(userData: MerceUser.markrachapoom, withBackButton: false)
+        }//: NAVIGATION VIEW
     }
 }
 
