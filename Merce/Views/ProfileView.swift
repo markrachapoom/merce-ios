@@ -32,32 +32,6 @@ struct ProfileView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 0) {
                         
-//                        if let uiImage = storiesVM.storyUIImage {
-//                            Image(uiImage: uiImage)
-//                                .resizable()
-//                                .scaledToFill()
-//                                .frame(width: geo.size.width, height: geo.size.height + (minY <= 0 ? 0 : minY) )
-//                                .clipped()
-//                                .offset(y: -minY / (minY <= 0 ? 1.75 : 1) )
-//                                .opacity(minY < 0 ? opacity : 1)
-//                                .animation(.none)
-//                                .onChange(of: geo.frame(in: .global).minY, perform: { value in
-//                                    self.minY = value
-//                                })
-//                                .background(Color.dingoBackground)
-//                        } else {
-//                            Rectangle()
-//                                .foregroundColor(.dingoTertiary)
-//                                .frame(width: geo.size.width,
-//                                       height: geo.size.height + (minY <= 0 ? 0 : minY) )
-//                                .offset(y: -minY / (minY <= 0 ? 3 : 1) )
-//                                .opacity(minY < 0 ? opacity : 1)
-//                                .animation(.none)
-//                                .onChange(of: geo.frame(in: .global).minY, perform: { value in
-//                                    self.minY = value
-//                                })
-//                        }//: CONDITION
-                        
                         GeometryReader { coverImageGeo in
                             AsyncImage(url: URL(string: userData.coverImageURL ?? "")) { image in
                                 image
@@ -76,7 +50,7 @@ struct ProfileView: View {
                         }
                         .frame(width: geo.frame(in: .global).width, height: 200)
                         
-                        VStack(alignment: .leading, spacing: 16) {
+                        VStack(alignment: .leading, spacing: 11) {
                             HStack {
                                 
                                 AsyncImage(url: URL(string: userData.profileImageURL ?? "")) { image in

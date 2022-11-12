@@ -133,33 +133,29 @@ struct BuzzView: View {
                                         }//: VSTACK
                                         
                                         
-                                        VStack(spacing: 6) {
-                                            Button(action: {
-                                                K.impactOccur()
-                                            }, label: {
+                                        Button(action: {
+                                            K.impactOccur()
+                                        }, label: {
+                                            VStack(spacing: 6) {
                                                 Image(systemName: "paperplane")
-                                            })
-                                            
-                                            Button(action: {}, label: {
+                                                
                                                 Text("Share")
                                                     .font(.system(.footnote, design: .default, weight: .medium))
-                                            })
-                                            
-                                        }//: VSTACK
+                                            }
+                                        })
                                         
                                         
-                                        VStack(spacing: 6) {
-                                            Button(action: {
-                                                K.impactOccur()
-                                            }, label: {
+                                        
+                                        Button(action: {
+                                            K.impactOccur()
+                                        }, label: {
+                                            VStack(spacing: 6) {
                                                 Image(systemName: "bookmark")
-                                            })
-                                            
-                                            Button(action: {}, label: {
+                                                
                                                 Text("Save")
                                                     .font(.system(.footnote, design: .default, weight: .medium))
-                                            })
-                                        }//: VSTACK
+                                            }
+                                        })
                                         
                                         Button(action: {}, label: {
                                             Image("naval-pink")
@@ -194,9 +190,9 @@ struct BuzzView: View {
             .onChange(of: tabSelection) { _ in
                 K.impactOccur()
             }
-//            .frame(height: size.height)
+            //            .frame(height: size.height)
         }//: GEOMETRY READER
-//        .edgesIgnoringSafeArea(.top)
+        //        .edgesIgnoringSafeArea(.top)
     }
 }
 
@@ -204,6 +200,6 @@ struct BuzzView_Previews: PreviewProvider {
     static var previews: some View {
         BuzzView()
             .preferredColorScheme(.dark)
-//            .edgesIgnoringSafeArea(.all)
+        //            .edgesIgnoringSafeArea(.all)
     }
 }
