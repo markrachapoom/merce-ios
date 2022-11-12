@@ -80,7 +80,7 @@ struct ContentView: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 BottomMusicPlayerView(translation: $translation, showMusicPlayerModal: $showMusicPlayerModal)
-                    .padding(.bottom, 50)
+                    .padding(.bottom, 48)
                     .ignoresSafeArea(.keyboard)
 //
             }//: ZSTACK

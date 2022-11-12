@@ -64,17 +64,16 @@ struct ProfileView: View {
                                 image
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(width: coverImageGeo.size.width, height: coverImageGeo.size.height + (minY <= 0 ? 0 : minY) )
-                                    .clipped()
-                                    .offset(y: -minY / (minY <= 0 ? 1.75 : 1) )
-                                    .onChange(of: coverImageGeo.frame(in: .global).minY, perform: { value in
-                                        self.minY = value
-                                    })
-//                                    .background(Color.dingoBackground)
                             } placeholder: {
                                 Rectangle()
                                     .foregroundColor(.secondaryBackgroundColor)
                             }
+                            .frame(width: coverImageGeo.size.width, height: minY < -200 ? 0 : abs(coverImageGeo.size.height + minY))
+                            .clipped()
+                            .offset(y: -minY)
+                            .onChange(of: coverImageGeo.frame(in: .global).minY, perform: { value in
+                                self.minY = value
+                            })
                         }
                         .frame(width: geo.frame(in: .global).width, height: 200)
                         
@@ -125,14 +124,44 @@ struct ProfileView: View {
                         K.impactOccur()
                         dismiss()
                     }, label: {
-                        Image(systemName: "arrow.left")
-                            .foregroundColor(.white)
-                            .padding(8)
-                            .background(
-                                Circle()
-                                    .foregroundColor(.black.opacity(0.5))
-                            )
+                        
+                        Circle()
+                            .frame(width: 32, height: 32)
+                            .foregroundColor(.black.opacity(0.5))
+                            .overlay {
+                                Image(systemName: "arrow.left")
+                                    .font(.system(size: 12, weight: .semibold, design: .rounded))
+                                    .foregroundColor(.white)
+                            }
                     })
+                }//: BACK BUTTON
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        
+                        Button(action: {}, label: {
+                            Label("Add to queue", systemImage: "text.append")
+                        })
+                        
+                        Button(action: {}, label: {
+                            Label("Add to Playlist", systemImage: "text.badge.plus")
+                        })
+                        
+                    } label: {
+                        
+                        Circle()
+                            .frame(width: 32, height: 32)
+                            .foregroundColor(.black.opacity(0.5))
+                            .overlay {
+                                Image(systemName: "ellipsis")
+                                    .font(.system(size: 12, weight: .semibold, design: .rounded))
+                                    .foregroundColor(.white)
+                            }
+                        
+                    }//: ELLIPSIS MENU
+                    .onTapGesture {
+                        K.impactOccur()
+                    }//: TAP GESTURE
                 }
             }
         }//: GEOMETRYREADER

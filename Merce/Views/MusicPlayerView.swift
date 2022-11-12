@@ -31,7 +31,7 @@ struct MusicPlayerView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                Image("naval")
+                Image("pink-purple")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: geo.frame(in: .global).width, height: geo.frame(in: .global).height)

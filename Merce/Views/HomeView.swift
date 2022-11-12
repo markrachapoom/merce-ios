@@ -74,14 +74,13 @@ struct HomeView: View {
                                         })
                                     }
                                 }//: LAZYVGRID
-                                .padding(.all)
+                                .padding(.horizontal)
                             }//: SECTIONVIEW
                         }//: VSTACK
-                        
-                        Spacer()
+                        .padding(.vertical, 26)
+                        .padding(.bottom, 50 + 50)
                         
                     }//: SCROLLVIEW
-                    .padding(.vertical, 26)
                     
                 }//: ZSTACK
             }
