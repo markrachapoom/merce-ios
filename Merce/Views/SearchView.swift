@@ -18,73 +18,77 @@ struct SearchView: View {
     @FocusState private var isTextFieldFocused: Bool
     
     var body: some View {
-        ZStack {
-            Color.black
-            VStack {
-                HStack {
+        NavigationView {
+            ZStack {
+                Color.black
+                VStack {
                     HStack {
-                        Image(systemName: "magnifyingglass")
-                            .foregroundColor(.white)
-                            .font(.system(size: 20))
+                        HStack {
+                            
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(Color(.tertiaryLabel))
+                                .font(.system(size: 20))
+                            
+                            if (showSearchModal) {
+                                TextField("Search Musics", text: $searchText)
+                                    .focused($isTextFieldFocused)
+                            } else {
+                                Text("Search Musics")
+                                    .foregroundColor(Color(.tertiaryLabel))
+                            }
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                K.impactOccur()
+                                searchText.removeAll()
+                            }, label: {
+                                Image(systemName: "x.circle.fill")
+                                    .font(.system(size: 14))
+                                    .foregroundColor(Color(.secondaryLabel))
+                                    .opacity(searchText.isEmpty ? 0 : 1)
+                            })
+                        }//: HSTACK
+                        .padding(.horizontal)
+                        .frame(height: 40)
+                        .background(
+                            Capsule()
+                            //                            .stroke(style: StrokeStyle(lineWidth: 1))
+                            //                            .foregroundColor(Color(.separator))
+                                .foregroundColor(Color.secondaryBackgroundColor)
+                                .background(.black)
+                        )//: BACKGROUND
                         
                         if (showSearchModal) {
-                            TextField("Search Musics", text: $searchText)
-                                .focused($isTextFieldFocused)
-                        } else {
-                            Text("Search Musics")
-                                .foregroundColor(Color(.tertiaryLabel))
+                            Button(action: {
+                                withAnimation(.easeInOut(duration: 0.2)) {
+                                    K.impactOccur()
+                                    showSearchModal = false
+                                    isTextFieldFocused = false
+                                    searchText.removeAll()
+                                }
+                            }, label: {
+                                Text("Cancel")
+                            })
                         }
-                        
-                        Spacer()
-                        
-                        Button(action: {
-                            K.impactOccur()
-                            searchText.removeAll()
-                        }, label: {
-                            Image(systemName: "x.circle.fill")
-                                .foregroundColor(Color(.secondaryLabel))
-                                .opacity(searchText.isEmpty ? 0 : 1)
-                        })
                     }//: HSTACK
-                    .padding(.horizontal)
-                    .frame(height: 48)
-                    .background(
-                        Capsule()
-                            .stroke(style: StrokeStyle(lineWidth: 1))
-                            .foregroundColor(Color(.separator))
-                            .background(.black)
-                    )//: BACKGROUND
-                    
-                    if (showSearchModal) {
-                        Button(action: {
-                            withAnimation {
-                                K.impactOccur()
-                                showSearchModal = false
-                                isTextFieldFocused = false
-                                searchText.removeAll()
+                    .padding(.all)
+                    .onTapGesture {
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            K.impactOccur()
+                            if (!showSearchModal) {
+                                showSearchModal = true
+                                isTextFieldFocused = true
                             }
-                        }, label: {
-                            Text("Cancel")
-                        })
-                    }
-                }//: hstack
-                .padding(.all)
-                .onTapGesture {
-                    withAnimation {
-                        if (!showSearchModal) {
-                            showSearchModal = true
-                            isTextFieldFocused = true
                         }
                     }
-                }
+                    
+                    Spacer()
+                    
+                }//: VSTACK
                 
-                Spacer()
-                
-            }//: VSTACK
-            
-            BottomMusicPlayerView(translation: $translation, showMusicPlayerModal: $showMusicPlayerModal)
-            
-        }//: ZSTACK
+            }//: ZSTACK
+        }//: NAVIGATION VIEW
     }
 }
 

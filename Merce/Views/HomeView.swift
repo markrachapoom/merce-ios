@@ -20,38 +20,72 @@ struct HomeView: View {
     
     
     var body: some View {
-        GeometryReader { geo in
-            ZStack {
-                
-                VStack {
+        NavigationView {
+            GeometryReader { geo in
+                ZStack {
                     
-//                    ScrollView {
-//                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 170))], spacing: 13) {
-//                            ForEach(1..<10, id: \.self) { number in
-//                                Button(action: {
-//                                    K.impactOccur()
-//                                }, label: {
-//                                    RoundedRectangle(cornerRadius: 0)
-//                                        .foregroundColor(Color(.secondarySystemBackground))
-//                                        .frame(height: 120)
-//                                })
-//                            }
-//                        }
-//                    }
+                    ScrollView(.vertical, showsIndicators: false) {
+                        
+                        VStack(spacing: 32) {
+                            SectionView(title: "Entrepreneurs") {
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack(spacing: 13) {
+                                        ForEach(MerceUser.allEntrepreneurs, id: \.username) { entrepreneur in
+                                            NavigationLink(destination: ProfileView(userData: entrepreneur)) {
+                                                AsyncImage(url: URL(string: entrepreneur.profileImageURL ?? "")) { image in
+                                                    image
+                                                        .resizable()
+                                                        .scaledToFill()
+                                                } placeholder: {
+                                                    Circle()
+                                                        .foregroundColor(.secondaryBackgroundColor)
+                                                }
+                                                .frame(width: 90, height: 90)
+                                                .clipShape(Circle())
+                                            }
+                                        }//: LOOP
+                                    }//: HSTACK
+                                    .padding(.horizontal)
+                                }//: SCROLLVIEW
+                            }
+                            
+                            SectionView(title: "Categories") {
+                                LazyVGrid(
+                                    columns:[GridItem(.adaptive(minimum: geo.frame(in: .global).width / 3))], alignment: .leading) {
+                                        ForEach(Category.allCategories, id: \.title) { category in
+                                        Button(action: {
+                                            K.impactOccur()
+                                        }, label: {
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .foregroundColor(Color.secondaryBackgroundColor)
+                                                .frame(height: 120)
+                                                .overlay(alignment: .topLeading) {
+                                                    VStack(alignment: .leading, spacing: 6) {
+                                                        Text(category.title)
+                                                            .fontWeight(.bold)
+                                                        Text(category.description)
+                                                            .multilineTextAlignment(.leading)
+//                                                                .lineLimit(2)
+                                                            .font(.system(size: 14))
+                                                            .foregroundColor(Color(.secondaryLabel))
+                                                    }
+                                                    .padding(.all)
+                                                }
+                                        })
+                                    }
+                                }//: LAZYVGRID
+                                .padding(.all)
+                            }//: SECTIONVIEW
+                        }//: VSTACK
+                        
+                        Spacer()
+                        
+                    }//: SCROLLVIEW
+                    .padding(.vertical, 26)
                     
-                    ScrollView {
-                        Color.black
-                            .frame(height: 10000)
-                    }
-                    
-                    Spacer()
-                    
-                }//: VSTACK
-                
-                BottomMusicPlayerView(translation: $translation, showMusicPlayerModal: $showMusicPlayerModal)
-                
-            }//: ZSTACK
-        }
+                }//: ZSTACK
+            }
+        }//: NAVIGATIONVIEW
     }
 }
 

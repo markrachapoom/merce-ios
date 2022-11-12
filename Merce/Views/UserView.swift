@@ -17,8 +17,6 @@ struct UserView: View {
             VStack {
                 Spacer()
             }
-            
-            BottomMusicPlayerView(translation: $translation, showMusicPlayerModal: $showMusicPlayerModal)
         }
     }
 }

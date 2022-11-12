@@ -22,6 +22,8 @@ struct K {
     
     static let rowPaddingVertical = 6.0
     
+    static let fontSize = 15.5
+    
     // MARK: - HAPTIC FEEDBACK
     
     @AppStorage(wrappedValue: true, "isHapticsOn") static var isHapticsOn
@@ -61,6 +63,11 @@ struct K {
             UINotificationFeedbackGenerator().notificationOccurred(style)
         }
     }
+    
+    static let categories: [AnyObject] = [
+        
+    ]
+    
 }
 
 enum HTTP_METHOD: String {

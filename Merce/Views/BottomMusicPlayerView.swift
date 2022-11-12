@@ -34,21 +34,23 @@ struct BottomMusicPlayerView: View {
                         
                         HStack {
                             
-                            Image("naval-cover")
+                            Image("naval-pink")
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 48, height: 48)
+                                .cornerRadius(6)
                             
                             VStack(alignment: .leading) {
                                 
                                 Text("Society Always Wants New Things")
                                     .foregroundColor(Color(.label))
-                                    .font(.callout)
+                                    .font(.system(size: K.fontSize))
+                                    .fontWeight(.medium)
                                     .lineLimit(1)
                                 
                                 Text("Akira The Don, Naval Ravikant")
                                     .foregroundColor(Color(.secondaryLabel))
-                                    .font(.subheadline)
+                                    .font(.system(size: K.fontSize))
                                     .lineLimit(1)
                                 
                             }//: VSTACK
@@ -72,12 +74,13 @@ struct BottomMusicPlayerView: View {
                                         .font(.title2)
                                         .foregroundColor(.white)
                                 }
-                        })
+                        })//: BUTTON
                         
                     }//: HSTACK
                     .padding(.horizontal)
                     .padding(.vertical, 8)
                     .background(Color(.systemBackground))
+//                    .background(Color.secondaryBackgroundColor)
                     Divider()
                 }
             })//: BUTTON

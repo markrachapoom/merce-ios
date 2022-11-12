@@ -23,6 +23,7 @@ struct ContentView: View {
         
         UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
         UITabBar.appearance().standardAppearance = tabBarAppearance
+        
     }
     
     var body: some View {
@@ -77,6 +78,10 @@ struct ContentView: View {
                     )//: GESTURE
                     .opacity(showMusicPlayerModal ? 1 : 0)
                     .edgesIgnoringSafeArea(.all)
+                
+                BottomMusicPlayerView(translation: $translation, showMusicPlayerModal: $showMusicPlayerModal)
+                    .padding(.bottom, 50)
+                    .ignoresSafeArea(.keyboard)
 //
             }//: ZSTACK
             .onChange(of: tabSelection) { _ in

@@ -24,6 +24,7 @@ struct MusicPlayerView: View {
     
     @State private var currentTime: TimeInterval = .zero
     @State private var totalDuration: TimeInterval = .zero
+    @State private var isForwardingTime: Bool = false
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -116,11 +117,14 @@ struct MusicPlayerView: View {
                         }//: HSTACK
                         
                         // Timer
-                        VStack {
+                        VStack(spacing: 0) {
                             
                             if let player = playerVM.audioPlayer {
-                                Slider(value: $currentTime, in: 0...player.duration)
-                                    .tint(.white)
+                                Slider(value: $currentTime, in: 0...player.duration, onEditingChanged: { isForwarding in
+                                    self.isForwardingTime = isForwarding
+                                    player.currentTime = currentTime
+                                })
+                                .tint(.white)
                             }
                             
 //                            RoundedRectangle(cornerRadius: 100)
@@ -137,6 +141,7 @@ struct MusicPlayerView: View {
                                 Spacer()
                                 Text("\(getFormatPlayerTime(interval: playerVM.audioPlayer?.duration))")
                             }
+                            .font(.footnote)
                         }
                         
                         HStack {
@@ -150,6 +155,7 @@ struct MusicPlayerView: View {
                             }, label: {
                                 Image(systemName: "shuffle")
                                     .foregroundColor(isShuffle ? .accentColor : Color(.label))
+                                    .font(.system(size: 20, weight: .medium, design: .default))
                             })
                             
                             
@@ -159,6 +165,10 @@ struct MusicPlayerView: View {
                             // Back
                             Button(action: {
                                 K.impactOccur()
+                                if let player = playerVM.audioPlayer {
+                                    player.currentTime = 0.0
+                                    currentTime = 0.0
+                                }
                             }, label: {
                                 Image(systemName: "backward.end.fill")
                                     .font(.system(size: 28, weight: .medium, design: .default))
@@ -202,6 +212,7 @@ struct MusicPlayerView: View {
                                 Image(systemName: "repeat.1")
                                     .foregroundColor(isRepeated ? .accentColor : Color(.label))
                             })
+                            .font(.system(size: 20, weight: .medium, design: .default))
                             
                         }//: PLAYER BAR
                     }//: VSTACK
@@ -217,8 +228,9 @@ struct MusicPlayerView: View {
             .cornerRadius(21)
             .onReceive(timer) { _ in
                 if let audioPlayer = playerVM.audioPlayer {
-                    print(audioPlayer.currentTime)
-                    self.currentTime = audioPlayer.currentTime
+                    if (!isForwardingTime) {
+                        self.currentTime = audioPlayer.currentTime
+                    }
                 }
             }
             
