@@ -28,22 +28,17 @@ struct HomeView: View {
                 ZStack {
                     VStack {
                         
-//                        HStack {
-//                            HStack {
-//                                Image("merce-icon-white")
-//                                    .resizable()
-//                                    .scaledToFit()
-//                                    .frame(width: 16)
-//                                Text("Merce")
-//                                    .fontWeight(.medium)
-//                            }//: HSTACK
-//                            Spacer()
-//                        }//: HSTACK
-//                        .padding(.vertical, 8)
-//                        .padding(.horizontal)
-                        
                         ScrollView(.vertical, showsIndicators: false) {
                             VStack(spacing: 32) {
+                                
+                                SectionView(title: "Recently Played") {
+                                    
+                                }
+                                
+                                SectionView(title: "Discover") {
+                                    
+                                }
+                                
                                 SectionView(title: "Entrepreneurs") {
                                     ScrollView(.horizontal, showsIndicators: false) {
                                         HStack(spacing: 13) {
@@ -102,13 +97,14 @@ struct HomeView: View {
                         }//: SCROLLVIEW
                     }//: VSTACK
                 }//: ZSTACK
-//                .toolbar(.hidden)
+                .toolbar(.hidden)
                 .navigationTitle("")
                 .navigationBarBackButtonHidden(true)
                 .navigationBarTitleDisplayMode(.inline)
                 
                 VStack {
                     HStack {
+                        
                         HStack {
                             Image("merce-icon-white")
                                 .resizable()
@@ -117,8 +113,26 @@ struct HomeView: View {
                             Text("Merce")
                                 .fontWeight(.semibold)
                         }//: HSTACK
+                        
                         Spacer()
+                        
+                        HStack(spacing: 21) {
+                            
+                            NavigationLink(destination: InboxView()) {
+                                Image(systemName: "paperplane")
+                            }//: NAVIGATIONLINK
+                            .simultaneousGesture(
+                                TapGesture()
+                                    .onEnded({ _ in
+                                        K.impactOccur()
+                                    })
+                            )
+                            
+                        }//: HSTACK
+                        .font(.system(size: 22))
+                        
                     }//: HSTACK
+                    .frame(height: 24)
                     .padding(.vertical, 13)
                     .padding(.horizontal)
                     .padding(.top, K.topSafeArea)

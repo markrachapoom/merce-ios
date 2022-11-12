@@ -36,27 +36,38 @@ struct ContentView: View {
                     
                     HomeView()
                         .tabItem {
-                            Label("Home", systemImage: "house")
+                            Image(systemName: "house")
+//                            Label("Home", systemImage: "house")
                         }
                         .tag(1)
                     
                     SearchView()
                         .tabItem {
-                            Label("Search", systemImage: "magnifyingglass")
+                            Image(systemName: "magnifyingglass")
+//                            Label("Search", systemImage: "magnifyingglass")
                         }
                         .tag(2)
                     
                     BuzzView()
                         .tabItem {
-                            Label("Buzz", systemImage: "rectangle.stack.badge.play")
+                            Image(systemName: "rectangle.stack.badge.play")
+//                            Label("Buzz", systemImage: "rectangle.stack.badge.play")
                         }
                         .tag(3)
                     
-                    AccountView()
+                    NotificationView()
                         .tabItem {
-                            Label("Account", systemImage: "person")
+                            Image(systemName: "bell")
+//                            Label("Notification", systemImage: "bell")
                         }
                         .tag(4)
+                    
+                    AccountView()
+                        .tabItem {
+                            Image(systemName: "person")
+//                            Label("Account", systemImage: "person")
+                        }
+                        .tag(5)
                     
                 }//: TABVIEW
                 .tint(.white)

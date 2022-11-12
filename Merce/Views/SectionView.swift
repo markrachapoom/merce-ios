@@ -20,9 +20,18 @@ struct SectionView<Content: View>: View {
     var body: some View {
         VStack(spacing: 8) {
             HStack {
-                Text(title)
-                    .font(.title2)
-                    .fontWeight(.bold)
+                HStack(alignment: .center) {
+                    
+                    Text(title)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 13, weight: .bold, design: .default))
+                        .foregroundColor(Color(.secondaryLabel))
+                    
+                    
+                }//: HSTACK
                 
                 Spacer()
             }

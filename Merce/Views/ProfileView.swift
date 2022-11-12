@@ -74,12 +74,12 @@ struct ProfileView: View {
                                             .foregroundColor(Color(.label))
                                             .fontWeight(.semibold)
                                             .font(.system(size: K.fontSize))
-                                            .frame(height: 40)
+                                            .frame(height: 36)
                                         //                                        .padding(.vertical, 11)
                                             .padding(.horizontal, 13)
                                             .background(Color.secondaryBackgroundColor)
                                             .clipShape(Capsule())
-                                            .offset(y: 20 + 13)
+                                            .offset(y: 18 + 13)
                                     })//: EDIT PROFILE BUTTON
                                 }
                                 

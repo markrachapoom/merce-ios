@@ -10,9 +10,11 @@ import SwiftUI
 struct NavBarView: View {
     
     let title: String
+    let withBackButton: Bool
     
-    init(title: String) {
+    init(title: String, withBackButton: Bool = true) {
         self.title = title
+        self.withBackButton = withBackButton
     }
     
     @Environment(\.dismiss) private var dismiss
@@ -21,12 +23,15 @@ struct NavBarView: View {
         VStack {
             HStack {
                 
-                Button(action: {
-                    K.impactOccur()
-                    dismiss()
-                }, label: {
-                    CircleIcon(iconName: "arrow.left")
-                })//: BUTTON
+                if (withBackButton) {
+                    Button(action: {
+                        K.impactOccur()
+                        dismiss()
+                    }, label: {
+                        Image(systemName: "arrow.left")
+                            .font(.system(size: 22))
+                    })//: BUTTON
+                }
                 
                 Spacer()
                 
@@ -35,11 +40,15 @@ struct NavBarView: View {
                 
                 Spacer()
                 
-                Circle()
-                    .frame(width: 32, height: 32)
-                    .opacity(0)
+                
+                if (withBackButton) {
+                    Image(systemName: "arrow.left")
+                        .font(.system(size: 22))
+                        .opacity(0)
+                }
                 
             }//: HSTACK
+            .frame(height: 24)
             .padding(.top, K.topSafeArea)
             .padding(.vertical, 13)
             .padding(.horizontal)

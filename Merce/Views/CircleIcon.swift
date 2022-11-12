@@ -14,7 +14,12 @@ struct CircleIcon: View {
     var body: some View {
         Circle()
             .frame(width: 34, height: 34)
-            .foregroundColor(.black.opacity(0.5))
+//            .foregroundColor(.black.opacity(0.5))
+            .foregroundColor(.clear)
+            .background(
+                VisualEffectView(blurEffect: .dark)
+                    .clipShape(Circle())
+            )
             .overlay {
                 Image(systemName: iconName)
                     .font(.system(size: 13, weight: .semibold, design: .rounded))

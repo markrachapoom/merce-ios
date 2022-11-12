@@ -10,6 +10,7 @@ import SwiftUI
 struct BuzzView: View {
     
     @State private var isFavorite: Bool = false
+    @State private var isSaved: Bool = false
     
     @State private var tabSelection: Int = 0
     
@@ -152,10 +153,13 @@ struct BuzzView: View {
                                             
                                             
                                             Button(action: {
-                                                K.impactOccur()
+                                                withAnimation(.easeInOut(duration: 0.1)) {
+                                                    K.impactOccur()
+                                                    isSaved.toggle()
+                                                }
                                             }, label: {
                                                 VStack(spacing: 6) {
-                                                    Image(systemName: "bookmark")
+                                                    Image(systemName: isSaved ? "bookmark.fill" : "bookmark")
                                                     
                                                     Text("Save")
                                                         .font(.system(.footnote, design: .default, weight: .medium))
