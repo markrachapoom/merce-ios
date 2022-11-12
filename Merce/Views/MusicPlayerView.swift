@@ -18,8 +18,6 @@ struct MusicPlayerView: View {
     @State private var isShuffle: Bool = false
     @State private var isRepeated: Bool = false
     
-    //    @Binding var translation: CGSize
-    
     @Environment(\.dismiss) private var dismiss
     
     @State private var currentTime: TimeInterval = .zero
@@ -154,7 +152,7 @@ struct MusicPlayerView: View {
                                 }
                             }, label: {
                                 Image(systemName: "shuffle")
-                                    .foregroundColor(isShuffle ? .accentColor : Color(.label))
+                                    .foregroundColor(isShuffle ? .white : Color(.secondaryLabel))
                                     .font(.system(size: 20, weight: .medium, design: .default))
                             })
                             
@@ -210,7 +208,7 @@ struct MusicPlayerView: View {
                                 }
                             }, label: {
                                 Image(systemName: "repeat.1")
-                                    .foregroundColor(isRepeated ? .accentColor : Color(.label))
+                                    .foregroundColor(isShuffle ? .white : Color(.secondaryLabel))
                             })
                             .font(.system(size: 20, weight: .medium, design: .default))
                             

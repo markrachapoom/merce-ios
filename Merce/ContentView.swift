@@ -16,13 +16,16 @@ struct ContentView: View {
     @State private var tabSelection: Int = 1
     
     init() {
-//        UITabBar.appearance().backgroundColor = .black
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithTransparentBackground()
         tabBarAppearance.backgroundColor = .black
         
         UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
         UITabBar.appearance().standardAppearance = tabBarAppearance
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        UINavigationBar.appearance().standardAppearance = appearance
         
     }
     
@@ -31,23 +34,29 @@ struct ContentView: View {
             ZStack {
                 TabView(selection: $tabSelection) {
                     
-                    HomeView(showMusicPlayerModal: $showMusicPlayerModal, translation: $translation)
+                    HomeView()
                         .tabItem {
                             Label("Home", systemImage: "house")
                         }
                         .tag(1)
                     
-                    SearchView(showMusicPlayerModal: $showMusicPlayerModal, translation: $translation)
+                    SearchView()
                         .tabItem {
                             Label("Search", systemImage: "magnifyingglass")
                         }
                         .tag(2)
                     
-                    UserView(showMusicPlayerModal: $showMusicPlayerModal, translation: $translation)
+                    BuzzView()
+                        .tabItem {
+                            Label("Buzz", systemImage: "rectangle.stack.badge.play")
+                        }
+                        .tag(3)
+                    
+                    AccountView()
                         .tabItem {
                             Label("Account", systemImage: "person")
                         }
-                        .tag(3)
+                        .tag(4)
                     
                 }//: TABVIEW
                 .tint(.white)
@@ -82,6 +91,7 @@ struct ContentView: View {
                 BottomMusicPlayerView(translation: $translation, showMusicPlayerModal: $showMusicPlayerModal)
                     .padding(.bottom, 48)
                     .ignoresSafeArea(.keyboard)
+                    .opacity(tabSelection == 3 ? 0 : 1)
 //
             }//: ZSTACK
             .onChange(of: tabSelection) { _ in

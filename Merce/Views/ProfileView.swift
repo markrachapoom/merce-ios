@@ -12,9 +12,6 @@ struct ProfileView: View {
     let userData: MerceUser
     
     init(userData: MerceUser) {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-        UINavigationBar.appearance().standardAppearance = appearance
         self.userData = userData
     }
     
