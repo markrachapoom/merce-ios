@@ -14,16 +14,20 @@ class AuthenticationViewModel: ObservableObject {
     enum SignInState {
         case signedIn
         case signedOut
+        case unknown
     }
     
     @Published var isAuthenticated: Bool = false
     @Published var currentUser: User? = nil
-    @Published var state: SignInState = .signedOut
+    @Published var state: SignInState = .unknown
     
     
     func addStateDidChangeListener() {
         Auth.auth().addStateDidChangeListener { auth, user in
-            self.currentUser = user
+            if (user != nil) {
+                self.currentUser = user
+                self.state = .signedIn
+            }
         }
     }
     
@@ -57,14 +61,6 @@ class AuthenticationViewModel: ObservableObject {
         
         GIDSignIn.sharedInstance.signIn(with: configuration, presenting: rootViewController) { [unowned self] user, error in
             authenticateUser(for: user, with: error)
-        }
-    }
-    
-    func reloadGoogleAuthState() -> Void {
-        if GIDSignIn.sharedInstance.hasPreviousSignIn() {
-            GIDSignIn.sharedInstance.restorePreviousSignIn { [unowned self] user, error in
-                authenticateUser(for: user, with: error)
-            }
         }
     }
     

@@ -55,7 +55,7 @@ struct SettingsView: View {
             Button("Logout", role: .destructive, action: {
 //                authVM.signOut()
                 withAnimation {
-                    authVM.isAuthenticated = false
+                    authVM.signOut()
                 }
             })
         } message: {

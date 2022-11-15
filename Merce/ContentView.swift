@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
     
@@ -27,12 +28,13 @@ struct ContentView: View {
     var body: some View {
         VStack {
             switch (authVM.state) {
-            case .signedIn: MainTabVIew()
-            case .signedOut: AuthenticationView()
+                case .signedIn: MainTabVIew()
+                case .signedOut: AuthenticationView()
+                case .unknown: SplashScreenView()
             }
         }//: VSTACK
-        .onAppear{
-            authVM.reloadGoogleAuthState()
+        .onAppear {
+            authVM.addStateDidChangeListener()
         }
     }
 }
