@@ -6,16 +6,9 @@
 //
 
 import SwiftUI
-import Firebase
 
 @main
 struct MerceApp: App {
-    
-    // Use Firebase library to configure APIs
-    init() {
-        FirebaseApp.configure()
-    }
-    
     var body: some Scene {
         WindowGroup {
             ContentView()
