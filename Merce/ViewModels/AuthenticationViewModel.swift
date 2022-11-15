@@ -23,10 +23,14 @@ class AuthenticationViewModel: ObservableObject {
     
     
     func addStateDidChangeListener() {
-        Auth.auth().addStateDidChangeListener { auth, user in
-            if (user != nil) {
-                self.currentUser = user
-                self.state = .signedIn
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            Auth.auth().addStateDidChangeListener { auth, user in
+                if (user != nil) {
+                    self.currentUser = user
+                    self.state = .signedIn
+                } else {
+                    self.state = .signedOut
+                }
             }
         }
     }

@@ -15,7 +15,7 @@ struct AuthenticationView: View {
         GeometryReader { geo in
             ZStack {
                 
-                Image("pink-purple")
+                Image("man-with-headphone-black")
                     .resizable()
                     .scaledToFill()
                     .frame(width: geo.frame(in: .global).width)
@@ -28,7 +28,7 @@ struct AuthenticationView: View {
                             Spacer()
                         }
                     }
-                    .frame(height: geo.frame(in: .global).height / 3)
+                    .frame(height: geo.frame(in: .global).height / 4)
                     .background(.black)
                 }
                 
@@ -41,17 +41,18 @@ struct AuthenticationView: View {
                         Image("merce-icon-white")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 40)
+                            .frame(width: 32)
                         
-                        VStack {
+                        VStack(spacing: 8) {
                             Text("Welcome to Merce")
-                                .font(.title)
+                                .font(.title2)
                                 .fontWeight(.bold)
                             
-                            Text("🎙 Musical Podcast")
-                                .font(.title3)
+                            Text("🎙 Where content meets music")
+                                .font(.body)
                                 .fontWeight(.regular)
                                 .foregroundColor(Color(.secondaryLabel))
+                                .multilineTextAlignment(.center)
                         }//: VSTACK
                         
                         VStack(spacing: 13) {
@@ -62,7 +63,14 @@ struct AuthenticationView: View {
                                 }
                             }, label: {
                                 HStack {
+                                    
+                                    Image("google-icon")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 21)
+                                    
                                     Spacer()
+                                    
                                     Text("Continue with Google")
                                         .fontWeight(.medium)
                                         .foregroundColor(.white)
@@ -79,6 +87,10 @@ struct AuthenticationView: View {
                             })
                             
                             HStack {
+                                
+                                Image(systemName: "applelogo")
+                                    .font(.system(size: 21))
+                                
                                 Spacer()
                                 Text("Continue with Apple")
                                     .fontWeight(.medium)
