@@ -131,7 +131,7 @@ struct TabBarButton: View {
             HStack {
                 Spacer()
                 Image(systemName: "\(iconName)\((canFilled && (tabSelection == tag)) ? ".fill" : "")")
-                    .font(.system(size: 20))
+                    .font(.system(size: 20.5))
                     .foregroundColor(tabSelection == tag ? Color(.label) : Color(.secondaryLabel))
                 Spacer()
             }//: HSTACK

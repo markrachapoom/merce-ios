@@ -34,7 +34,8 @@ struct BottomMusicPlayerView: View {
                         Image("naval-pink")
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 48, height: 48)
+//                            .frame(width: 48, height: 48)
+                            .frame(width: 40, height: 40)
                             .cornerRadius(6)
                         
                         VStack(alignment: .leading) {
@@ -74,11 +75,11 @@ struct BottomMusicPlayerView: View {
                     })//: BUTTON
                     
                 }//: HSTACK
-                .padding(.horizontal)
-                .padding(.vertical, 8)
+//                .padding(.vertical, 8)
+                .padding(.all, 11)
                 .background(
                     VisualEffectView(blurEffect: .systemUltraThinMaterial)
-                        .background(Color.accentColor.opacity(0.3))
+//                        .background(Color.accentColor.opacity(0.3))
                         .cornerRadius(13)
                 )//: BACKGROUND
                 .padding(.horizontal, 6)
