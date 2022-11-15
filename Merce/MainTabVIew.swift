@@ -19,48 +19,61 @@ struct MainTabVIew: View {
     
     @State private var showLoginScreen: Bool = true
     
+    init() {
+        UITabBar.appearance().isHidden = true
+    }
+    
     var body: some View {
         GeometryReader { geo in
             ZStack {
                 TabView(selection: $tabSelection) {
                     
                     HomeView()
-                        .tabItem {
-                            Image(systemName: "house")
-//                            Label("Home", systemImage: "house")
-                        }
                         .tag(1)
                     
                     SearchView()
-                        .tabItem {
-                            Image(systemName: "magnifyingglass")
-//                            Label("Search", systemImage: "magnifyingglass")
-                        }
                         .tag(2)
                     
                     BuzzView()
-                        .tabItem {
-                            Image(systemName: "rectangle.stack.badge.play")
-//                            Label("Buzz", systemImage: "rectangle.stack.badge.play")
-                        }
                         .tag(3)
                     
                     NotificationView()
-                        .tabItem {
-                            Image(systemName: "bell")
-//                            Label("Notification", systemImage: "bell")
-                        }
                         .tag(4)
                     
                     AccountView()
-                        .tabItem {
-                            Image(systemName: "person")
-//                            Label("Account", systemImage: "person")
-                        }
                         .tag(5)
                     
                 }//: TABVIEW
                 .tint(.white)
+                
+                VStack {
+                    
+                    Spacer()
+                    
+                    VStack(spacing: 0) {
+                        BottomMusicPlayerView(translation: $translation, showMusicPlayerModal: $showMusicPlayerModal)
+                        //                    .padding(.bottom, 48)
+                            .opacity(tabSelection == 3 ? 0 : 1)
+                        
+                        HStack(spacing: 0) {
+                            
+                            TabBarButton(tabSelection: $tabSelection, tag: 1, iconName: "house")
+                            
+                            TabBarButton(tabSelection: $tabSelection, tag: 2, iconName: "magnifyingglass", canFilled: false)
+                            
+                            TabBarButton(tabSelection: $tabSelection, tag: 3, iconName: "rectangle.stack.badge.play")
+                            
+                            TabBarButton(tabSelection: $tabSelection, tag: 4, iconName: "bell")
+                            
+                            
+                            TabBarButton(tabSelection: $tabSelection, tag: 5, iconName: "person")
+                            
+                        }//: HSTACK
+                    }//: VSTACK
+                    .background(LinearGradient(colors: [.black, .black.opacity(0)], startPoint: .bottom, endPoint: .top))
+                    //                    .background(Color(.systemBackground))
+                }//: VSTACK
+                .ignoresSafeArea(.keyboard)
                 
                 MusicPlayerView(playerVM: playerVM, showMusicPlayerModal: $showMusicPlayerModal)
                     .offset(y: translation.height)
@@ -89,16 +102,41 @@ struct MainTabVIew: View {
                     .opacity(showMusicPlayerModal ? 1 : 0)
                     .edgesIgnoringSafeArea(.all)
                 
-                BottomMusicPlayerView(translation: $translation, showMusicPlayerModal: $showMusicPlayerModal)
-                    .padding(.bottom, 48)
-                    .ignoresSafeArea(.keyboard)
-                    .opacity(tabSelection == 3 ? 0 : 1)
-                
             }//: ZSTACK
             .onChange(of: tabSelection) { _ in
                 K.impactOccur()
             }
         }
+    }
+}
+
+struct TabBarButton: View {
+    
+    @Binding var tabSelection: Int
+    let tag: Int
+    let iconName: String
+    let canFilled: Bool
+    
+    init(tabSelection: Binding<Int>, tag: Int, iconName: String, canFilled: Bool = true) {
+        self._tabSelection = tabSelection
+        self.tag = tag
+        self.iconName = iconName
+        self.canFilled = canFilled
+    }
+    
+    var body: some View {
+        Button(action: {
+            self.tabSelection = tag
+        }, label: {
+            HStack {
+                Spacer()
+                Image(systemName: "\(iconName)\((canFilled && (tabSelection == tag)) ? ".fill" : "")")
+                    .font(.system(size: 20))
+                    .foregroundColor(tabSelection == tag ? Color(.label) : Color(.secondaryLabel))
+                Spacer()
+            }//: HSTACK
+            .padding(.all)
+        })
     }
 }
 
