@@ -35,6 +35,7 @@
 		FA778CFA291A929C00452C20 /* Impact.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA778CF9291A929B00452C20 /* Impact.swift */; };
 		FA7D0781291E0EC1008D9224 /* BottomMusicPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D0780291E0EC1008D9224 /* BottomMusicPlayerView.swift */; };
 		FAA01CED2923657300F06DC9 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA01CEC2923657300F06DC9 /* SearchViewModel.swift */; };
+		FAA01CFA29236EBE00F06DC9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAA01CF929236EBE00F06DC9 /* GoogleService-Info.plist */; };
 		FAA15162291E459800183167 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA15161291E459800183167 /* Utils.swift */; };
 		FAA15164291E5F7300183167 /* entrepreneurs.json in Resources */ = {isa = PBXBuildFile; fileRef = FAA15163291E5F7300183167 /* entrepreneurs.json */; };
 		FAA15166291E61CB00183167 /* MerceUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA15165291E61CB00183167 /* MerceUser.swift */; };
@@ -95,6 +96,7 @@
 		FA778CF9291A929B00452C20 /* Impact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Impact.swift; sourceTree = "<group>"; };
 		FA7D0780291E0EC1008D9224 /* BottomMusicPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMusicPlayerView.swift; sourceTree = "<group>"; };
 		FAA01CEC2923657300F06DC9 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		FAA01CF929236EBE00F06DC9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAA15161291E459800183167 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		FAA15163291E5F7300183167 /* entrepreneurs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = entrepreneurs.json; sourceTree = "<group>"; };
 		FAA15165291E61CB00183167 /* MerceUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerceUser.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				FA778CC3291A878900452C20 /* MerceApp.swift */,
 				FA778CC5291A878900452C20 /* ContentView.swift */,
 				FAA15163291E5F7300183167 /* entrepreneurs.json */,
+				FAA01CF929236EBE00F06DC9 /* GoogleService-Info.plist */,
 				FA778CEF291A882500452C20 /* Views */,
 				FAC2FC6D291BE8EE007B1A6C /* ViewModels */,
 				FAA15167291E61D700183167 /* Models */,
@@ -369,6 +372,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA01CFA29236EBE00F06DC9 /* GoogleService-Info.plist in Resources */,
 				FAA15164291E5F7300183167 /* entrepreneurs.json in Resources */,
 				FA778CCB291A878A00452C20 /* Preview Assets.xcassets in Resources */,
 				FAC2FC6C291BE8CB007B1A6C /* society-always-wants-new-things.mp3 in Resources */,
