@@ -9,8 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
     
-//    @Binding var showMusicPlayerModal: Bool
-//    @Binding var translation: CGSize
+    @EnvironmentObject private var searchVM: SearchViewModel
     
     @State private var searchText: String = ""
     
@@ -95,6 +94,7 @@ struct SearchView: View {
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView()
+            .environmentObject(SearchViewModel())
             .preferredColorScheme(.dark)
     }
 }

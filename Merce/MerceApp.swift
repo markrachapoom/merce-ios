@@ -15,6 +15,7 @@ struct MerceApp: App {
                 .preferredColorScheme(.dark)
                 .environmentObject(PlayerViewModel())
                 .environmentObject(AuthenticationViewModel())
+                .environmentObject(SearchViewModel())
         }
     }
 }

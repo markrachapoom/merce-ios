@@ -34,6 +34,7 @@
 		FA778CF8291A926B00452C20 /* SRDPSecret.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA778CF5291A926B00452C20 /* SRDPSecret.swift */; };
 		FA778CFA291A929C00452C20 /* Impact.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA778CF9291A929B00452C20 /* Impact.swift */; };
 		FA7D0781291E0EC1008D9224 /* BottomMusicPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D0780291E0EC1008D9224 /* BottomMusicPlayerView.swift */; };
+		FAA01CED2923657300F06DC9 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA01CEC2923657300F06DC9 /* SearchViewModel.swift */; };
 		FAA15162291E459800183167 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA15161291E459800183167 /* Utils.swift */; };
 		FAA15164291E5F7300183167 /* entrepreneurs.json in Resources */ = {isa = PBXBuildFile; fileRef = FAA15163291E5F7300183167 /* entrepreneurs.json */; };
 		FAA15166291E61CB00183167 /* MerceUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA15165291E61CB00183167 /* MerceUser.swift */; };
@@ -93,6 +94,7 @@
 		FA778CF5291A926B00452C20 /* SRDPSecret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRDPSecret.swift; sourceTree = "<group>"; };
 		FA778CF9291A929B00452C20 /* Impact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Impact.swift; sourceTree = "<group>"; };
 		FA7D0780291E0EC1008D9224 /* BottomMusicPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMusicPlayerView.swift; sourceTree = "<group>"; };
+		FAA01CEC2923657300F06DC9 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		FAA15161291E459800183167 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		FAA15163291E5F7300183167 /* entrepreneurs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = entrepreneurs.json; sourceTree = "<group>"; };
 		FAA15165291E61CB00183167 /* MerceUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerceUser.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			children = (
 				FAC2FC6E291BE902007B1A6C /* PlayerViewModel.swift */,
 				FACF615829204CBA008FC1FA /* AuthenticationViewModel.swift */,
+				FAA01CEC2923657300F06DC9 /* SearchViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				FA56D83E291E685D00549439 /* SectionView.swift in Sources */,
 				FA778CEE291A87E600452C20 /* MusicPlayerView.swift in Sources */,
 				FA69434F291FCCF900AD9A0B /* AccountView.swift in Sources */,
+				FAA01CED2923657300F06DC9 /* SearchViewModel.swift in Sources */,
 				FA7D0781291E0EC1008D9224 /* BottomMusicPlayerView.swift in Sources */,
 				FA778CC6291A878900452C20 /* ContentView.swift in Sources */,
 				FA07B9E0292037CC00A0A462 /* NotificationView.swift in Sources */,
