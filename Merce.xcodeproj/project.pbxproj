@@ -44,6 +44,8 @@
 		FAA01D0129236FC100F06DC9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FAA01D0029236FC100F06DC9 /* FirebaseAuth */; };
 		FAA01D0329236FC100F06DC9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FAA01D0229236FC100F06DC9 /* FirebaseFirestore */; };
 		FAA01D0529236FC100F06DC9 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FAA01D0429236FC100F06DC9 /* FirebaseFirestoreSwift */; };
+		FAA01D08292375A300F06DC9 /* MainTabVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA01D07292375A300F06DC9 /* MainTabVIew.swift */; };
+		FAA01D0C29237A9C00F06DC9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA01D0B29237A9C00F06DC9 /* Launch Screen.storyboard */; };
 		FAA15162291E459800183167 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA15161291E459800183167 /* Utils.swift */; };
 		FAA15164291E5F7300183167 /* entrepreneurs.json in Resources */ = {isa = PBXBuildFile; fileRef = FAA15163291E5F7300183167 /* entrepreneurs.json */; };
 		FAA15166291E61CB00183167 /* MerceUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA15165291E61CB00183167 /* MerceUser.swift */; };
@@ -114,6 +116,9 @@
 		FA7D0780291E0EC1008D9224 /* BottomMusicPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMusicPlayerView.swift; sourceTree = "<group>"; };
 		FAA01CEC2923657300F06DC9 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		FAA01CF929236EBE00F06DC9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FAA01D06292373F800F06DC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FAA01D07292375A300F06DC9 /* MainTabVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabVIew.swift; sourceTree = "<group>"; };
+		FAA01D0B29237A9C00F06DC9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		FAA15161291E459800183167 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		FAA15163291E5F7300183167 /* entrepreneurs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = entrepreneurs.json; sourceTree = "<group>"; };
 		FAA15165291E61CB00183167 /* MerceUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerceUser.swift; sourceTree = "<group>"; };
@@ -168,7 +173,6 @@
 				CFC0085BBB4742749CAA8710 /* Pods-MerceTests.debug.xcconfig */,
 				1D66A5FDE188E03CBECD66BB /* Pods-MerceTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -225,8 +229,10 @@
 		FA778CC2291A878900452C20 /* Merce */ = {
 			isa = PBXGroup;
 			children = (
+				FAA01D06292373F800F06DC9 /* Info.plist */,
 				FA778CC3291A878900452C20 /* MerceApp.swift */,
 				FA778CC5291A878900452C20 /* ContentView.swift */,
+				FAA01D07292375A300F06DC9 /* MainTabVIew.swift */,
 				FAA15163291E5F7300183167 /* entrepreneurs.json */,
 				FAA01CF929236EBE00F06DC9 /* GoogleService-Info.plist */,
 				FA778CEF291A882500452C20 /* Views */,
@@ -237,6 +243,7 @@
 				FA778CF2291A926B00452C20 /* Helpers */,
 				FA778CC9291A878A00452C20 /* Preview Content */,
 				FACF615629204694008FC1FA /* AuthenticationView.swift */,
+				FAA01D0B29237A9C00F06DC9 /* Launch Screen.storyboard */,
 			);
 			path = Merce;
 			sourceTree = "<group>";
@@ -438,6 +445,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA01D0C29237A9C00F06DC9 /* Launch Screen.storyboard in Resources */,
 				FAA01CFA29236EBE00F06DC9 /* GoogleService-Info.plist in Resources */,
 				FAA15164291E5F7300183167 /* entrepreneurs.json in Resources */,
 				FA778CCB291A878A00452C20 /* Preview Assets.xcassets in Resources */,
@@ -599,6 +607,7 @@
 				FA07B9DA2920261E00A0A462 /* SettingsRowView.swift in Sources */,
 				FA778CF6291A926B00452C20 /* Constant.swift in Sources */,
 				FA69434B291FBC7100AD9A0B /* VisualEffectView.swift in Sources */,
+				FAA01D08292375A300F06DC9 /* MainTabVIew.swift in Sources */,
 				FAC2FC6F291BE902007B1A6C /* PlayerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -762,9 +771,11 @@
 				DEVELOPMENT_TEAM = N9D8WLVRMB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Merce/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -792,9 +803,11 @@
 				DEVELOPMENT_TEAM = N9D8WLVRMB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Merce/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -58,7 +58,7 @@ struct AuthenticationView: View {
                             Button(action: {
                                 withAnimation {
                                     K.impactOccur()
-                                    authVM.isAuthenticated = true
+                                    authVM.continueWithGoogle()
                                 }
                             }, label: {
                                 HStack {
