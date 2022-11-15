@@ -1,0 +1,6 @@
+framework module Pods_Merce_MerceUITests {
+  umbrella header "Pods-Merce-MerceUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

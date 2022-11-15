@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 class SearchViewModel: ObservableObject {
     
     @Published private var searchResult: [Any] = []

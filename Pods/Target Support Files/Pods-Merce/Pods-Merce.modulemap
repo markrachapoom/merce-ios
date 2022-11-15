@@ -1,0 +1,6 @@
+framework module Pods_Merce {
+  umbrella header "Pods-Merce-umbrella.h"
+
+  export *
+  module * { export * }
+}
