@@ -186,7 +186,7 @@ struct BuzzView: View {
                                 .padding(.all)
                                 
                             }//: VSTACK
-                            .padding(.bottom, 50)
+                            .padding(.bottom, K.bottomTabBarHeight)
                             
                         }//: ZSTACK
                         .cornerRadius(buzzConerRadius)

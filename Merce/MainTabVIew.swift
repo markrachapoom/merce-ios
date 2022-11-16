@@ -70,7 +70,7 @@ struct MainTabVIew: View {
                             TabBarButton(tabSelection: $tabSelection, tag: 5, iconName: "person")
                             
                         }//: HSTACK
-                        .frame(height: 50)
+                        .frame(height: K.bottomTabBarHeight)
                         .background(LinearGradient(colors: [.black, .black.opacity(0)], startPoint: .bottom, endPoint: .top))
                         
                     }//: VSTACK

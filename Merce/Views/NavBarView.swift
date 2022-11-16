@@ -48,7 +48,7 @@ struct NavBarView: View {
                 }
                 
             }//: HSTACK
-            .frame(height: K.navigationBarHeight)
+            .frame(height: K.bottomTabBarHeight)
             .padding(.top, K.topSafeArea)
             .padding(.horizontal)
             .background(

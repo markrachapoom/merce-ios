@@ -22,7 +22,7 @@ struct K {
     
     static let rowPaddingVertical = 6.0
     static let fontSize = 15.5
-    static let navigationBarHeight: CGFloat = 50.0
+    static let bottomTabBarHeight: CGFloat = 56.0
     static let coverImageHeight: CGFloat = 175
     
     // MARK: - HAPTIC FEEDBACK

@@ -87,7 +87,7 @@ struct BottomMusicPlayerView: View {
             }
         })//: BUTTON
         .opacity(showMusicPlayerModal ? 0 : 1)
-        .offset(y: showMusicPlayerModal ? 150 : 0)
+        .offset(y: showMusicPlayerModal ? K.bottomTabBarHeight : 0)
         .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
