@@ -93,7 +93,7 @@ struct SearchView: View {
                         VStack(spacing: 0) {
                             ForEach(searchVM.searchResults, id: \.username) { user in
                                 NavigationLink(destination: ProfileView(userData: user)) {
-                                    SearchRowView(user: user)
+                                    SearchRowView(item: user)
                                 }//: NAVIGATION LINK
                             }//: LOOP
                         }//: VSTACK
@@ -109,30 +109,32 @@ struct SearchView: View {
 
 struct SearchRowView: View {
     
-    let user: MerceUser
+    let item: MerceUser
     
     var body: some View {
         HStack {
             
             // IMAGE
-            AsyncImage(url: URL(string: user.profileImageURL ?? "")) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-            } placeholder: {
-                Circle()
-                    .foregroundColor(.secondaryBackgroundColor)
+            if let type = item.type, type == "user" {
+                AsyncImage(url: URL(string: item.profileImageURL ?? "")) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                } placeholder: {
+                    Circle()
+                        .foregroundColor(.secondaryBackgroundColor)
+                }
+                .frame(width: 48, height: 48)
+                .clipShape(Circle())
             }
-            .frame(width: 48, height: 48)
-            .clipShape(Circle())
             
             VStack(alignment: .leading) {
                 
                 // Name
-                Text("\(user.name ?? "")")
+                Text("\(item.name ?? "")")
                 
                 // Username
-                Text("@\(user.username ?? "")")
+                Text("@\(item.username ?? "")")
                     .foregroundColor(Color(.secondaryLabel))
             }//: VSTACK
             .font(.system(size: K.fontSize))
