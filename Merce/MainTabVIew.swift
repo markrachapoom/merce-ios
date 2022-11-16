@@ -51,7 +51,9 @@ struct MainTabVIew: View {
                     Spacer()
                     
                     VStack(spacing: 0) {
+                        
                         BottomMusicPlayerView(translation: $translation, showMusicPlayerModal: $showMusicPlayerModal)
+//                            .offset(y: tabSelection == 3 ? geo.frame(in: .global).height/2 : 0)
                         //                    .padding(.bottom, 48)
                             .opacity(tabSelection == 3 ? 0 : 1)
                         
@@ -126,13 +128,15 @@ struct TabBarButton: View {
     
     var body: some View {
         Button(action: {
-            self.tabSelection = tag
+            withAnimation(.easeInOut(duration: 0.1)) {
+                self.tabSelection = tag
+            }
         }, label: {
             HStack {
                 Spacer()
                 Image(systemName: "\(iconName)\((canFilled && (tabSelection == tag)) ? ".fill" : "")")
-                    .font(.system(size: 20.5))
-                    .foregroundColor(tabSelection == tag ? Color(.label) : Color(.secondaryLabel))
+                    .font(.system(size: 20.5, weight: tabSelection == 2 ? .bold : .medium))
+                    .foregroundColor(Color(.label))
                 Spacer()
             }//: HSTACK
             .padding(.all)

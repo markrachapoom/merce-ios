@@ -19,8 +19,10 @@ struct SearchView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                
                 Color.black
-                VStack {
+                
+                VStack(spacing: 0) {
                     HStack {
                         HStack {
                             
@@ -31,6 +33,8 @@ struct SearchView: View {
                             if (showSearchModal) {
                                 TextField("Search Musics", text: $searchText)
                                     .focused($isTextFieldFocused)
+                                    .font(.system(size: K.fontSize))
+                                
                             } else {
                                 Text("Search Musics")
                                     .foregroundColor(Color(.tertiaryLabel))
@@ -82,12 +86,52 @@ struct SearchView: View {
                         }
                     }
                     
+                    List(MerceUser.allEntrepreneurs, id: \.username) { user in
+                        SearchRowView(user: user)
+                    }//: LIST
+                    .listStyle(PlainListStyle())
+                    
                     Spacer()
                     
                 }//: VSTACK
                 
             }//: ZSTACK
         }//: NAVIGATION VIEW
+    }
+}
+
+struct SearchRowView: View {
+    
+    let user: MerceUser
+    
+    var body: some View {
+        HStack {
+            
+            // IMAGE
+            AsyncImage(url: URL(string: user.profileImageURL ?? "")) { image in
+                image
+                    .resizable()
+                    .scaledToFill()
+            } placeholder: {
+                Circle()
+                    .foregroundColor(.secondaryBackgroundColor)
+            }
+            .frame(width: 50, height: 50)
+            .clipShape(Circle())
+            
+            VStack(alignment: .leading) {
+                
+                // Name
+                Text("\(user.name ?? "")")
+                
+                // Username
+                Text("@\(user.username ?? "")")
+                    .foregroundColor(Color(.secondaryLabel))
+            }//: VSTACK
+            .font(.system(size: K.fontSize))
+            
+            Spacer()
+        }//: HSTACK
     }
 }
 

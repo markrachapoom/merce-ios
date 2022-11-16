@@ -21,7 +21,7 @@ struct ProfileView: View {
     
     @State private var minY: CGFloat = 0.0
     
-    private let profileImageSize: CGFloat = 120
+    private let profileImageSize: CGFloat = 100
     
     var body: some View {
         GeometryReader { geo in

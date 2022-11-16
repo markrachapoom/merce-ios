@@ -34,7 +34,9 @@ struct ContentView: View {
             }
         }//: VSTACK
         .onAppear {
-            authVM.addStateDidChangeListener()
+            withAnimation {
+                authVM.addStateDidChangeListener()
+            }
         }
     }
 }

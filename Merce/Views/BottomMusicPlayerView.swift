@@ -79,7 +79,7 @@ struct BottomMusicPlayerView: View {
                 .padding(.all, 11)
                 .background(
                     VisualEffectView(blurEffect: .systemUltraThinMaterial)
-//                        .background(Color.accentColor.opacity(0.3))
+                        .background(Color.pink.opacity(0.25))
                         .cornerRadius(13)
                 )//: BACKGROUND
                 .padding(.horizontal, 6)
