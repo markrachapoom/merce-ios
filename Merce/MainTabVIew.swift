@@ -107,7 +107,7 @@ struct MainTabVIew: View {
             }//: ZSTACK
             .onChange(of: tabSelection) { _ in
                 K.impactOccur()
-            }
+            }//: ONCHANGE
         }
     }
 }

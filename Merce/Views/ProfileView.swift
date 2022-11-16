@@ -21,7 +21,7 @@ struct ProfileView: View {
     
     @State private var minY: CGFloat = 0.0
     
-    private let profileImageSize: CGFloat = 100
+    private let profileImageSize: CGFloat = 110
     
     var body: some View {
         GeometryReader { geo in
@@ -72,10 +72,9 @@ struct ProfileView: View {
                                     }, label: {
                                         Text("Edit Profile")
                                             .foregroundColor(Color(.label))
-                                            .fontWeight(.semibold)
+                                            .fontWeight(.medium)
                                             .font(.system(size: K.fontSize))
                                             .frame(height: 36)
-                                        //                                        .padding(.vertical, 11)
                                             .padding(.horizontal, 13)
                                             .background(Color.secondaryBackgroundColor)
                                             .clipShape(Capsule())

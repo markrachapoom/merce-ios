@@ -86,12 +86,16 @@ struct SearchView: View {
                         }
                     }
                     
-                    List(MerceUser.allEntrepreneurs, id: \.username) { user in
-                        SearchRowView(user: user)
-                    }//: LIST
-                    .listStyle(PlainListStyle())
-                    
-                    Spacer()
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VStack(spacing: 0) {
+                            ForEach(MerceUser.allEntrepreneurs, id: \.username) { user in
+                                NavigationLink(destination: ProfileView(userData: user)) {
+                                    SearchRowView(user: user)
+                                }//: NAVIGATION LINK
+                            }//: LOOP
+                        }//: VSTACK
+                        .padding(.bottom, 128)
+                    }//: SCROLLVIEW
                     
                 }//: VSTACK
                 
@@ -116,7 +120,7 @@ struct SearchRowView: View {
                 Circle()
                     .foregroundColor(.secondaryBackgroundColor)
             }
-            .frame(width: 50, height: 50)
+            .frame(width: 48, height: 48)
             .clipShape(Circle())
             
             VStack(alignment: .leading) {
@@ -131,7 +135,14 @@ struct SearchRowView: View {
             .font(.system(size: K.fontSize))
             
             Spacer()
+            
+            Image(systemName: "chevron.right")
+                .foregroundColor(Color(.secondaryLabel))
+                .font(.system(size: 13))
+            
         }//: HSTACK
+        .padding(.horizontal)
+        .frame(height: 64)
     }
 }
 
