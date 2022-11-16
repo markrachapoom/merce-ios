@@ -10,7 +10,7 @@ import SwiftUI
 struct AccountView: View {
     var body: some View {
         NavigationView {
-            ProfileView(userData: MerceUser.markrachapoom, isProfileOwner: true)
+            ProfileView(user: MerceUser.markrachapoom, isProfileOwner: true)
         }//: NAVIGATION VIEW
     }
 }

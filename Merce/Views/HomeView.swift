@@ -43,7 +43,7 @@ struct HomeView: View {
                                     ScrollView(.horizontal, showsIndicators: false) {
                                         HStack(spacing: 13) {
                                             ForEach(MerceUser.allEntrepreneurs, id: \.username) { entrepreneur in
-                                                NavigationLink(destination: ProfileView(userData: entrepreneur)) {
+                                                NavigationLink(destination: ProfileView(user: entrepreneur)) {
                                                     AsyncImage(url: URL(string: entrepreneur.profileImageURL ?? "")) { image in
                                                         image
                                                             .resizable()

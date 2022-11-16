@@ -53,8 +53,7 @@ struct MainTabVIew: View {
                     VStack(spacing: 0) {
                         
                         BottomMusicPlayerView(translation: $translation, showMusicPlayerModal: $showMusicPlayerModal)
-//                            .offset(y: tabSelection == 3 ? geo.frame(in: .global).height/2 : 0)
-                        //                    .padding(.bottom, 48)
+                            .offset(y: tabSelection == 3 ? 200 : 0)
                             .opacity(tabSelection == 3 ? 0 : 1)
                         
                         HStack(spacing: 0) {
@@ -71,9 +70,11 @@ struct MainTabVIew: View {
                             TabBarButton(tabSelection: $tabSelection, tag: 5, iconName: "person")
                             
                         }//: HSTACK
+                        .frame(height: 50)
+                        .background(LinearGradient(colors: [.black, .black.opacity(0)], startPoint: .bottom, endPoint: .top))
+                        
                     }//: VSTACK
-                    .background(LinearGradient(colors: [.black, .black.opacity(0)], startPoint: .bottom, endPoint: .top))
-                    //                    .background(Color(.systemBackground))
+                    
                 }//: VSTACK
                 .ignoresSafeArea(.keyboard)
                 
@@ -128,7 +129,7 @@ struct TabBarButton: View {
     
     var body: some View {
         Button(action: {
-            withAnimation(.easeInOut(duration: 0.1)) {
+            withAnimation(.easeInOut(duration: 0.2)) {
                 self.tabSelection = tag
             }
         }, label: {
@@ -137,6 +138,7 @@ struct TabBarButton: View {
                 Image(systemName: "\(iconName)\((canFilled && (tabSelection == tag)) ? ".fill" : "")")
                     .font(.system(size: 20.5, weight: tabSelection == 2 ? .bold : .medium))
                     .foregroundColor(Color(.label))
+                    .frame(width: 24, height: 24)
                 Spacer()
             }//: HSTACK
             .padding(.all)

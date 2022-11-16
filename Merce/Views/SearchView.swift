@@ -92,7 +92,7 @@ struct SearchView: View {
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack(spacing: 0) {
                             ForEach(searchVM.searchResults, id: \.username) { user in
-                                NavigationLink(destination: ProfileView(userData: user)) {
+                                NavigationLink(destination: ProfileView(user: user)) {
                                     SearchRowView(item: user)
                                 }//: NAVIGATION LINK
                             }//: LOOP

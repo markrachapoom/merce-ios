@@ -9,15 +9,17 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    let userData: MerceUser
+    let user: MerceUser
     let isProfileOwner: Bool
     
-    init(userData: MerceUser, isProfileOwner: Bool = false) {
-        self.userData = userData
+    init(user: MerceUser, isProfileOwner: Bool = false) {
+        self.user = user
         self.isProfileOwner = isProfileOwner
     }
     
     @Environment(\.dismiss) private var dismiss
+    
+    @State private var isEditingProfile: Bool = false
     
     @State private var minY: CGFloat = 0.0
     
@@ -33,7 +35,9 @@ struct ProfileView: View {
                     VStack(spacing: 0) {
                         
                         GeometryReader { coverImageGeo in
-                            AsyncImage(url: URL(string: userData.coverImageURL ?? "")) { image in
+                            
+                            // COVER IMAGE
+                            AsyncImage(url: URL(string: user.coverImageURL ?? "")) { image in
                                 image
                                     .resizable()
                                     .scaledToFill()
@@ -41,19 +45,19 @@ struct ProfileView: View {
                                 Rectangle()
                                     .foregroundColor(.secondaryBackgroundColor)
                             }
-                            .frame(width: coverImageGeo.size.width, height: minY < -200 ? 0 : abs(coverImageGeo.size.height + minY))
+                            .frame(width: coverImageGeo.size.width, height: minY < -K.coverImageHeight ? 0 : abs(coverImageGeo.size.height + minY))
                             .clipped()
                             .offset(y: -minY)
                             .onChange(of: coverImageGeo.frame(in: .global).minY, perform: { value in
                                 self.minY = value
                             })
                         }
-                        .frame(width: geo.frame(in: .global).width, height: 200)
+                        .frame(width: geo.frame(in: .global).width, height: K.coverImageHeight)
                         
-                        VStack(alignment: .leading, spacing: 11) {
+                        VStack(alignment: .leading, spacing: 13) {
                             HStack {
                                 
-                                AsyncImage(url: URL(string: userData.profileImageURL ?? "")) { image in
+                                AsyncImage(url: URL(string: user.profileImageURL ?? "")) { image in
                                     image
                                         .resizable()
                                         .scaledToFill()
@@ -69,31 +73,31 @@ struct ProfileView: View {
                                 if (isProfileOwner) {
                                     Button(action: {
                                         K.impactOccur()
+                                        self.isEditingProfile = true
                                     }, label: {
                                         Text("Edit Profile")
                                             .foregroundColor(Color(.label))
                                             .fontWeight(.medium)
-                                            .font(.system(size: K.fontSize))
+                                            .font(.system(size: K.fontSize - 1))
                                             .frame(height: 36)
                                             .padding(.horizontal, 13)
                                             .background(Color.secondaryBackgroundColor)
                                             .clipShape(Capsule())
-                                            .offset(y: 18 + 13)
                                     })//: EDIT PROFILE BUTTON
-                                }
-                                
+                                    .offset(y: 18 + 13)
+                                }//: CONDITION
                             }//: HSTACK
                             
                             VStack(alignment: .leading) {
-                                Text(userData.name ?? "Unknown")
+                                Text(user.name ?? "Unknown")
                                     .font(.title3)
                                     .fontWeight(.bold)
-                                Text("@\(userData.username ?? "unknown")")
+                                Text("@\(user.username ?? "unknown")")
                                     .font(.system(size: K.fontSize))
                                     .foregroundColor(Color(.secondaryLabel))
                             }
                             
-                            Text(userData.bio ?? "")
+                            Text(user.bio ?? "")
                                 .font(.system(size: K.fontSize))
                             
                         }//: VSTACK
@@ -107,6 +111,9 @@ struct ProfileView: View {
             }//: ZSTACK
             .edgesIgnoringSafeArea(.all)
             .navigationBarBackButtonHidden(true)
+            .fullScreenCover(isPresented: $isEditingProfile, content: {
+                EditProfileView(user: user)
+            })//: FULLSCREEN COVER
             .toolbar {
                 
                 if (!isProfileOwner) {
@@ -155,7 +162,7 @@ struct ProfileView: View {
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ProfileView(userData: MerceUser.sampleEntrepreneur)
+            ProfileView(user: MerceUser.sampleEntrepreneur)
                 .preferredColorScheme(.dark)
         }
     }

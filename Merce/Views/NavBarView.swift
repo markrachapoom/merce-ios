@@ -48,9 +48,8 @@ struct NavBarView: View {
                 }
                 
             }//: HSTACK
-            .frame(height: 24)
+            .frame(height: K.navigationBarHeight)
             .padding(.top, K.topSafeArea)
-            .padding(.vertical, 13)
             .padding(.horizontal)
             .background(
                 VisualEffectView(blurEffect: .dark)
