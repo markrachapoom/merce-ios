@@ -34,7 +34,10 @@ struct SearchView: View {
                                 TextField("Search Musics", text: $searchText)
                                     .focused($isTextFieldFocused)
                                     .font(.system(size: K.fontSize))
-                                
+                                    .textInputAutocapitalization(.never)
+                                    .onChange(of: searchText) { newSearchText in
+                                        searchVM.fetchSearch(from: newSearchText)
+                                    }
                             } else {
                                 Text("Search Musics")
                                     .foregroundColor(Color(.tertiaryLabel))
@@ -88,7 +91,7 @@ struct SearchView: View {
                     
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack(spacing: 0) {
-                            ForEach(MerceUser.allEntrepreneurs, id: \.username) { user in
+                            ForEach(searchVM.searchResults, id: \.username) { user in
                                 NavigationLink(destination: ProfileView(userData: user)) {
                                     SearchRowView(user: user)
                                 }//: NAVIGATION LINK

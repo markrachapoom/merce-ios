@@ -192,6 +192,10 @@ extension String {
         return prefix(1).capitalized + dropFirst()
     }
     
+    func trimAndLowercase() -> String {
+        return self.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
     }
