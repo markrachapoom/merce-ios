@@ -77,7 +77,7 @@ struct ProfileView: View {
                                     }, label: {
                                         Text("Edit Profile")
                                             .foregroundColor(Color(.label))
-                                            .fontWeight(.medium)
+                                            .fontWeight(.semibold)
                                             .font(.system(size: K.fontSize - 1))
                                             .frame(height: 36)
                                             .padding(.horizontal, 13)
@@ -86,6 +86,7 @@ struct ProfileView: View {
                                     })//: EDIT PROFILE BUTTON
                                     .offset(y: 18 + 13)
                                 }//: CONDITION
+                                
                             }//: HSTACK
                             
                             VStack(alignment: .leading) {

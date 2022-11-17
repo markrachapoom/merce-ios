@@ -21,15 +21,12 @@ class SearchViewModel: ObservableObject {
             return
         }
         
-        
         let filteredResults = allFetchedResults.filter { user in
             
             let isUsernameFound: Bool = user.username?.trimAndLowercase().contains(searchText.trimAndLowercase()) ?? false
             let isGivenNameFound: Bool = user.name?.trimAndLowercase().contains(searchText.trimAndLowercase()) ?? false
             return isUsernameFound || isGivenNameFound
         }
-        
-        print(filteredResults)
         
         self.searchResults = filteredResults
     }

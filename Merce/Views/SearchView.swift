@@ -91,13 +91,13 @@ struct SearchView: View {
                     }
                     
                     ScrollView(.vertical, showsIndicators: false) {
-                        VStack(spacing: 0) {
+                        LazyVStack(spacing: 0) {
                             ForEach(searchVM.searchResults, id: \.username) { user in
                                 NavigationLink(destination: ProfileView(user: user)) {
                                     SearchRowView(item: user)
                                 }//: NAVIGATION LINK
                             }//: LOOP
-                        }//: VSTACK
+                        }//: LAZYVSTACK
                         .padding(.bottom, 128)
                     }//: SCROLLVIEW
                     
