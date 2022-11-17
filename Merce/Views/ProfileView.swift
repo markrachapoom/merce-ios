@@ -120,43 +120,111 @@ struct ProfileView: View {
                                 .font(.system(size: K.fontSize))
                             
                             HStack {
-                                Button(action: {
-                                    withAnimation(.none) {
-                                        K.impactOccur()
-                                        self.isFollowed.toggle()
-                                    }
-                                }, label: {
-                                    Capsule()
-                                        .stroke(style: StrokeStyle(lineWidth: 1))
-                                        .foregroundColor(isFollowed ? Color(.separator) : .clear)
-                                        .background(isFollowed ? .clear : .white)
-                                        .overlay {
-                                            Text(isFollowed ? "Followed" : "Follow")
-                                                .font(.system(size: K.fontSize))
-                                                .fontWeight(.semibold)
-                                                .foregroundColor(isFollowed ? .white : .black)
-                                        }
-                                        .cornerRadius(100)
-                                })
                                 
-                                Button(action: {
-                                    K.impactOccur()
-                                    self.isEditingProfile = true
-                                }, label: {
-                                    Capsule()
-                                        .stroke(style: StrokeStyle(lineWidth: 1))
-                                        .foregroundColor(Color(.separator))
-                                        .background(.clear)
-                                        .overlay {
-                                            Text("Edit Profile")
-                                                .font(.system(size: K.fontSize))
-                                                .fontWeight(.semibold)
-                                                .foregroundColor(.white)
+                                if (!isProfileOwner) {
+                                    Button(action: {
+                                        withAnimation(.none) {
+                                            K.impactOccur()
+                                            self.isFollowed.toggle()
                                         }
-                                        .cornerRadius(100)
-                                })
+                                    }, label: {
+                                        Capsule()
+                                            .stroke(style: StrokeStyle(lineWidth: 1))
+                                            .foregroundColor(isFollowed ? Color(.separator) : .clear)
+                                            .background(isFollowed ? .clear : .white)
+                                            .overlay {
+                                                Text(isFollowed ? "Followed" : "Follow")
+                                                    .font(.system(size: K.fontSize))
+                                                    .fontWeight(.semibold)
+                                                    .foregroundColor(isFollowed ? .white : .black)
+                                            }
+                                            .cornerRadius(100)
+                                    })
+                                }//: IS-PROFILE-OWNER
+                                
+                                if (isProfileOwner) {
+                                    Button(action: {
+                                        K.impactOccur()
+                                        self.isEditingProfile = true
+                                    }, label: {
+                                        Capsule()
+                                            .stroke(style: StrokeStyle(lineWidth: 1))
+                                            .foregroundColor(Color(.separator))
+                                            .background(.clear)
+//                                            .foregroundColor(Color.secondaryBackgroundColor)
+                                            .overlay {
+                                                Text("Edit Profile")
+                                                    .font(.system(size: K.fontSize))
+                                                    .fontWeight(.semibold)
+                                                    .foregroundColor(.white)
+                                            }
+                                            .cornerRadius(100)
+                                    })
+                                    
+                                    HStack {
+                                        Button(action: {
+                                            K.impactOccur()
+                                        }, label: {
+                                            Capsule()
+                                                .stroke(style: StrokeStyle(lineWidth: 1))
+                                                .foregroundColor(Color(.separator))
+                                                .background(.clear)
+//                                                .foregroundColor(Color.secondaryBackgroundColor)
+                                                .overlay {
+                                                    Text("Saved")
+                                                        .font(.system(size: K.fontSize))
+                                                        .fontWeight(.semibold)
+                                                        .foregroundColor(.white)
+                                                }
+                                                .cornerRadius(100)
+                                        })
+                                        
+                                        
+                                        NavigationLink(destination: SettingsView()) {
+                                            Capsule()
+                                                .stroke(style: StrokeStyle(lineWidth: 1))
+                                                .foregroundColor(Color(.separator))
+                                                .background(.clear)
+//                                                .foregroundColor(Color.secondaryBackgroundColor)
+                                                .overlay {
+                                                    Image(systemName: "gearshape")
+//                                                    Text("Settings")
+//                                                        .font(.system(size: K.fontSize))
+//                                                        .fontWeight(.semibold)
+//                                                        .foregroundColor(.white)
+                                                }
+                                                .cornerRadius(100)
+                                        }//: NAVIGATIONLINK
+                                        .simultaneousGesture(
+                                            TapGesture()
+                                                .onEnded({ _ in
+                                                    K.impactOccur()
+                                                })
+                                        )//: SIMULTANIOUS
+                                        
+//                                        Button(action: {
+//                                            K.impactOccur()
+//                                        }, label: {
+//                                            Capsule()
+//                                                .stroke(style: StrokeStyle(lineWidth: 1))
+//                                                .foregroundColor(Color(.separator))
+//                                                .background(.clear)
+////                                                .foregroundColor(Color.secondaryBackgroundColor)
+//                                                .overlay {
+//                                                    Image(systemName: "gearshape")
+////                                                    Text("Settings")
+////                                                        .font(.system(size: K.fontSize))
+////                                                        .fontWeight(.semibold)
+////                                                        .foregroundColor(.white)
+//                                                }
+//                                                .cornerRadius(100)
+//                                        })
+                                        
+                                    }//: HSTACK
+                                }
+                                
                             }//: HSTACK
-                            .frame(height: 40)
+                            .frame(height: 36)
                             
                         }//: VSTACK
                         .offset(y: -(profileImageSize/2))
@@ -188,17 +256,17 @@ struct ProfileView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack(spacing: 4) {
                         
-                        if (isProfileOwner) {
-                            NavigationLink(destination: SettingsView()) {
-                                CircleIcon(iconName: "gearshape")
-                            }//: NAVIGATIONLINK
-                            .simultaneousGesture(
-                                TapGesture()
-                                    .onEnded({ _ in
-                                        K.impactOccur()
-                                    })
-                            )//: SIMULTANIOUS
-                        }//: CONDITION
+//                        if (isProfileOwner) {
+//                            NavigationLink(destination: SettingsView()) {
+//                                CircleIcon(iconName: "gearshape")
+//                            }//: NAVIGATIONLINK
+//                            .simultaneousGesture(
+//                                TapGesture()
+//                                    .onEnded({ _ in
+//                                        K.impactOccur()
+//                                    })
+//                            )//: SIMULTANIOUS
+//                        }//: CONDITION
                         
                         Menu {
                             Button(action: {}, label: {

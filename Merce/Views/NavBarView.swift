@@ -36,7 +36,7 @@ struct NavBarView: View {
                 Spacer()
                 
                 Text(title)
-                    .fontWeight(.semibold)
+                    .font(.navigationInlineTitle())
                 
                 Spacer()
                 

@@ -25,6 +25,7 @@ struct SettingsRowView<Content: View>: View {
         HStack {
             
             Label(label, systemImage: iconName)
+                .font(.body)
             
             Spacer()
             

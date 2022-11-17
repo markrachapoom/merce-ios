@@ -21,7 +21,7 @@ struct K {
     }
     
     static let rowPaddingVertical = 6.0
-    static let fontSize: CGFloat = 15.0
+    static let fontSize: CGFloat = 14.0
     static let bottomTabBarHeight: CGFloat = 52.0
     static let coverImageHeight: CGFloat = 175
     

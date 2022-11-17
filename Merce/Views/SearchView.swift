@@ -33,14 +33,12 @@ struct SearchView: View {
                             if (showSearchModal) {
                                 TextField("Search Musics", text: $searchText)
                                     .focused($isTextFieldFocused)
-                                    .font(.system(size: K.fontSize))
                                     .textInputAutocapitalization(.never)
                                     .onChange(of: searchText) { newSearchText in
                                         searchVM.fetchSearch(from: newSearchText)
                                     }
                             } else {
                                 Text("Search Musics")
-                                    .font(.system(size: K.fontSize))
                                     .foregroundColor(Color(.tertiaryLabel))
                             }
                             

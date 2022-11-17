@@ -162,6 +162,10 @@ extension Font {
     static public func poppins(size: CGFloat, weight: FontWeight) -> Font {
         return .custom(weight.rawValue, size: size)
     }
+    
+    static public func navigationInlineTitle() -> Font {
+        return .system(.body, design: .default, weight: .semibold)
+    }
 }
 
 extension View {

@@ -92,7 +92,7 @@ struct BuzzView: View {
                                                         }, label: {
                                                             Text(isFollowed ? "Followed" : "Follow")
                                                                 .frame(width: 78, height: 28)
-                                                                .font(.system(size: K.fontSize - 2, weight: .semibold, design: .default))
+                                                                .font(.system(size: K.fontSize - 1, weight: .semibold, design: .default))
                                                                 .background(
                                                                     Capsule()
                                                                         .stroke(style: StrokeStyle(lineWidth: 1))
@@ -136,7 +136,7 @@ struct BuzzView: View {
                                                         
                                                     }, label: {
                                                         Text("30K")
-                                                            .font(.system(size: K.fontSize - 3, weight: .semibold, design: .default))
+                                                            .font(.system(size: K.fontSize - 2, weight: .semibold, design: .default))
                                                     })
                                                     
                                                 }//: VSTACK
@@ -150,7 +150,7 @@ struct BuzzView: View {
                                                     
                                                     Button(action: {}, label: {
                                                         Text("1.4K")
-                                                            .font(.system(size: K.fontSize - 3, weight: .semibold, design: .default))
+                                                            .font(.system(size: K.fontSize - 2, weight: .semibold, design: .default))
                                                     })
                                                 }//: VSTACK
                                                 
@@ -162,7 +162,7 @@ struct BuzzView: View {
                                                         Image(systemName: "paperplane")
                                                         
                                                         Text("Share")
-                                                            .font(.system(size: K.fontSize - 3, weight: .semibold, design: .default))
+                                                            .font(.system(size: K.fontSize - 2, weight: .semibold, design: .default))
                                                     }
                                                 })
                                                 
@@ -178,7 +178,7 @@ struct BuzzView: View {
                                                         Image(systemName: isSaved ? "bookmark.fill" : "bookmark")
                                                         
                                                         Text("Save")
-                                                            .font(.system(size: K.fontSize - 3, weight: .semibold, design: .default))
+                                                            .font(.system(size: K.fontSize - 2, weight: .semibold, design: .default))
                                                     }
                                                 })
                                                 

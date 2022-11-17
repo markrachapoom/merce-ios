@@ -99,8 +99,8 @@ struct EditProfileView: View {
                         
                         HStack {
                             Spacer()
-                            Text("Edit Profile")
-                                .fontWeight(.semibold)
+                            Text("Edit profile")
+                                .font(.navigationInlineTitle())
                             Spacer()
                         }//: HSTACK
                         
