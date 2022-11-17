@@ -25,6 +25,8 @@ struct ProfileView: View {
     
     private let profileImageSize: CGFloat = 110
     
+    @State private var isFollowed: Bool = false
+    
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -70,29 +72,45 @@ struct ProfileView: View {
                                 
                                 Spacer()
                                 
-                                if (isProfileOwner) {
+//                                if (isProfileOwner) {
                                     Button(action: {
                                         K.impactOccur()
-                                        self.isEditingProfile = true
+                                        if (isProfileOwner) {
+                                            self.isEditingProfile = true
+                                        } else {
+                                            withAnimation(.none) {
+                                                self.isFollowed.toggle()
+                                            }
+                                        }
                                     }, label: {
-                                        Text("Edit Profile")
-                                            .foregroundColor(Color(.label))
-                                            .fontWeight(.semibold)
+                                        Text(isProfileOwner ? "Edit Profile" : (isFollowed ? "Followed" : "Follow"))
+                                            .foregroundColor(Color(.white))
                                             .font(.system(size: K.fontSize - 1))
-                                            .frame(height: 36)
-                                            .padding(.horizontal, 13)
-                                            .background(Color.secondaryBackgroundColor)
-                                            .clipShape(Capsule())
+                                            .fontWeight(.semibold)
+                                            .frame(width: 104, height: 34)
+                                            .background(
+                                                Capsule()
+                                                    .stroke(style: StrokeStyle(lineWidth: 1))
+                                                    .foregroundColor(isFollowed ? .white.opacity(0.65) : Color(.opaqueSeparator))
+                                            )//: BACKGROUND
                                     })//: EDIT PROFILE BUTTON
                                     .offset(y: 18 + 13)
-                                }//: CONDITION
+//                                }//: CONDITION
                                 
                             }//: HSTACK
                             
                             VStack(alignment: .leading) {
-                                Text(user.name ?? "Unknown")
-                                    .font(.title3)
-                                    .fontWeight(.bold)
+                                HStack(spacing: 4) {
+                                    
+                                    Text(user.name ?? "Unknown")
+                                        .font(.title3)
+                                        .fontWeight(.bold)
+                                    
+                                    Image(systemName: "checkmark.seal.fill")
+                                        .font(.system(size: K.fontSize - 2))
+                                        .foregroundColor(.white)
+                                    
+                                }//: HSTACK
                                 Text("@\(user.username ?? "unknown")")
                                     .font(.system(size: K.fontSize))
                                     .foregroundColor(Color(.secondaryLabel))

@@ -16,6 +16,8 @@ struct BuzzView: View {
     
     let buzzConerRadius: CGFloat = 21
     
+    @State private var isFollowed: Bool = false
+    
     var body: some View {
         NavigationView {
             GeometryReader { geo in
@@ -83,16 +85,18 @@ struct BuzzView: View {
                                                         }//: NAVIGATIONLINK
                                                         
                                                         Button(action: {
-                                                            K.impactOccur()
+                                                            withAnimation(.none) {
+                                                                K.impactOccur()
+                                                                self.isFollowed.toggle()
+                                                            }
                                                         }, label: {
-                                                            Text("Follow")
-                                                                .padding(.horizontal, 8)
-                                                                .padding(.vertical, 4)
-                                                                .font(.system(size: 14, weight: .medium, design: .default))
+                                                            Text(isFollowed ? "Followed" : "Follow")
+                                                                .frame(width: 78, height: 28)
+                                                                .font(.system(size: K.fontSize - 2, weight: .semibold, design: .default))
                                                                 .background(
                                                                     Capsule()
                                                                         .stroke(style: StrokeStyle(lineWidth: 1))
-                                                                        .foregroundColor(.white.opacity(0.35))
+                                                                        .foregroundColor(isFollowed ? .white.opacity(0.65) : .white.opacity(0.35))
                                                                 )//: BACKGROUND
                                                         })//: BUTTON
                                                         

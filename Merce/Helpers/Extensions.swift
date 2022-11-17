@@ -24,6 +24,8 @@ extension Color {
     // 2 Modes colors
     static let srdpBackground = Color("SRDPBackground")
     
+    static let lightBlue = Color("light-blue")
+    
     // Single Colors
     static let dingoBlack = Color("black")
     static let dingoWhite = Color("white")
