@@ -73,28 +73,28 @@ struct ProfileView: View {
                                 Spacer()
                                 
 //                                if (isProfileOwner) {
-                                    Button(action: {
-                                        K.impactOccur()
-                                        if (isProfileOwner) {
-                                            self.isEditingProfile = true
-                                        } else {
-                                            withAnimation(.none) {
-                                                self.isFollowed.toggle()
-                                            }
-                                        }
-                                    }, label: {
-                                        Text(isProfileOwner ? "Edit Profile" : (isFollowed ? "Followed" : "Follow"))
-                                            .foregroundColor(Color(.white))
-                                            .font(.system(size: K.fontSize - 1))
-                                            .fontWeight(.semibold)
-                                            .frame(width: 104, height: 34)
-                                            .background(
-                                                Capsule()
-                                                    .stroke(style: StrokeStyle(lineWidth: 1))
-                                                    .foregroundColor(isFollowed ? .white.opacity(0.65) : Color(.opaqueSeparator))
-                                            )//: BACKGROUND
-                                    })//: EDIT PROFILE BUTTON
-                                    .offset(y: 18 + 13)
+//                                    Button(action: {
+//                                        K.impactOccur()
+//                                        if (isProfileOwner) {
+//                                            self.isEditingProfile = true
+//                                        } else {
+//                                            withAnimation(.none) {
+//                                                self.isFollowed.toggle()
+//                                            }
+//                                        }
+//                                    }, label: {
+//                                        Text(isProfileOwner ? "Edit Profile" : (isFollowed ? "Followed" : "Follow"))
+//                                            .foregroundColor(Color(.white))
+//                                            .font(.system(size: K.fontSize - 1))
+//                                            .fontWeight(.semibold)
+//                                            .frame(width: 104, height: 34)
+//                                            .background(
+//                                                Capsule()
+//                                                    .stroke(style: StrokeStyle(lineWidth: 1))
+//                                                    .foregroundColor(isFollowed ? .white.opacity(0.65) : Color(.opaqueSeparator))
+//                                            )//: BACKGROUND
+//                                    })//: EDIT PROFILE BUTTON
+//                                    .offset(y: 18 + 13)
 //                                }//: CONDITION
                                 
                             }//: HSTACK
@@ -118,6 +118,45 @@ struct ProfileView: View {
                             
                             Text(user.bio ?? "")
                                 .font(.system(size: K.fontSize))
+                            
+                            HStack {
+                                Button(action: {
+                                    withAnimation(.none) {
+                                        K.impactOccur()
+                                        self.isFollowed.toggle()
+                                    }
+                                }, label: {
+                                    Capsule()
+                                        .stroke(style: StrokeStyle(lineWidth: 1))
+                                        .foregroundColor(isFollowed ? Color(.separator) : .clear)
+                                        .background(isFollowed ? .clear : .white)
+                                        .overlay {
+                                            Text(isFollowed ? "Followed" : "Follow")
+                                                .font(.system(size: K.fontSize))
+                                                .fontWeight(.semibold)
+                                                .foregroundColor(isFollowed ? .white : .black)
+                                        }
+                                        .cornerRadius(100)
+                                })
+                                
+                                Button(action: {
+                                    K.impactOccur()
+                                    self.isEditingProfile = true
+                                }, label: {
+                                    Capsule()
+                                        .stroke(style: StrokeStyle(lineWidth: 1))
+                                        .foregroundColor(Color(.separator))
+                                        .background(.clear)
+                                        .overlay {
+                                            Text("Edit Profile")
+                                                .font(.system(size: K.fontSize))
+                                                .fontWeight(.semibold)
+                                                .foregroundColor(.white)
+                                        }
+                                        .cornerRadius(100)
+                                })
+                            }//: HSTACK
+                            .frame(height: 40)
                             
                         }//: VSTACK
                         .offset(y: -(profileImageSize/2))
