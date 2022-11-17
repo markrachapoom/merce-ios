@@ -162,22 +162,46 @@ struct ProfileView: View {
                                     })
                                     
                                     HStack {
-                                        Button(action: {
-                                            K.impactOccur()
-                                        }, label: {
+                                        
+                                        NavigationLink(destination: SavedView()) {
                                             Capsule()
                                                 .stroke(style: StrokeStyle(lineWidth: 1))
                                                 .foregroundColor(Color(.separator))
                                                 .background(.clear)
 //                                                .foregroundColor(Color.secondaryBackgroundColor)
                                                 .overlay {
-                                                    Text("Saved")
-                                                        .font(.system(size: K.fontSize))
-                                                        .fontWeight(.semibold)
-                                                        .foregroundColor(.white)
+                                                    Image(systemName: "bookmark")
+//                                                    Text("Settings")
+//                                                        .font(.system(size: K.fontSize))
+//                                                        .fontWeight(.semibold)
+//                                                        .foregroundColor(.white)
                                                 }
                                                 .cornerRadius(100)
-                                        })
+                                        }//: NAVIGATIONLINK
+                                        .simultaneousGesture(
+                                            TapGesture()
+                                                .onEnded({ _ in
+                                                    K.impactOccur()
+                                                })
+                                        )//: SIMULTANIOUS
+                                        
+                                        
+                                        //                                        Button(action: {
+                                        //                                            K.impactOccur()
+                                        //                                        }, label: {
+                                        //                                            Capsule()
+                                        //                                                .stroke(style: StrokeStyle(lineWidth: 1))
+                                        //                                                .foregroundColor(Color(.separator))
+                                        //                                                .background(.clear)
+                                        ////                                                .foregroundColor(Color.secondaryBackgroundColor)
+                                        //                                                .overlay {
+                                        //                                                    Text("Saved")
+                                        //                                                        .font(.system(size: K.fontSize))
+                                        //                                                        .fontWeight(.semibold)
+                                        //                                                        .foregroundColor(.white)
+                                        //                                                }
+                                        //                                                .cornerRadius(100)
+                                        //                                        })
                                         
                                         
                                         NavigationLink(destination: SettingsView()) {
