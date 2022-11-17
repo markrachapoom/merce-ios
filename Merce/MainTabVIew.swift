@@ -71,7 +71,8 @@ struct MainTabVIew: View {
                             
                         }//: HSTACK
                         .frame(height: K.bottomTabBarHeight)
-                        .background(LinearGradient(colors: [.black, .black.opacity(0)], startPoint: .bottom, endPoint: .top))
+                        .background(Color(.systemBackground))
+//                        .background(LinearGradient(colors: [.black, .black.opacity(0)], startPoint: .bottom, endPoint: .top))
                         
                     }//: VSTACK
                     

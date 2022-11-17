@@ -40,6 +40,7 @@ struct SearchView: View {
                                     }
                             } else {
                                 Text("Search Musics")
+                                    .font(.system(size: K.fontSize))
                                     .foregroundColor(Color(.tertiaryLabel))
                             }
                             
