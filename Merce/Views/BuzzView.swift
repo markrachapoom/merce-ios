@@ -37,8 +37,12 @@ struct BuzzView: View {
                                 //                            .frame(width: geo.size.width)
                                 .clipped()
                                 .overlay {
-                                    LinearGradient(colors: [.black, .clear], startPoint: .bottom, endPoint: .top)
-                                }
+                                    VStack {
+                                        Spacer()
+                                        LinearGradient(colors: [.black.opacity(0.7), .black.opacity(0)], startPoint: .bottom, endPoint: .top)
+                                            .frame(maxHeight: 300)
+                                    }//: VSTACK
+                                }//: OVERLAY
                                 .overlay {
                                     
                                     VStack {
@@ -82,13 +86,13 @@ struct BuzzView: View {
                                                             K.impactOccur()
                                                         }, label: {
                                                             Text("Follow")
-                                                                .padding(.horizontal, 11)
-                                                                .padding(.vertical, 6)
+                                                                .padding(.horizontal, 8)
+                                                                .padding(.vertical, 4)
                                                                 .font(.system(size: 14, weight: .medium, design: .default))
                                                                 .background(
                                                                     Capsule()
                                                                         .stroke(style: StrokeStyle(lineWidth: 1))
-                                                                        .foregroundColor(Color(.separator))
+                                                                        .foregroundColor(.white.opacity(0.35))
                                                                 )//: BACKGROUND
                                                         })//: BUTTON
                                                         
@@ -106,7 +110,7 @@ struct BuzzView: View {
                                                     }//: HSTACK
                                                     
                                                 }//: VSTACK
-                                            }
+                                            }//: VSTACK
                                             
                                             Spacer()
                                             
@@ -124,9 +128,11 @@ struct BuzzView: View {
                                                             .font(.system(size: 28, weight: .regular, design: .default))
                                                     })
                                                     
-                                                    Button(action: {}, label: {
+                                                    Button(action: {
+                                                        
+                                                    }, label: {
                                                         Text("30K")
-                                                            .font(.system(.footnote, design: .default, weight: .medium))
+                                                            .font(.system(size: K.fontSize - 3, weight: .semibold, design: .default))
                                                     })
                                                     
                                                 }//: VSTACK
@@ -140,7 +146,7 @@ struct BuzzView: View {
                                                     
                                                     Button(action: {}, label: {
                                                         Text("1.4K")
-                                                            .font(.system(.footnote, design: .default, weight: .medium))
+                                                            .font(.system(size: K.fontSize - 3, weight: .semibold, design: .default))
                                                     })
                                                 }//: VSTACK
                                                 
@@ -152,7 +158,7 @@ struct BuzzView: View {
                                                         Image(systemName: "paperplane")
                                                         
                                                         Text("Share")
-                                                            .font(.system(.footnote, design: .default, weight: .medium))
+                                                            .font(.system(size: K.fontSize - 3, weight: .semibold, design: .default))
                                                     }
                                                 })
                                                 
@@ -168,11 +174,13 @@ struct BuzzView: View {
                                                         Image(systemName: isSaved ? "bookmark.fill" : "bookmark")
                                                         
                                                         Text("Save")
-                                                            .font(.system(.footnote, design: .default, weight: .medium))
+                                                            .font(.system(size: K.fontSize - 3, weight: .semibold, design: .default))
                                                     }
                                                 })
                                                 
-                                                Button(action: {}, label: {
+                                                Button(action: {
+                                                    
+                                                }, label: {
                                                     Image("naval-pink")
                                                         .resizable()
                                                         .scaledToFill()
@@ -184,6 +192,7 @@ struct BuzzView: View {
                                             .foregroundColor(Color(.white))
                                             .font(.system(size: 24, weight: .regular, design: .default))
                                             .font(.title)
+                                            .shadow(color: .black.opacity(0.4), radius: 5, x: 0, y: 0)
                                             
                                         }//: HSTACK
                                         .padding(.all)
