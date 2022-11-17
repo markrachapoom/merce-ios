@@ -41,7 +41,7 @@ struct BuzzView: View {
                                 .overlay {
                                     VStack {
                                         Spacer()
-                                        LinearGradient(colors: [.black.opacity(0.7), .black.opacity(0)], startPoint: .bottom, endPoint: .top)
+                                        LinearGradient(colors: [.black.opacity(0.8), .black.opacity(0)], startPoint: .bottom, endPoint: .top)
                                             .frame(maxHeight: 300)
                                     }//: VSTACK
                                 }//: OVERLAY
@@ -96,7 +96,7 @@ struct BuzzView: View {
                                                                 .background(
                                                                     Capsule()
                                                                         .stroke(style: StrokeStyle(lineWidth: 1))
-                                                                        .foregroundColor(isFollowed ? .white.opacity(0.65) : .white.opacity(0.35))
+                                                                        .foregroundColor(isFollowed ? .white.opacity(0.65) : .white.opacity(0.3))
                                                                 )//: BACKGROUND
                                                         })//: BUTTON
                                                         

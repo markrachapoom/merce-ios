@@ -47,14 +47,14 @@ struct ProfileView: View {
                                 Rectangle()
                                     .foregroundColor(.secondaryBackgroundColor)
                             }
-                            .frame(width: coverImageGeo.size.width, height: minY < -K.coverImageHeight ? 0 : abs(coverImageGeo.size.height + minY))
+                            .frame(width: coverImageGeo.size.width, height: minY < -(geo.frame(in: .global).width / 2) ? 0 : abs(coverImageGeo.size.height + minY))
                             .clipped()
                             .offset(y: -minY)
                             .onChange(of: coverImageGeo.frame(in: .global).minY, perform: { value in
                                 self.minY = value
                             })
                         }
-                        .frame(width: geo.frame(in: .global).width, height: K.coverImageHeight)
+                        .frame(width: geo.frame(in: .global).width, height: geo.frame(in: .global).width / 2)
                         
                         VStack(alignment: .leading, spacing: 13) {
                             HStack {
