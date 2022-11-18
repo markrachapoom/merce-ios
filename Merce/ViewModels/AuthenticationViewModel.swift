@@ -112,19 +112,28 @@ extension AuthenticationViewModel {
             if let document = document {
                 if (document.exists) {
                 } else {
-                    // Add a new document in collection "cities"
-                    self.db.collection("users").document(user.uid).setData([
+                    
+                    let newUser: [String : Any] = [
+                        "type": "user",
                         "uid": user.uid,
-                        "email": user.email ?? "",
-                        "displayName": user.displayName ?? "",
-                    ]) { err in
+                        "coverImageURL": NSNull(),
+                        "profileImageURL": user.photoURL?.absoluteString ?? NSNull(),
+                        "givenName": user.displayName ?? NSNull(),
+                        "username": user.uid,
+                        "bio": NSNull(),
+                        "email": user.email ?? NSNull(),
+                        "followingCount": 0,
+                        "followersCount": 0,
+                        "joinedDate": Date()
+                    ]
+                    
+                    // Add a new document in users collection
+                    self.db.collection("users").document(user.uid).setData(newUser){ err in
                         if let err = err {
                             print("Error writing document: \(err)")
                         } else {
                             print("Document successfully written!")
                         }
-                    } catch (let error) {
-                        
                     }
                 }//: CONDITION
             }//: UNWRAP
