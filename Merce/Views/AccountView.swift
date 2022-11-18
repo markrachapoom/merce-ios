@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct AccountView: View {
+    
+    @EnvironmentObject private var authVM: AuthenticationViewModel
+    
     var body: some View {
         NavigationView {
-            ProfileView(user: MerceUser.markrachapoom, isProfileOwner: true)
+            ProfileView(user: authVM.currentMerceUser ?? MerceUser(), isProfileOwner: true)
         }//: NAVIGATION VIEW
     }
 }
@@ -18,5 +21,6 @@ struct AccountView: View {
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
         AccountView()
+            .environmentObject(AuthenticationViewModel())
     }
 }

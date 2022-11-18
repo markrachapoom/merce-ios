@@ -105,7 +105,7 @@ struct ProfileView: View {
                             VStack(alignment: .leading) {
                                 HStack(spacing: 4) {
                                     
-                                    Text(user.name ?? "Unknown")
+                                    Text(user.givenName ?? "Unknown")
                                         .font(.title3)
                                         .fontWeight(.bold)
                                     

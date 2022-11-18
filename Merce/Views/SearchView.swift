@@ -130,7 +130,7 @@ struct SearchRowView: View {
             VStack(alignment: .leading) {
                 
                 // Name
-                Text("\(item.name ?? "")")
+                Text("\(item.givenName ?? "")")
                 
                 // Username
                 Text("@\(item.username ?? "")")

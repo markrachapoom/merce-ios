@@ -56,7 +56,7 @@ struct EditProfileView: View {
                             }//: HSTACK
                             
                             VStack(alignment: .leading) {
-                                Text(user.name ?? "Unknown")
+                                Text(user.givenName ?? "Unknown")
                                     .font(.title3)
                                     .fontWeight(.bold)
                                 Text("@\(user.username ?? "unknown")")

@@ -6,8 +6,7 @@ target 'Merce' do
   use_frameworks!
 
   # Pods for Merce
-  pod 'FirebaseAuth'
-  pod 'GoogleSignIn'
+	pod 'GoogleSignIn'
 
   target 'MerceTests' do
     inherit! :search_paths

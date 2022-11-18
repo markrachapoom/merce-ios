@@ -7,7 +7,8 @@
 
 import Foundation
 import Firebase
-import FirebaseFirestore
+//import FirebaseFirestore
+import FirebaseFirestoreSwift
 import GoogleSignIn
 
 class AuthenticationViewModel: ObservableObject {
@@ -38,8 +39,25 @@ class AuthenticationViewModel: ObservableObject {
         }
     }
     
-    func fetchUser() -> Void {
-        self.currentMerceUser = MerceUser.markrachapoom
+    func fetchCurrentUser(uid: String) -> Void {
+        
+        let docRef = db.collection("users").document(uid)
+
+        docRef.getDocument { document, error in
+            if let document = document, document.exists {
+//                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                let data = document.data()
+                
+//                var fetchedUser: MerceUser = MerceUser(
+//                    type: data["type"],
+//                    uid: data["uid"],
+//                    givenName: data["givenName"]
+//                )
+
+            } else {
+                print("Current user does not exist")
+            }
+        }
     }
     
     
@@ -93,7 +111,6 @@ extension AuthenticationViewModel {
         docRef.getDocument { (document, error) in
             if let document = document {
                 if (document.exists) {
-                    return
                 } else {
                     // Add a new document in collection "cities"
                     self.db.collection("users").document(user.uid).setData([
@@ -106,11 +123,15 @@ extension AuthenticationViewModel {
                         } else {
                             print("Document successfully written!")
                         }
+                    } catch (let error) {
+                        
                     }
-                }
-            }
-        }
+                }//: CONDITION
+            }//: UNWRAP
+        }//: GETDOC
         
+        
+        self.fetchCurrentUser(uid: user.uid)
     }
 }
 

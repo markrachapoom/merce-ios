@@ -74,7 +74,7 @@ struct BuzzView: View {
                                                                 .clipShape(Circle())
                                                                 
                                                                 VStack(alignment: .leading) {
-                                                                    Text("\(buzz.name ?? "")")
+                                                                    Text("\(buzz.givenName ?? "")")
                                                                         .font(.system(size: K.fontSize, weight: .medium, design: .default))
                                                                     
                                                                     Text("@\(buzz.username ?? "")")

@@ -9,11 +9,16 @@ import Foundation
 
 struct MerceUser: Codable {
     var type: String?
-    var name: String?
+    var uid: String?
+    var coverImageURL: String?
+    var profileImageURL: String?
+    var givenName: String?
     var username: String?
     var bio: String?
-    var profileImageURL: String?
-    var coverImageURL: String?
+    var email: String?
+    var followingCount: Int?
+    var followersCount: Int?
+    var joinedDate: Date?
      
     static let allEntrepreneurs: [MerceUser] = Bundle.main.decode(file: "entrepreneurs.json")
     
