@@ -9,8 +9,10 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    @EnvironmentObject private var authVM: AuthenticationViewModel
+    
     let user: MerceUser
-    let isProfileOwner: Bool
+    var isProfileOwner: Bool
     
     init(user: MerceUser, isProfileOwner: Bool = false) {
         self.user = user
@@ -18,6 +20,7 @@ struct ProfileView: View {
     }
     
     @Environment(\.dismiss) private var dismiss
+    
     
     @State private var isEditingProfile: Bool = false
     
@@ -163,27 +166,27 @@ struct ProfileView: View {
                                     
                                     HStack {
                                         
-                                        NavigationLink(destination: SavedView()) {
-                                            Capsule()
-                                                .stroke(style: StrokeStyle(lineWidth: 1))
-                                                .foregroundColor(Color(.separator))
-                                                .background(.clear)
-//                                                .foregroundColor(Color.secondaryBackgroundColor)
-                                                .overlay {
-                                                    Image(systemName: "bookmark")
-//                                                    Text("Settings")
-//                                                        .font(.system(size: K.fontSize))
-//                                                        .fontWeight(.semibold)
-//                                                        .foregroundColor(.white)
-                                                }
-                                                .cornerRadius(100)
-                                        }//: NAVIGATIONLINK
-                                        .simultaneousGesture(
-                                            TapGesture()
-                                                .onEnded({ _ in
-                                                    K.impactOccur()
-                                                })
-                                        )//: SIMULTANIOUS
+//                                        NavigationLink(destination: SavedView()) {
+//                                            Capsule()
+//                                                .stroke(style: StrokeStyle(lineWidth: 1))
+//                                                .foregroundColor(Color(.separator))
+//                                                .background(.clear)
+////                                                .foregroundColor(Color.secondaryBackgroundColor)
+//                                                .overlay {
+//                                                    Image(systemName: "bookmark")
+////                                                    Text("Settings")
+////                                                        .font(.system(size: K.fontSize))
+////                                                        .fontWeight(.semibold)
+////                                                        .foregroundColor(.white)
+//                                                }
+//                                                .cornerRadius(100)
+//                                        }//: NAVIGATIONLINK
+//                                        .simultaneousGesture(
+//                                            TapGesture()
+//                                                .onEnded({ _ in
+//                                                    K.impactOccur()
+//                                                })
+//                                        )//: SIMULTANIOUS
                                         
                                         
                                         //                                        Button(action: {
@@ -313,6 +316,7 @@ struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             ProfileView(user: MerceUser.sampleEntrepreneur)
+                .environmentObject(AuthenticationViewModel())
                 .preferredColorScheme(.dark)
         }
     }
