@@ -85,22 +85,32 @@ extension AuthenticationViewModel {
 
 
 extension AuthenticationViewModel {
+    
     func createMerceUser(from user: User) -> Void {
         
-        print("🔥 Creating user with id: \(user.uid)")
+        let docRef = db.collection("users").document(user.uid)
         
-        // Add a new document in collection "cities"
-        db.collection("users").document(user.uid).setData([
-            "uid": user.uid,
-            "email": user.email ?? "",
-            "displayName": user.displayName ?? "",
-        ]) { err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document successfully written!")
+        docRef.getDocument { (document, error) in
+            if let document = document {
+                if (document.exists) {
+                    return
+                } else {
+                    // Add a new document in collection "cities"
+                    self.db.collection("users").document(user.uid).setData([
+                        "uid": user.uid,
+                        "email": user.email ?? "",
+                        "displayName": user.displayName ?? "",
+                    ]) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        } else {
+                            print("Document successfully written!")
+                        }
+                    }
+                }
             }
         }
+        
     }
 }
 
