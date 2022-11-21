@@ -109,9 +109,11 @@ struct ProfileView: View {
                                         .font(.title3)
                                         .fontWeight(.bold)
                                     
-                                    Image(systemName: "checkmark.seal.fill")
-                                        .font(.system(size: K.fontSize - 2))
-                                        .foregroundColor(.white)
+                                    if (user.isVerified ?? false) {
+                                        Image(systemName: "checkmark.seal.fill")
+                                            .font(.system(size: K.fontSize - 2))
+                                            .foregroundColor(.white)
+                                    }
                                     
                                 }//: HSTACK
                                 Text("@\(user.username ?? "unknown")")
@@ -214,7 +216,8 @@ struct ProfileView: View {
                                                 .background(.clear)
 //                                                .foregroundColor(Color.secondaryBackgroundColor)
                                                 .overlay {
-                                                    Image(systemName: "gearshape")
+                                                    Text("Settings")
+//                                                    Image(systemName: "gearshape")
 //                                                    Text("Settings")
 //                                                        .font(.system(size: K.fontSize))
 //                                                        .fontWeight(.semibold)

@@ -13,6 +13,7 @@ struct MerceUser: Codable {
     var coverImageURL: String?
     var profileImageURL: String?
     var givenName: String?
+    var isVerified: Bool?
     var username: String?
     var bio: String?
     var email: String?

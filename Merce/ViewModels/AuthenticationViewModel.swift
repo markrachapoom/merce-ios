@@ -30,6 +30,7 @@ class AuthenticationViewModel: ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             Auth.auth().addStateDidChangeListener { auth, user in
                 if (user != nil) {
+                    self.fetchCurrentUser(uid: user?.uid)
                     self.currentUser = user
                     self.state = .signedIn
                 } else {
@@ -39,24 +40,21 @@ class AuthenticationViewModel: ObservableObject {
         }
     }
     
-    func fetchCurrentUser(uid: String) -> Void {
-        
-        let docRef = db.collection("users").document(uid)
-
-        docRef.getDocument { document, error in
-            if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                
-                print(dataDescription)
-                
-//                var fetchedUser: MerceUser = MerceUser(
-//                    type: data["type"],
-//                    uid: data["uid"],
-//                    givenName: data["givenName"]
-//                )
-
-            } else {
-                print("Current user does not exist")
+    func fetchCurrentUser(uid: String?) -> Void {
+        if let uid = uid {
+            let docRef = db.collection("users").document(uid)
+            
+            docRef.getDocument { document, error in
+                if let document = document, document.exists {
+                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                    
+                    let fetchedUser = try? document.data(as: MerceUser.self)
+                    
+                    self.currentMerceUser = fetchedUser
+                    
+                } else {
+                    print("Current user does not exist")
+                }
             }
         }
     }
@@ -67,7 +65,7 @@ class AuthenticationViewModel: ObservableObject {
 extension AuthenticationViewModel {
     func authenticateUser(for user: GIDGoogleUser?, with error: Error?) {
         
-        // GUard Error
+        // Guard Error
         guard error == nil else { return }
         guard let user = user else { return }
         
@@ -112,6 +110,7 @@ extension AuthenticationViewModel {
         docRef.getDocument { (document, error) in
             if let document = document {
                 if (document.exists) {
+                    // User exist
                 } else {
                     
                     let newUser: [String : Any] = [
@@ -120,6 +119,7 @@ extension AuthenticationViewModel {
                         "coverImageURL": NSNull(),
                         "profileImageURL": user.photoURL?.absoluteString ?? NSNull(),
                         "givenName": user.displayName ?? NSNull(),
+                        "isVerified" : false,
                         "username": user.uid,
                         "bio": NSNull(),
                         "email": user.email ?? NSNull(),
