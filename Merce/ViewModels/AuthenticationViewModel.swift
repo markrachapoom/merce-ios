@@ -45,8 +45,9 @@ class AuthenticationViewModel: ObservableObject {
 
         docRef.getDocument { document, error in
             if let document = document, document.exists {
-//                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                let data = document.data()
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                
+                print(dataDescription)
                 
 //                var fetchedUser: MerceUser = MerceUser(
 //                    type: data["type"],
