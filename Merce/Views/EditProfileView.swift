@@ -17,6 +17,14 @@ struct EditProfileView: View {
         self.user = user
     }
     
+    @State private var selectedCoverUIImage: UIImage? = nil
+    @State private var selectedProfileUIImage: UIImage? = nil
+    
+    @State private var isPickingCoverImage: Bool = false
+    @State private var isPickingProfileImage: Bool = false
+    
+    let a = UIImage().jpegData(compressionQuality: 0.3)
+    
     private let profileImageSize: CGFloat = 110
     
     var body: some View {
@@ -25,31 +33,56 @@ struct EditProfileView: View {
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 0) {
-                        // COVER IMAGE
-                        AsyncImage(url: URL(string: user.coverImageURL ?? "")) { image in
-                            image
-                                .resizable()
-                                .scaledToFill()
-                        } placeholder: {
-                            Rectangle()
-                                .foregroundColor(.secondaryBackgroundColor)
-                        }
-                        .frame(width: geo.frame(in: .global).width, height: K.coverImageHeight)
-                        .clipped()
+                        
+                        Button(action: {
+                            self.isPickingCoverImage = true
+                        }, label: {
+                            // COVER IMAGE
+                            VStack {
+                                if let selectedCoverUIImage = selectedCoverUIImage {
+                                    Image(uiImage: selectedCoverUIImage)
+                                        .resizable()
+                                        .scaledToFill()
+                                } else {
+                                    AsyncImage(url: URL(string: user.coverImageURL ?? "")) { image in
+                                        image
+                                            .resizable()
+                                            .scaledToFill()
+                                    } placeholder: {
+                                        Rectangle()
+                                            .foregroundColor(.secondaryBackgroundColor)
+                                    }
+                                }
+                            }
+                            .frame(width: geo.frame(in: .global).width, height: K.coverImageHeight)
+                            .clipped()
+                        })
                         
                         VStack(alignment: .leading, spacing: 13) {
                             HStack {
-                                
-                                AsyncImage(url: URL(string: user.profileImageURL ?? "")) { image in
-                                    image
-                                        .resizable()
-                                        .scaledToFill()
-                                        .clipShape(Circle())
-                                } placeholder: {
-                                    Circle()
-                                        .foregroundColor(.secondaryBackgroundColor)
-                                }
-                                .frame(width: profileImageSize, height: profileImageSize)
+                                Button(action: {
+                                    self.isPickingProfileImage = true
+                                }, label: {
+                                    VStack {
+                                        if let selectedProfileUIImage = selectedProfileUIImage {
+                                            Image(uiImage: selectedProfileUIImage)
+                                                .resizable()
+                                                .scaledToFill()
+                                        } else {
+                                            AsyncImage(url: URL(string: user.profileImageURL ?? "")) { image in
+                                                image
+                                                    .resizable()
+                                                    .scaledToFill()
+                                            } placeholder: {
+                                                Circle()
+                                                    .foregroundColor(.secondaryBackgroundColor)
+                                            }
+                                            
+                                        }
+                                    }
+                                    .frame(width: profileImageSize, height: profileImageSize)
+                                    .clipShape(Circle())
+                                })//: BUTTON
                                 
                                 Spacer()
                                 
@@ -120,6 +153,14 @@ struct EditProfileView: View {
                 }//: VSTACK
                 .edgesIgnoringSafeArea(.top)
             }//: ZSTACK
+            .fullScreenCover(isPresented: $isPickingCoverImage, content: {
+                PHPickerView(imagesLimit: 1, selectedImage: $selectedCoverUIImage)
+                    .edgesIgnoringSafeArea(.all)
+            })//: FULLSCREEN
+            .fullScreenCover(isPresented: $isPickingProfileImage, content: {
+                PHPickerView(imagesLimit: 1, selectedImage: $selectedProfileUIImage)
+                    .edgesIgnoringSafeArea(.all)
+            })//: FULLSCREEN
         }//: GEOMETRYREADER
     }
 }

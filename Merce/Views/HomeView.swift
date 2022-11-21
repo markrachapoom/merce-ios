@@ -139,7 +139,8 @@ struct HomeView: View {
                     .background(
                         VisualEffectView(blurEffect: .dark)
                             .overlay(
-                                Color.black.opacity(0.65)
+//                                Color.black.opacity(0.65)
+                                Color.black.opacity(0.6)
                             )
                     )//: BACKGROUND
                     Spacer()

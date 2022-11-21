@@ -21,16 +21,17 @@ struct BuzzPlayer: View {
                         if (isPlaying) {
                             buzzPlayer.pause()
                         } else {
-                            buzzPlayer.play()
+//                            buzzPlayer.play()
                         }
                     }
             }
         }
         .onAppear {
-            buzz.player?.play()
+//            buzz.player?.play()
+            buzz.player?.pause()
         }
         .onDisappear {
-            buzz.player?.seek(to: .zero)
+//            buzz.player?.seek(to: .zero)
             buzz.player?.pause()
         }
     }

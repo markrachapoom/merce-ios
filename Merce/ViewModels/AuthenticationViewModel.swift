@@ -46,7 +46,7 @@ class AuthenticationViewModel: ObservableObject {
             
             docRef.getDocument { document, error in
                 if let document = document, document.exists {
-                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+//                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                     
                     let fetchedUser = try? document.data(as: MerceUser.self)
                     
@@ -120,7 +120,7 @@ extension AuthenticationViewModel {
                         "profileImageURL": user.photoURL?.absoluteString ?? NSNull(),
                         "givenName": user.displayName ?? NSNull(),
                         "isVerified" : false,
-                        "username": user.uid,
+                        "username": UUID().uuidString,
                         "bio": NSNull(),
                         "email": user.email ?? NSNull(),
                         "followingCount": 0,
