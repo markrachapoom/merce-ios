@@ -19,6 +19,9 @@
 		FA07B9E0292037CC00A0A462 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07B9DF292037CC00A0A462 /* NotificationView.swift */; };
 		FA56D83E291E685D00549439 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA56D83D291E685D00549439 /* SectionView.swift */; };
 		FA56D840291E6EB000549439 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA56D83F291E6EB000549439 /* ProfileView.swift */; };
+		FA5FCE5E292BCA7C006400C4 /* BuzzVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCE5D292BCA7C006400C4 /* BuzzVideoPlayer.swift */; };
+		FA5FCE60292BCB5B006400C4 /* Buzz.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCE5F292BCB5B006400C4 /* Buzz.swift */; };
+		FA5FCE62292BCBE4006400C4 /* MediaFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCE61292BCBE4006400C4 /* MediaFile.swift */; };
 		FA614FEA2925145100777BB2 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA614FE92925145100777BB2 /* EditProfileView.swift */; };
 		FA63999E291F641F00CA9AA0 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63999D291F641F00CA9AA0 /* Category.swift */; };
 		FA694348291FAEA000AD9A0B /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA694347291FAEA000AD9A0B /* CategoryView.swift */; };
@@ -96,6 +99,9 @@
 		FA07B9DF292037CC00A0A462 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		FA56D83D291E685D00549439 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		FA56D83F291E6EB000549439 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		FA5FCE5D292BCA7C006400C4 /* BuzzVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuzzVideoPlayer.swift; sourceTree = "<group>"; };
+		FA5FCE5F292BCB5B006400C4 /* Buzz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buzz.swift; sourceTree = "<group>"; };
+		FA5FCE61292BCBE4006400C4 /* MediaFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaFile.swift; sourceTree = "<group>"; };
 		FA614FE92925145100777BB2 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		FA63999D291F641F00CA9AA0 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		FA694347291FAEA000AD9A0B /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
@@ -202,6 +208,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		FA5FCE5C292BCA64006400C4 /* Buzz */ = {
+			isa = PBXGroup;
+			children = (
+				FA69434C291FCBEC00AD9A0B /* BuzzView.swift */,
+				FA5FCE5D292BCA7C006400C4 /* BuzzVideoPlayer.swift */,
+			);
+			path = Buzz;
+			sourceTree = "<group>";
+		};
 		FA694349291FBC6000AD9A0B /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +298,7 @@
 		FA778CEF291A882500452C20 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FA5FCE5C292BCA64006400C4 /* Buzz */,
 				FA07B9D22920234600A0A462 /* Settings */,
 				FA694349291FBC6000AD9A0B /* Helper */,
 				FA778CED291A87E600452C20 /* MusicPlayerView.swift */,
@@ -292,7 +308,6 @@
 				FA56D83D291E685D00549439 /* SectionView.swift */,
 				FA56D83F291E6EB000549439 /* ProfileView.swift */,
 				FA694347291FAEA000AD9A0B /* CategoryView.swift */,
-				FA69434C291FCBEC00AD9A0B /* BuzzView.swift */,
 				FA69434E291FCCF900AD9A0B /* AccountView.swift */,
 				FA07B9D02920209000A0A462 /* NavBarView.swift */,
 				FA07B9DB29202A9600A0A462 /* CircleIcon.swift */,
@@ -321,6 +336,8 @@
 			children = (
 				FAA15165291E61CB00183167 /* MerceUser.swift */,
 				FA63999D291F641F00CA9AA0 /* Category.swift */,
+				FA5FCE5F292BCB5B006400C4 /* Buzz.swift */,
+				FA5FCE61292BCBE4006400C4 /* MediaFile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -606,18 +623,21 @@
 				FA778CC4291A878900452C20 /* MerceApp.swift in Sources */,
 				FA694348291FAEA000AD9A0B /* CategoryView.swift in Sources */,
 				FA56D840291E6EB000549439 /* ProfileView.swift in Sources */,
+				FA5FCE62292BCBE4006400C4 /* MediaFile.swift in Sources */,
 				FA778CFA291A929C00452C20 /* Impact.swift in Sources */,
 				FAA15166291E61CB00183167 /* MerceUser.swift in Sources */,
 				FA07B9DE292037BE00A0A462 /* InboxView.swift in Sources */,
 				FA07B9DC29202A9600A0A462 /* CircleIcon.swift in Sources */,
 				FA63999E291F641F00CA9AA0 /* Category.swift in Sources */,
 				FA07B9D12920209000A0A462 /* NavBarView.swift in Sources */,
+				FA5FCE5E292BCA7C006400C4 /* BuzzVideoPlayer.swift in Sources */,
 				FA07B9D8292025EF00A0A462 /* MailView.swift in Sources */,
 				FAA01D0E29237E3300F06DC9 /* SplashScreenView.swift in Sources */,
 				FAC2FC66291BE0A1007B1A6C /* HomeView.swift in Sources */,
 				FA778CF8291A926B00452C20 /* SRDPSecret.swift in Sources */,
 				FA07B9DA2920261E00A0A462 /* SettingsRowView.swift in Sources */,
 				FA778CF6291A926B00452C20 /* Constant.swift in Sources */,
+				FA5FCE60292BCB5B006400C4 /* Buzz.swift in Sources */,
 				FA69434B291FBC7100AD9A0B /* VisualEffectView.swift in Sources */,
 				FAA01D08292375A300F06DC9 /* MainTabVIew.swift in Sources */,
 				FAC2FC6F291BE902007B1A6C /* PlayerViewModel.swift in Sources */,
