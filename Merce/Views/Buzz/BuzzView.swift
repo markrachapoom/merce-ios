@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct BuzzView: View {
     
@@ -18,31 +19,44 @@ struct BuzzView: View {
     
     @State private var isFollowed: Bool = false
     
+    @State private var buzzes = MediaFile.allMediaFiles.map { item -> Buzz in
+        let url = Bundle.main.path(forResource: item.url, ofType: "mp4") ?? ""
+        let player = AVPlayer(url: URL(fileURLWithPath: url))
+        return Buzz(player: player, mediaFile: item)
+    }
+    
     var body: some View {
         NavigationView {
             GeometryReader { geo in
                 TabView(selection: $tabSelection) {
-                    ForEach(Array(zip(MerceUser.allEntrepreneurs.indices, MerceUser.allEntrepreneurs)), id: \.0) { index, buzz in
+                    
+//                    ForEach(Array(zip(buzzes.indices, buzzes)), id: \.0) { index, $buzz in
+                    ForEach(buzzes, id: \.id) { buzz in
                         
                         ZStack(alignment: .top) {
                             
                             VStack {
-                                AsyncImage(url: URL(string: buzz.profileImageURL ?? "")) { image in
-                                    image
-                                        .resizable()
-                                        .scaledToFill()
-                                } placeholder: {
-                                    Rectangle()
-                                        .foregroundColor(Color.secondaryBackgroundColor)
-                                }
+                                BuzzPlayer(buzz: buzz)
+//                                AsyncImage(url: URL(string: buzz?.profileImageURL ?? "")) { image in
+//                                    image
+//                                        .resizable()
+//                                        .scaledToFill()
+//                                } placeholder: {
+//                                    Rectangle()
+//                                        .foregroundColor(Color.secondaryBackgroundColor)
+//                                }
                                 .frame(width: geo.size.width, height: geo.size.height - K.bottomTabBarHeight)
+//                                .overlay {
+//                                    Color.lightBlue.opacity(0.3)
+//                                }
                                 //                            .frame(width: geo.size.width)
                                 .clipped()
                                 .overlay {
                                     VStack {
                                         Spacer()
+//                                        LinearGradient(colors: [.red, .black.opacity(0.8), .black.opacity(0)], startPoint: .bottom, endPoint: .top)
                                         LinearGradient(colors: [.black.opacity(0.8), .black.opacity(0)], startPoint: .bottom, endPoint: .top)
-                                            .frame(maxHeight: 300)
+                                            .frame(maxHeight: 150)
                                     }//: VSTACK
                                 }//: OVERLAY
                                 .overlay {
@@ -60,29 +74,29 @@ struct BuzzView: View {
                                                 VStack(alignment: .leading, spacing: 13) {
                                                     HStack(spacing: 13) {
                                                         
-                                                        NavigationLink(destination: ProfileView(user: buzz, isProfileOwner: false)) {
-                                                            HStack(spacing: 13) {
-                                                                AsyncImage(url: URL(string: buzz.profileImageURL ?? "")) { image in
-                                                                    image
-                                                                        .resizable()
-                                                                        .scaledToFill()
-                                                                } placeholder: {
-                                                                    Circle()
-                                                                        .foregroundColor(.secondaryBackgroundColor)
-                                                                }
-                                                                .frame(width: 40, height: 40)
-                                                                .clipShape(Circle())
-                                                                
-                                                                VStack(alignment: .leading) {
-                                                                    Text("\(buzz.givenName ?? "")")
-                                                                        .font(.system(size: K.fontSize, weight: .medium, design: .default))
-                                                                    
-                                                                    Text("@\(buzz.username ?? "")")
-                                                                        .foregroundColor(Color(.secondaryLabel))
-                                                                        .font(.system(size: K.fontSize, weight: .regular, design: .default))
-                                                                }
-                                                            }//: HSTACK
-                                                        }//: NAVIGATIONLINK
+//                                                        NavigationLink(destination: ProfileView(user: buzz, isProfileOwner: false)) {
+//                                                            HStack(spacing: 13) {
+//                                                                AsyncImage(url: URL(string: buzz.profileImageURL ?? "")) { image in
+//                                                                    image
+//                                                                        .resizable()
+//                                                                        .scaledToFill()
+//                                                                } placeholder: {
+//                                                                    Circle()
+//                                                                        .foregroundColor(.secondaryBackgroundColor)
+//                                                                }
+//                                                                .frame(width: 40, height: 40)
+//                                                                .clipShape(Circle())
+//                                                                
+//                                                                VStack(alignment: .leading) {
+//                                                                    Text("\(buzz.givenName ?? "")")
+//                                                                        .font(.system(size: K.fontSize, weight: .medium, design: .default))
+//                                                                    
+//                                                                    Text("@\(buzz.username ?? "")")
+//                                                                        .foregroundColor(Color(.secondaryLabel))
+//                                                                        .font(.system(size: K.fontSize, weight: .regular, design: .default))
+//                                                                }
+//                                                            }//: HSTACK
+//                                                        }//: NAVIGATIONLINK
                                                         
                                                         Button(action: {
                                                             withAnimation(.none) {
@@ -200,6 +214,7 @@ struct BuzzView: View {
                                             
                                         }//: HSTACK
                                         .padding(.all)
+                                        .background(.clear)
                                         
                                     }//: VSTACK
                                 }//: OVERLAY

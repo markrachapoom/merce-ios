@@ -22,6 +22,9 @@
 		FA5FCE5E292BCA7C006400C4 /* BuzzVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCE5D292BCA7C006400C4 /* BuzzVideoPlayer.swift */; };
 		FA5FCE60292BCB5B006400C4 /* Buzz.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCE5F292BCB5B006400C4 /* Buzz.swift */; };
 		FA5FCE62292BCBE4006400C4 /* MediaFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCE61292BCBE4006400C4 /* MediaFile.swift */; };
+		FA5FCE64292BCFC4006400C4 /* BuzzPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCE63292BCFC4006400C4 /* BuzzPlayer.swift */; };
+		FA5FCE67292BD296006400C4 /* buzz-1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FA5FCE66292BD295006400C4 /* buzz-1.mp4 */; };
+		FA5FCE69292BD401006400C4 /* buzz-2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FA5FCE68292BD401006400C4 /* buzz-2.mp4 */; };
 		FA614FEA2925145100777BB2 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA614FE92925145100777BB2 /* EditProfileView.swift */; };
 		FA63999E291F641F00CA9AA0 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63999D291F641F00CA9AA0 /* Category.swift */; };
 		FA694348291FAEA000AD9A0B /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA694347291FAEA000AD9A0B /* CategoryView.swift */; };
@@ -102,6 +105,9 @@
 		FA5FCE5D292BCA7C006400C4 /* BuzzVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuzzVideoPlayer.swift; sourceTree = "<group>"; };
 		FA5FCE5F292BCB5B006400C4 /* Buzz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buzz.swift; sourceTree = "<group>"; };
 		FA5FCE61292BCBE4006400C4 /* MediaFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaFile.swift; sourceTree = "<group>"; };
+		FA5FCE63292BCFC4006400C4 /* BuzzPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuzzPlayer.swift; sourceTree = "<group>"; };
+		FA5FCE66292BD295006400C4 /* buzz-1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "buzz-1.mp4"; sourceTree = "<group>"; };
+		FA5FCE68292BD401006400C4 /* buzz-2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "buzz-2.mp4"; sourceTree = "<group>"; };
 		FA614FE92925145100777BB2 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		FA63999D291F641F00CA9AA0 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		FA694347291FAEA000AD9A0B /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
@@ -213,8 +219,19 @@
 			children = (
 				FA69434C291FCBEC00AD9A0B /* BuzzView.swift */,
 				FA5FCE5D292BCA7C006400C4 /* BuzzVideoPlayer.swift */,
+				FA5FCE63292BCFC4006400C4 /* BuzzPlayer.swift */,
 			);
 			path = Buzz;
+			sourceTree = "<group>";
+		};
+		FA5FCE65292BD27F006400C4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FA5FCE66292BD295006400C4 /* buzz-1.mp4 */,
+				FA5FCE68292BD401006400C4 /* buzz-2.mp4 */,
+				FAC2FC6B291BE8CB007B1A6C /* society-always-wants-new-things.mp3 */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		FA694349291FBC6000AD9A0B /* Helper */ = {
@@ -260,7 +277,7 @@
 				FA778CEF291A882500452C20 /* Views */,
 				FAC2FC6D291BE8EE007B1A6C /* ViewModels */,
 				FAA15167291E61D700183167 /* Models */,
-				FAC2FC6B291BE8CB007B1A6C /* society-always-wants-new-things.mp3 */,
+				FA5FCE65292BD27F006400C4 /* Resources */,
 				FA778CC7291A878A00452C20 /* Assets.xcassets */,
 				FA778CF2291A926B00452C20 /* Helpers */,
 				FA778CC9291A878A00452C20 /* Preview Content */,
@@ -471,9 +488,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA5FCE69292BD401006400C4 /* buzz-2.mp4 in Resources */,
 				FAA01D0C29237A9C00F06DC9 /* Launch Screen.storyboard in Resources */,
 				FAA01CFA29236EBE00F06DC9 /* GoogleService-Info.plist in Resources */,
 				FAA15164291E5F7300183167 /* entrepreneurs.json in Resources */,
+				FA5FCE67292BD296006400C4 /* buzz-1.mp4 in Resources */,
 				FA778CCB291A878A00452C20 /* Preview Assets.xcassets in Resources */,
 				FAC2FC6C291BE8CB007B1A6C /* society-always-wants-new-things.mp3 in Resources */,
 				FA778CC8291A878A00452C20 /* Assets.xcassets in Resources */,
@@ -623,6 +642,7 @@
 				FA778CC4291A878900452C20 /* MerceApp.swift in Sources */,
 				FA694348291FAEA000AD9A0B /* CategoryView.swift in Sources */,
 				FA56D840291E6EB000549439 /* ProfileView.swift in Sources */,
+				FA5FCE64292BCFC4006400C4 /* BuzzPlayer.swift in Sources */,
 				FA5FCE62292BCBE4006400C4 /* MediaFile.swift in Sources */,
 				FA778CFA291A929C00452C20 /* Impact.swift in Sources */,
 				FAA15166291E61CB00183167 /* MerceUser.swift in Sources */,

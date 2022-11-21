@@ -17,7 +17,7 @@ struct BuzzVideoPlayer: UIViewControllerRepresentable {
         let controller = AVPlayerViewController()
         
         controller.player = player
-        controller.showsPlaybackControls = true
+        controller.showsPlaybackControls = false
         
         controller.videoGravity = .resizeAspectFill
         
@@ -25,6 +25,6 @@ struct BuzzVideoPlayer: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        <#code#>
+        
     }
 }

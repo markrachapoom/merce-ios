@@ -66,16 +66,15 @@ struct MainTabVIew: View {
                             
                             TabBarButton(tabSelection: $tabSelection, tag: 4, iconName: "bell")
                             
-                            
                             TabBarButton(tabSelection: $tabSelection, tag: 5, iconName: "person")
                             
                         }//: HSTACK
                         .frame(height: K.bottomTabBarHeight)
-                        .background(Color(.systemBackground))
-//                        .background(LinearGradient(colors: [.black, .black.opacity(0)], startPoint: .bottom, endPoint: .top))
-                        
+//                        .background(Color(.systemBackground))
+                        .background(
+                            LinearGradient(colors: [.black, .black.opacity(0.75)], startPoint: .bottom, endPoint: .top)
+                        )//: BACKGROUND
                     }//: VSTACK
-                    
                 }//: VSTACK
                 .ignoresSafeArea(.keyboard)
                 
@@ -137,7 +136,7 @@ struct TabBarButton: View {
             HStack {
                 Spacer()
                 Image(systemName: "\(iconName)\((canFilled && (tabSelection == tag)) ? ".fill" : "")")
-                    .font(.system(size: 20.5, weight: tabSelection == 2 ? .bold : .medium))
+                    .font(.system(size: 22, weight: tabSelection == 2 ? .bold : .medium))
                     .foregroundColor(Color(.label))
                     .frame(width: 24, height: 24)
                 Spacer()

@@ -8,6 +8,7 @@
 import Foundation
 
 struct MerceUser: Codable {
+    
     var type: String?
     var uid: String?
     var coverImageURL: String?
