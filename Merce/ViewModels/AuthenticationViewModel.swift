@@ -30,8 +30,8 @@ class AuthenticationViewModel: ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             Auth.auth().addStateDidChangeListener { auth, user in
                 if (user != nil) {
-                    self.fetchCurrentUser(uid: user?.uid)
                     self.currentUser = user
+                    self.fetchCurrentUser(uid: user?.uid)
                     self.state = .signedIn
                 } else {
                     self.state = .signedOut
@@ -41,20 +41,22 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     func fetchCurrentUser(uid: String?) -> Void {
-        if let uid = uid {
-            let docRef = db.collection("users").document(uid)
-            
-            docRef.getDocument { document, error in
-                if let document = document, document.exists {
-//                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                    
-                    let fetchedUser = try? document.data(as: MerceUser.self)
-                    
-                    self.currentMerceUser = fetchedUser
-                    
-                } else {
-                    print("Current user does not exist")
-                }
+        
+        guard let uid = uid else { return }
+        
+        let docRef = db.collection("users").document(uid)
+        
+        docRef.getDocument { document, error in
+            if let document = document, document.exists {
+                
+//                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                
+                let fetchedUser = try? document.data(as: MerceUser.self)
+                
+                self.currentMerceUser = fetchedUser
+                
+            } else {
+                print("Current user does not exist")
             }
         }
     }
@@ -101,13 +103,30 @@ extension AuthenticationViewModel {
 }
 
 
+// LOG OUT
+extension AuthenticationViewModel {
+    func signOut() {
+        GIDSignIn.sharedInstance.signOut()
+        
+        do {
+            try Auth.auth().signOut()
+            state = .signedOut
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+}
+
+
+
+// Firebase Firestore/Storage
 extension AuthenticationViewModel {
     
     func createMerceUser(from user: User) -> Void {
         
-        let docRef = db.collection("users").document(user.uid)
+        let currentUserRef = db.collection("users").document(user.uid)
         
-        docRef.getDocument { (document, error) in
+        currentUserRef.getDocument { (document, error) in
             if let document = document {
                 if (document.exists) {
                     // User exist
@@ -140,22 +159,37 @@ extension AuthenticationViewModel {
             }//: UNWRAP
         }//: GETDOC
         
-        
         self.fetchCurrentUser(uid: user.uid)
     }
-}
-
-
-// LOG OUT
-extension AuthenticationViewModel {
-    func signOut() {
-        GIDSignIn.sharedInstance.signOut()
+    
+    
+    func saveEditProfileChange(updateData: [AnyHashable: Any]?, completion: @escaping(Result<String, MerceError>) -> Void) -> Void {
         
-        do {
-            try Auth.auth().signOut()
-            state = .signedOut
-        } catch {
-            print(error.localizedDescription)
+        guard let currentUser = currentUser else {
+            print("No current user while saving changes")
+            completion(.failure(.noCurrentUser))
+            return
+        }
+        guard let updateData = updateData else {
+            print("Update data is nil")
+            return
+        }
+        guard !updateData.isEmpty else {
+            print("Update data is empty")
+            return
+        }
+        
+        let currentUserRef = db.collection("users").document(currentUser.uid)
+        
+        currentUserRef.updateData(updateData) { err in
+            if let err = err {
+                completion(.failure(.failedToUpdateCurrentUserData))
+                print("Error updating document: \(err)")
+            } else {
+                self.fetchCurrentUser(uid: currentUser.uid)
+                completion(.success("Current user successfully updated"))
+            }
         }
     }
+    
 }

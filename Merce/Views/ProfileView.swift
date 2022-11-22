@@ -216,7 +216,7 @@ struct ProfileView: View {
             .edgesIgnoringSafeArea(.all)
             .navigationBarBackButtonHidden(true)
             .fullScreenCover(isPresented: $isEditingProfile, content: {
-                EditProfileView(user: user)
+                EditProfileView(user: user, authVM: authVM)
             })//: FULLSCREEN COVER
             .toolbar {
                 

@@ -12,9 +12,11 @@ struct EditProfileView: View {
     @Environment(\.dismiss) private var dismiss
     
     let user: MerceUser
+    @ObservedObject private var authVM: AuthenticationViewModel
     
-    init(user: MerceUser) {
+    init(user: MerceUser, authVM: AuthenticationViewModel) {
         self.user = user
+        self.authVM = authVM
     }
     
     @State private var selectedCoverUIImage: UIImage? = nil
@@ -22,8 +24,6 @@ struct EditProfileView: View {
     
     @State private var isPickingCoverImage: Bool = false
     @State private var isPickingProfileImage: Bool = false
-    
-    let a = UIImage().jpegData(compressionQuality: 0.3)
     
     private let profileImageSize: CGFloat = 110
     
@@ -123,7 +123,57 @@ struct EditProfileView: View {
                             
                             Button(action: {
                                 K.impactOccur()
-                                dismiss()
+                                
+                                var updateData: [AnyHashable:Any] = [:]
+                                
+                                if let selectedCoverUIImage = selectedCoverUIImage {
+                                    StorageManager.shared.uploadImage(uid: user.uid, path: .coverImage, imageData: selectedCoverUIImage.jpegData(compressionQuality: 0.3)) { result in
+                                        switch result {
+                                            case .success(let downloadURLString):
+                                            authVM.saveEditProfileChange(
+                                                updateData: [
+                                                    "coverImageURL" : downloadURLString
+                                                ]) { result in
+                                                    switch result {
+                                                    case .success(let message):
+                                                        print(message)
+                                                    case .failure(let merceError):
+                                                        print(merceError.errorMessage)
+                                                    }
+                                                }
+                                            case .failure(let merceErr):
+                                                print(merceErr.errorMessage)
+                                        }
+                                    }
+                                }
+                                
+                                if let selectedProfileUIImage = selectedProfileUIImage {
+                                    StorageManager.shared.uploadImage(uid: user.uid, path: .profileImage, imageData: selectedProfileUIImage.jpegData(compressionQuality: 0.3)) { result in
+                                        switch result {
+                                            case .success(let downloadURLString):
+                                            authVM.saveEditProfileChange(
+                                                updateData: [
+                                                    "profileImageURL" : downloadURLString
+                                                ]) { result in
+                                                    switch result {
+                                                    case .success(let message):
+                                                        print(message)
+                                                    case .failure(let merceError):
+                                                        print(merceError.errorMessage)
+                                                    }
+                                                }
+                                            case .failure(let merceErr):
+                                                print(merceErr.errorMessage)
+                                        }
+                                    }
+                                }
+                                
+                                print("update data ", updateData)
+                                
+                                authVM.saveEditProfileChange(updateData: updateData) { result in
+                                    
+                                }
+                                
                             }, label: {
                                 Text("Save")
                             })//: BUTTON
@@ -167,6 +217,6 @@ struct EditProfileView: View {
 
 struct EditProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        EditProfileView(user: MerceUser.sampleEntrepreneur)
+        EditProfileView(user: MerceUser.sampleEntrepreneur, authVM: AuthenticationViewModel())
     }
 }
