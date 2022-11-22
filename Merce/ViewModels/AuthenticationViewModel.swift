@@ -32,7 +32,7 @@ class AuthenticationViewModel: ObservableObject {
                 if (user != nil) {
                     self.currentUser = user
                     self.fetchCurrentUser(uid: user?.uid)
-                    self.state = .signedIn
+//                    self.state = .signedIn
                 } else {
                     self.state = .signedOut
                 }
@@ -53,9 +53,16 @@ class AuthenticationViewModel: ObservableObject {
                 
                 let fetchedUser = try? document.data(as: MerceUser.self)
                 
+                guard let fetchedUser = fetchedUser else {
+                    self.state = .signedOut
+                    return
+                }
+                
                 self.currentMerceUser = fetchedUser
+                self.state = .signedIn
                 
             } else {
+                self.state = .signedOut
                 print("Current user does not exist")
             }
         }
@@ -170,10 +177,12 @@ extension AuthenticationViewModel {
             completion(.failure(.noCurrentUser))
             return
         }
+        
         guard let updateData = updateData else {
             print("Update data is nil")
             return
         }
+        
         guard !updateData.isEmpty else {
             print("Update data is empty")
             return
