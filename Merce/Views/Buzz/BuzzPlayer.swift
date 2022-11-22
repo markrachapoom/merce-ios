@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BuzzPlayer: View {
     
-//    @Binding var buzz: Buzz
+    //    @Binding var buzz: Buzz
     var buzz: Buzz
     
     var body: some View {
@@ -21,17 +21,16 @@ struct BuzzPlayer: View {
                         if (isPlaying) {
                             buzzPlayer.pause()
                         } else {
-//                            buzzPlayer.play()
+                            buzzPlayer.play()
                         }
                     }
             }
         }
         .onAppear {
-//            buzz.player?.play()
-            buzz.player?.pause()
+            buzz.player?.play()
         }
         .onDisappear {
-//            buzz.player?.seek(to: .zero)
+            buzz.player?.seek(to: .zero)
             buzz.player?.pause()
         }
     }
@@ -39,7 +38,7 @@ struct BuzzPlayer: View {
 
 struct BuzzPlayer_Previews: PreviewProvider {
     static var previews: some View {
-//        BuzzPlayer(buzz: .constant(Buzz.init(mediaFile: MediaFile.init(url: "", title: ""))))
+        //        BuzzPlayer(buzz: .constant(Buzz.init(mediaFile: MediaFile.init(url: "", title: ""))))
         BuzzPlayer(buzz: Buzz(mediaFile: MediaFile.init(url: "", title: "")))
     }
 }
