@@ -217,13 +217,13 @@ struct MusicPlayerView: View {
                     
                 }//: VSTACK
                 .padding(.all, 26)
-                .padding(.top, K.topSafeArea)
+//                .padding(.top, K.topSafeArea)
                 .padding(.bottom, K.bottomSafeArea)
                 
             }//: ZSTACK
             .foregroundColor(.white)
             .preferredColorScheme(.dark)
-            .cornerRadius(21)
+//            .cornerRadius(21)
             .onReceive(timer) { _ in
                 if let audioPlayer = playerVM.audioPlayer {
                     if (!isForwardingTime) {

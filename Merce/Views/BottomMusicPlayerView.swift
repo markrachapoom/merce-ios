@@ -11,21 +11,8 @@ struct BottomMusicPlayerView: View {
     
     @EnvironmentObject private var playerVM: PlayerViewModel
     
-    @Binding var translation: CGSize
-    @Binding var showMusicPlayerModal: Bool
-    
     var body: some View {
-        
-        Button(action: {
-            K.impactOccur()
-            withAnimation(.easeInOut(duration: 0.3)) {
-                translation = .zero
-                showMusicPlayerModal = true
-            }
-        }, label: {
             VStack(spacing: 0) {
-                
-//                Divider()
                 
                 HStack {
                     
@@ -34,7 +21,6 @@ struct BottomMusicPlayerView: View {
                         Image("naval-pink")
                             .resizable()
                             .scaledToFill()
-//                            .frame(width: 48, height: 48)
                             .frame(width: 40, height: 40)
                             .cornerRadius(6)
                         
@@ -75,7 +61,6 @@ struct BottomMusicPlayerView: View {
                     })//: BUTTON
                     
                 }//: HSTACK
-//                .padding(.vertical, 8)
                 .padding(.all, 11)
                 .background(
                     VisualEffectView(blurEffect: .systemUltraThinMaterial)
@@ -83,18 +68,14 @@ struct BottomMusicPlayerView: View {
                         .cornerRadius(13)
                 )//: BACKGROUND
                 .padding(.horizontal, 6)
-//                Divider()
-            }
-        })//: BUTTON
-        .opacity(showMusicPlayerModal ? 0 : 1)
-        .offset(y: showMusicPlayerModal ? K.bottomTabBarHeight : 0)
+        }
         .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
 
 struct BottomMusicPlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        BottomMusicPlayerView(translation: .constant(.zero), showMusicPlayerModal: .constant(false))
+        BottomMusicPlayerView()
             .environmentObject(PlayerViewModel())
     }
 }

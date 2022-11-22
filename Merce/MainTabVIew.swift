@@ -14,6 +14,7 @@ struct MainTabVIew: View {
     
     @State private var translation: CGSize = .zero
     @State private var showMusicPlayerModal: Bool = false
+    @State private var canOpenMusicPlayerModal: Bool = true
     
     @State private var tabSelection: Int = 1
     
@@ -52,9 +53,18 @@ struct MainTabVIew: View {
                     
                     VStack(spacing: 0) {
                         
-                        BottomMusicPlayerView(translation: $translation, showMusicPlayerModal: $showMusicPlayerModal)
-                            .offset(y: tabSelection == 3 ? 200 : 0)
-                            .opacity(tabSelection == 3 ? 0 : 1)
+                        Button(action: {
+                            K.impactOccur()
+                            withAnimation(.easeInOut(duration: 0.3)) {
+                                self.showMusicPlayerModal = true
+                                self.canOpenMusicPlayerModal = false
+                            }
+                        }, label: {                        
+                            BottomMusicPlayerView()
+                                .opacity(tabSelection == 3 ? 0 : 1)
+                        })
+                        .disabled(!canOpenMusicPlayerModal)
+//                            .offset(y: tabSelection == 3 ? 200 : 0)
                         
                         HStack(spacing: 0) {
                             
@@ -77,35 +87,15 @@ struct MainTabVIew: View {
                     }//: VSTACK
                 }//: VSTACK
                 .ignoresSafeArea(.keyboard)
-                
-                MusicPlayerView(playerVM: playerVM, showMusicPlayerModal: $showMusicPlayerModal)
-                    .offset(y: translation.height)
-                    .offset(y: showMusicPlayerModal ? 0 : geo.frame(in: .global).height)
-                    .gesture(
-                        DragGesture()
-                            .onChanged({ value in
-                                withAnimation(.easeInOut(duration: 0.03)) {
-                                    if (value.translation.height >= 0) {
-                                        self.translation = value.translation
-                                    }
-                                }
-                            })
-                            .onEnded({ value in
-                                if (value.translation.height > 100) {
-                                    withAnimation(.easeInOut(duration: 0.2)) {
-                                        self.showMusicPlayerModal = false
-                                    }
-                                } else {
-                                    withAnimation {
-                                        self.translation = .zero
-                                    }
-                                }
-                            })
-                    )//: GESTURE
-                    .opacity(showMusicPlayerModal ? 1 : 0)
-                    .edgesIgnoringSafeArea(.all)
-                
             }//: ZSTACK
+            .sheet(isPresented: $showMusicPlayerModal, onDismiss: {
+                self.canOpenMusicPlayerModal = true
+            }, content: {
+                MusicPlayerView(playerVM: playerVM, showMusicPlayerModal: $showMusicPlayerModal)
+//                    .presentationDetents([.height(geo.frame(in: .global).height)])
+                    .presentationDetents([.large])
+                    .edgesIgnoringSafeArea(.bottom)
+            })
             .onChange(of: tabSelection) { _ in
                 K.impactOccur()
             }//: ONCHANGE

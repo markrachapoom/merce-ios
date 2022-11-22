@@ -26,7 +26,6 @@ class PlayerViewModel: ObservableObject {
         audioPlayer?.currentTime ?? 0.0
     }
 
-
     
     func togglePlay() {
         if (isPlaying) {
