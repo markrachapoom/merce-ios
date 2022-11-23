@@ -76,7 +76,39 @@ struct MainTabVIew: View {
                             
                             TabBarButton(tabSelection: $tabSelection, tag: 4, iconName: "bell")
                             
-                            TabBarButton(tabSelection: $tabSelection, tag: 5, iconName: "person")
+//                            TabBarButton(tabSelection: $tabSelection, tag: 5, iconName: "person")
+                            
+                            Button(action: {
+//                                withAnimation(.easeInOut(duration: 0.2)) {
+                                withAnimation(.none) {
+                                    self.tabSelection = 5
+                                }
+                            }, label: {
+                                HStack {
+                                    Spacer()
+                                    
+                                    AsyncImage(url: URL(string: authVM.currentMerceUser?.profileImageURL ?? "")) { image in
+                                        image
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 26, height: 26)
+                                            .clipShape(Circle())
+                                            .background(
+                                                Circle()
+                                                    .stroke(style: StrokeStyle(lineWidth: 2))
+                                                    .frame(width: 32, height: 32)
+                                                    .foregroundColor(tabSelection == 5 ? Color(.label) : .clear)
+                                            )//: BACKGROUND
+                                    } placeholder: {
+                                        Image(systemName: "person")
+                                            .font(.system(size: 22, weight: tabSelection == 2 ? .bold : .medium))
+                                            .foregroundColor(Color(.label))
+                                            .frame(width: 24, height: 24)
+                                    }//: ASYNCIMAGE
+                                    Spacer()
+                                }//: HSTACK
+                                .padding(.all)
+                            })//: BUTTON
                             
                         }//: HSTACK
                         .frame(height: K.bottomTabBarHeight)
@@ -119,7 +151,8 @@ struct TabBarButton: View {
     
     var body: some View {
         Button(action: {
-            withAnimation(.easeInOut(duration: 0.2)) {
+//            withAnimation(.easeInOut(duration: 0.2)) {
+            withAnimation(.none) {
                 self.tabSelection = tag
             }
         }, label: {
@@ -132,7 +165,7 @@ struct TabBarButton: View {
                 Spacer()
             }//: HSTACK
             .padding(.all)
-        })
+        })//: BUTTON
     }
 }
 

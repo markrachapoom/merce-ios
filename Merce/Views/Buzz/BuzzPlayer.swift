@@ -23,9 +23,9 @@ struct BuzzPlayer: View {
                         } else {
                             buzzPlayer.play()
                         }
-                    }
-            }
-        }
+                    }//: ONTAPGESTURE
+            }//: UNWRAP
+        }//: ZSTACK
         .onAppear {
             buzz.player?.play()
         }

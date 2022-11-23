@@ -14,6 +14,10 @@ class SearchViewModel: ObservableObject {
     
     func fetchSearch(from searchText: String) -> Void {
         
+    }
+    
+    func fetchSearch2(from searchText: String) -> Void {
+        
         let allFetchedResults = MerceUser.allEntrepreneurs
         
         guard !searchText.isEmpty else {

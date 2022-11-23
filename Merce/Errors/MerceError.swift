@@ -13,6 +13,7 @@ enum MerceError: Error {
     case invalidImageData
     case failedToUpdateCurrentUserData
     case noCurrentUser
+    case noUserFound
     
     var errorMessage: String {
         switch self {
@@ -24,6 +25,8 @@ enum MerceError: Error {
             return "Failed to update current user data"
         case .noCurrentUser:
             return "No current user"
+        case .noUserFound:
+            return "No user found"
         }
     }
     

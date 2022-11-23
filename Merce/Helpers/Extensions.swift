@@ -207,9 +207,18 @@ extension String {
     }
     
     func removeSpecialCharsFromString() -> String {
-//        let okayChars = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890+-=().!_")
         let okayChars = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890")
         return self.filter {okayChars.contains($0) }
+    }
+    
+    /// Mark -> [m, ma, mar, mark]
+    func generateStringSequence() -> [String] {
+        guard self.count > 0 else { return [] }
+        var sequences: [String] = []
+        for i in 1...self.count {
+            sequences.append(String(self.prefix(i)))
+        }
+        return sequences
     }
 }
 

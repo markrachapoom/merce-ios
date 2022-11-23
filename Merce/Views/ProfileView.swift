@@ -210,8 +210,8 @@ struct ProfileView: View {
                         
                         Spacer()
 
-                    }
-                }
+                    }//: VSTACK
+                }//: SCROLLVIEW
             }//: ZSTACK
             .edgesIgnoringSafeArea(.all)
             .navigationBarBackButtonHidden(true)
@@ -257,8 +257,8 @@ struct ProfileView: View {
                             K.impactOccur()
                         }//: TAP GESTURE
                     }//: HSTACK
-                }
-            }
+                }//: TABBARITEM
+            }//: TOOLBAR
         }//: GEOMETRYREADER
     }
 }

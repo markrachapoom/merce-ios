@@ -32,7 +32,7 @@ class AuthenticationViewModel: ObservableObject {
                 if (user != nil) {
                     self.currentUser = user
                     self.fetchCurrentUser(uid: user?.uid)
-//                    self.state = .signedIn
+                    self.state = .signedIn
                 } else {
                     self.state = .signedOut
                 }
@@ -50,22 +50,43 @@ class AuthenticationViewModel: ObservableObject {
             if let document = document, document.exists {
                 
 //                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                let fetchedUser: MerceUser? = try? document.data(as: MerceUser.self)
                 
-                let fetchedUser = try? document.data(as: MerceUser.self)
-                
-                guard let fetchedUser = fetchedUser else {
-                    self.state = .signedOut
-                    return
-                }
+                guard let fetchedUser = fetchedUser else { return }
                 
                 self.currentMerceUser = fetchedUser
-                self.state = .signedIn
                 
             } else {
-                self.state = .signedOut
+//                self.state = .signedOut
                 print("Current user does not exist")
             }
         }
+    }
+    
+    
+    func fetchUser(uid: String?, completion: @escaping(Result<MerceUser, MerceError>) -> Void) -> Void {
+        guard let uid = uid else { return }
+        
+        let docRef = db.collection("users").document(uid)
+        
+        docRef.getDocument { document, error in
+            if let document = document, document.exists {
+                
+                let fetchedUser: MerceUser? = try? document.data(as: MerceUser.self)
+                
+                guard let fetchedUser = fetchedUser else {
+                    completion(.failure(.noUserFound))
+                    return
+                }
+                
+                completion(.success(fetchedUser))
+                
+            } else {
+                print("Current user does not exist")
+                completion(.failure(.noUserFound))
+            }
+        }
+        
     }
     
     
@@ -107,6 +128,7 @@ extension AuthenticationViewModel {
             authenticateUser(for: user, with: error)
         }
     }
+    
 }
 
 
@@ -151,7 +173,8 @@ extension AuthenticationViewModel {
                         "email": user.email ?? NSNull(),
                         "followingCount": 0,
                         "followersCount": 0,
-                        "joinedDate": Date()
+                        "joinedDate": Date(),
+                        "keywordsForLookup": []
                     ]
                     
                     // Add a new document in users collection
