@@ -25,6 +25,10 @@ struct EditProfileView: View {
     @State private var isPickingCoverImage: Bool = false
     @State private var isPickingProfileImage: Bool = false
     
+    @State private var editingName: String = ""
+    @State private var editingUsername: String = ""
+    @State private var editingBio: String = ""
+    
     private let profileImageSize: CGFloat = 110
     
     var body: some View {
@@ -64,6 +68,7 @@ struct EditProfileView: View {
                                     self.isPickingProfileImage = true
                                 }, label: {
                                     VStack {
+                                        
                                         if let selectedProfileUIImage = selectedProfileUIImage {
                                             Image(uiImage: selectedProfileUIImage)
                                                 .resizable()
@@ -88,17 +93,39 @@ struct EditProfileView: View {
                                 
                             }//: HSTACK
                             
-                            VStack(alignment: .leading) {
-                                Text(user.givenName ?? "Unknown")
-                                    .font(.title3)
-                                    .fontWeight(.bold)
-                                Text("@\(user.username ?? "unknown")")
-                                    .font(.system(size: K.fontSize))
-                                    .foregroundColor(Color(.secondaryLabel))
+                            
+                            EditRow(title: "Name", alignment: .center) {
+                                TextField("Enter your name", text: $editingName)
                             }
                             
-                            Text(user.bio ?? "")
-                                .font(.system(size: K.fontSize))
+                            Divider()
+                            
+                            EditRow(title: "Username", alignment: .center) {
+                                TextField("Enter your username", text: $editingUsername)
+                                    .textInputAutocapitalization(.never)
+                            }
+                            
+                            Divider()
+                            
+                            EditRow(title: "Bio") {
+                                VStack(alignment: .trailing, spacing: 2) {
+                                    TextEditor(text: $editingBio)
+                                        .foregroundColor(Color(.label))
+                                        .font(.system(size: K.fontSize))
+                                        .frame(height: 125)
+                                        .cornerRadius(13)
+                                    //                                    .background(Color.secondaryBackgroundColor)
+                                        .cornerRadius(13)
+                                        .scrollContentBackground(.hidden)
+                                    
+                                    Text("\(editingBio.count)/300")
+                                        .font(.footnote)
+                                        .foregroundColor(editingBio.count > 300 ? .red : Color(.secondaryLabel))
+                                    
+                                }//: VSTACK
+                            }
+                            
+                            Divider()
                             
                         }//: VSTACK
                         .offset(y: -(profileImageSize/2))
@@ -179,6 +206,7 @@ struct EditProfileView: View {
                             })//: BUTTON
                             
                         }//: HSTACK
+                        .foregroundColor(Color(.label))
                         
                         HStack {
                             Spacer()
@@ -215,8 +243,35 @@ struct EditProfileView: View {
     }
 }
 
+struct EditRow<Content: View>: View {
+    
+    var title: String
+    var alignment: VerticalAlignment
+    var content: Content
+    
+    init(title: String, alignment: VerticalAlignment = .top, @ViewBuilder content: () -> Content) {
+        self.title = title
+        self.alignment = alignment
+        self.content = content()
+    }
+    
+    var body: some View {
+        HStack(alignment: alignment, spacing: 13) {
+            HStack {
+                Text(title)
+                    .font(.system(size: K.fontSize, weight: .semibold))
+                Spacer()
+            }//: HSTACK
+            .frame(width: 80)
+            content
+        }//: HSTACK
+        .font(.system(size: K.fontSize))
+    }
+}
+
 struct EditProfileView_Previews: PreviewProvider {
     static var previews: some View {
         EditProfileView(user: MerceUser.sampleEntrepreneur, authVM: AuthenticationViewModel())
+            .preferredColorScheme(.dark)
     }
 }
