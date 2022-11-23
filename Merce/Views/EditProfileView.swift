@@ -213,7 +213,18 @@ struct EditProfileView: View {
                                     print("update data ", updateData)
                                     
                                     updateData.updateValue(editingName, forKey: "givenName")
+                                    
+                                    
                                     updateData.updateValue(editingUsername, forKey: "username")
+                                    
+                                    
+                                    // Keywords For Loopup
+                                    let keywordsForLookup: [String] = [
+                                        editingUsername.generateStringSequence(),
+                                        editingName.generateStringSequence()
+                                    ].flatMap{$0}.compactMap{$0}
+                                    updateData.updateValue(keywordsForLookup, forKey: "keywordsForLookup")
+                                    
                                     updateData.updateValue(editingBio, forKey: "bio")
                                     
                                     authVM.saveEditProfileChange(updateData: updateData) { result in
