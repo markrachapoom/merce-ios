@@ -44,7 +44,6 @@ struct EditProfileView: View {
                     VStack(spacing: 0) {
                         
                         Button(action: {
-                            K.impactOccur()
                             self.isPickingCoverImage = true
                         }, label: {
                             // COVER IMAGE
@@ -71,7 +70,6 @@ struct EditProfileView: View {
                         VStack(alignment: .leading, spacing: 13) {
                             HStack {
                                 Button(action: {
-                                    K.impactOccur()
                                     self.isPickingProfileImage = true
                                 }, label: {
                                     VStack {
@@ -148,7 +146,6 @@ struct EditProfileView: View {
                         HStack {
                             
                             Button(action: {
-                                K.impactOccur()
                                 dismiss()
                             }, label: {
                                 Text("Cancel")
@@ -162,14 +159,13 @@ struct EditProfileView: View {
                                     .progressViewStyle(CircularProgressViewStyle())
                             } else {
                                 Button(action: {
-                                    K.impactOccur()
                                     
                                     self.isSaving = true
                                     
                                     var updateData: [AnyHashable:Any] = [:]
                                     
-                                    if let selectedCoverUIImage = editingCoverUIImage {
-                                        StorageManager.shared.uploadImage(uid: user.uid, path: .coverImage, imageData: selectedCoverUIImage.jpegData(compressionQuality: 0.3)) { result in
+                                    if let selectedCoverUIImage = editingCoverUIImage?.resizeSquareImage(newWidth: 1024) {
+                                        StorageManager.shared.uploadImage(uid: user.uid, path: .coverImage, imageData: selectedCoverUIImage.jpegData(compressionQuality: 0.1)) { result in
                                             switch result {
                                             case .success(let downloadURLString):
                                                 authVM.saveEditProfileChange(
@@ -189,8 +185,8 @@ struct EditProfileView: View {
                                         }
                                     }
                                     
-                                    if let selectedProfileUIImage = editingProfileUIImage {
-                                        StorageManager.shared.uploadImage(uid: user.uid, path: .profileImage, imageData: selectedProfileUIImage.jpegData(compressionQuality: 0.3)) { result in
+                                    if let selectedProfileUIImage = editingProfileUIImage?.resizeSquareImage(newWidth: 400) {
+                                        StorageManager.shared.uploadImage(uid: user.uid, path: .profileImage, imageData: selectedProfileUIImage.jpegData(compressionQuality: 1)) { result in
                                             switch result {
                                             case .success(let downloadURLString):
                                                 authVM.saveEditProfileChange(

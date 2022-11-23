@@ -100,7 +100,6 @@ struct BuzzView: View {
                                                         
                                                         Button(action: {
                                                             withAnimation(.none) {
-                                                                K.impactOccur()
                                                                 self.isFollowed.toggle()
                                                             }
                                                         }, label: {
@@ -136,7 +135,6 @@ struct BuzzView: View {
                                                 
                                                 VStack(spacing: 6) {
                                                     Button(action: {
-                                                        K.impactOccur()
                                                         withAnimation(.easeInOut(duration: 0.1)) {
                                                             isFavorite.toggle()
                                                         }
@@ -157,7 +155,7 @@ struct BuzzView: View {
                                                 
                                                 VStack(spacing: 6) {
                                                     Button(action: {
-                                                        K.impactOccur()
+                                                        
                                                     }, label: {
                                                         Image(systemName: "bubble.left")
                                                     })
@@ -170,7 +168,7 @@ struct BuzzView: View {
                                                 
                                                 
                                                 Button(action: {
-                                                    K.impactOccur()
+                                                    
                                                 }, label: {
                                                     VStack(spacing: 6) {
                                                         Image(systemName: "paperplane")
@@ -184,7 +182,6 @@ struct BuzzView: View {
                                                 
                                                 Button(action: {
                                                     withAnimation(.easeInOut(duration: 0.1)) {
-                                                        K.impactOccur()
                                                         isSaved.toggle()
                                                     }
                                                 }, label: {
@@ -235,9 +232,6 @@ struct BuzzView: View {
                 .tabViewStyle(.page(indexDisplayMode: .always))
                 .frame(width: geo.size.width)
                 .cornerRadius(buzzConerRadius)
-                .onChange(of: tabSelection) { _ in
-                    K.impactOccur()
-                }//: ONCHANGE
             }//: GEOMETRYREADER
         }//: NAVIGATIONVIEW
     }

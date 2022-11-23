@@ -20,13 +20,7 @@ struct MerceUser: Codable {
     var followingCount: Int?
     var followersCount: Int?
     var joinedDate: Date?
-    var keywordsForLookup: [String] {
-        [
-            self.username?.generateStringSequence(),
-            self.givenName?.generateStringSequence(),
-            self.bio?.generateStringSequence()
-        ].compactMap{$0}.flatMap{$0}
-    }
+    var keywordsForLookup: [String]?
      
     static let allEntrepreneurs: [MerceUser] = Bundle.main.decode(file: "entrepreneurs.json")
     

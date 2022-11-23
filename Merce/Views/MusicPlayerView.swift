@@ -43,7 +43,6 @@ struct MusicPlayerView: View {
                         
                         Button(action: {
                             withAnimation(.easeInOut(duration: 0.2)) {
-                                K.impactOccur()
                                 showMusicPlayerModal = false
                             }
                         }, label: {
@@ -76,7 +75,6 @@ struct MusicPlayerView: View {
                             HStack(spacing: 13) {
                                 
                                 Button(action: {
-                                    K.impactOccur()
                                     withAnimation(.easeInOut(duration: 0.1)) {
                                         isFavorite.toggle()
                                     }
@@ -107,9 +105,6 @@ struct MusicPlayerView: View {
                                             //                                                .font(.system(.title2))
                                         }
                                 }//: ELLIPSIS MENU
-                                .onTapGesture {
-                                    K.impactOccur()
-                                }//: TAP GESTURE
                             }//: HSTACK
                             
                         }//: HSTACK
@@ -146,7 +141,6 @@ struct MusicPlayerView: View {
                             
                             // SHUFFLE
                             Button(action: {
-                                K.impactOccur()
                                 withAnimation(.none) {
                                     isShuffle.toggle()
                                 }
@@ -162,7 +156,6 @@ struct MusicPlayerView: View {
                             
                             // Back
                             Button(action: {
-                                K.impactOccur()
                                 if let player = playerVM.audioPlayer {
                                     player.currentTime = 0.0
                                     currentTime = 0.0
@@ -176,7 +169,6 @@ struct MusicPlayerView: View {
                             
                             // Play/Pause
                             Button(action: {
-                                K.impactOccur()
                                 playerVM.togglePlay()
                             }, label: {
                                 Circle()
@@ -192,7 +184,7 @@ struct MusicPlayerView: View {
                             
                             // Forward
                             Button(action: {
-                                K.impactOccur()
+                                
                             }, label: {
                                 Image(systemName: "forward.end.fill")
                                     .font(.system(size: 28, weight: .medium, design: .default))
@@ -202,7 +194,6 @@ struct MusicPlayerView: View {
                             
                             // Loop
                             Button(action: {
-                                K.impactOccur()
                                 withAnimation(.none) {
                                     isRepeated.toggle()
                                 }

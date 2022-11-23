@@ -33,7 +33,6 @@ struct SettingsView: View {
                     })
                     
                     Button(action: {
-                        K.impactOccur()
                         isLogoutAlertShown = true
                     }, label: {
                         SettingsRowView(label: "Log Out", iconName: "rectangle.portrait.and.arrow.right", color: .red, trailingContent: {

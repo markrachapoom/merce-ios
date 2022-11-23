@@ -58,7 +58,6 @@ struct AuthenticationView: View {
                         VStack(spacing: 13) {
                             Button(action: {
                                 withAnimation {
-                                    K.impactOccur()
                                     authVM.continueWithGoogle()
                                 }
                             }, label: {

@@ -55,12 +55,6 @@ struct HomeView: View {
                                                     .frame(width: 90, height: 90)
                                                     .clipShape(Circle())
                                                 }//: NAVIGATIONLINK
-                                                .simultaneousGesture(
-                                                    TapGesture()
-                                                        .onEnded({ _ in
-                                                            K.impactOccur()
-                                                        })
-                                                )//: SIMULTANIOUS
                                             }//: LOOP
                                         }//: HSTACK
                                         .padding(.horizontal)
@@ -121,12 +115,6 @@ struct HomeView: View {
                             NavigationLink(destination: InboxView()) {
                                 Image(systemName: "paperplane")
                             }//: NAVIGATIONLINK
-                            .simultaneousGesture(
-                                TapGesture()
-                                    .onEnded({ _ in
-                                        K.impactOccur()
-                                    })
-                            )
                             
                         }//: HSTACK
                         .font(.system(size: 22))

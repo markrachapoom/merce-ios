@@ -25,7 +25,7 @@ struct NavBarView: View {
                 
                 if (withBackButton) {
                     Button(action: {
-                        K.impactOccur()
+                        
                         dismiss()
                     }, label: {
                         Image(systemName: "arrow.left")

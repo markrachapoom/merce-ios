@@ -54,7 +54,6 @@ struct MainTabVIew: View {
                     VStack(spacing: 0) {
                         
                         Button(action: {
-                            K.impactOccur()
                             withAnimation(.easeInOut(duration: 0.3)) {
                                 self.showMusicPlayerModal = true
                                 self.canOpenMusicPlayerModal = false
@@ -128,9 +127,6 @@ struct MainTabVIew: View {
                     .presentationDetents([.large])
                     .edgesIgnoringSafeArea(.bottom)
             })
-            .onChange(of: tabSelection) { _ in
-                K.impactOccur()
-            }//: ONCHANGE
         }
     }
 }

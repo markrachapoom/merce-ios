@@ -13,7 +13,7 @@ struct AccountView: View {
     
     var body: some View {
         NavigationView {
-            ProfileView(user: authVM.currentMerceUser ?? MerceUser(), isProfileOwner: true)
+            ProfileView(user: authVM.currentMerceUser ?? MerceUser(), isBackButtonHidden: true)
         }//: NAVIGATION VIEW
     }
 }

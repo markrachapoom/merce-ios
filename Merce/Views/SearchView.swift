@@ -45,7 +45,6 @@ struct SearchView: View {
                             Spacer()
                             
                             Button(action: {
-                                K.impactOccur()
                                 searchText.removeAll()
                             }, label: {
                                 Image(systemName: "x.circle.fill")
@@ -67,7 +66,6 @@ struct SearchView: View {
                         if (showSearchModal) {
                             Button(action: {
                                 withAnimation(.easeInOut(duration: 0.2)) {
-                                    K.impactOccur()
                                     showSearchModal = false
                                     isTextFieldFocused = false
                                     searchText.removeAll()
@@ -80,7 +78,6 @@ struct SearchView: View {
                     .padding(.all)
                     .onTapGesture {
                         withAnimation(.easeInOut(duration: 0.2)) {
-                            K.impactOccur()
                             if (!showSearchModal) {
                                 showSearchModal = true
                                 isTextFieldFocused = true

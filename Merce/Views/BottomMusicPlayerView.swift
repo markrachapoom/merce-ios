@@ -43,7 +43,6 @@ struct BottomMusicPlayerView: View {
                     Spacer()
                     
                     Button(action: {
-                        K.impactOccur()
                         withAnimation(.none) {
                             withAnimation(.none) {
                                 playerVM.togglePlay()

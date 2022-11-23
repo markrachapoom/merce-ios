@@ -12,11 +12,15 @@ struct ProfileView: View {
     @EnvironmentObject private var authVM: AuthenticationViewModel
     
     let user: MerceUser
-    var isProfileOwner: Bool
+    let isBackButtonHidden: Bool
     
-    init(user: MerceUser, isProfileOwner: Bool = false) {
+    init(user: MerceUser, isBackButtonHidden: Bool = false) {
         self.user = user
-        self.isProfileOwner = isProfileOwner
+        self.isBackButtonHidden = isBackButtonHidden
+    }
+    
+    var isProfileOwner: Bool {
+        return authVM.currentMerceUser?.username == user.username
     }
     
     @Environment(\.dismiss) private var dismiss
@@ -113,7 +117,6 @@ struct ProfileView: View {
                                 if (!isProfileOwner) {
                                     Button(action: {
                                         withAnimation(.none) {
-                                            K.impactOccur()
                                             self.isFollowed.toggle()
                                         }
                                     }, label: {
@@ -129,9 +132,6 @@ struct ProfileView: View {
                                     })
                                     
                                     Button(action: {
-                                        withAnimation(.none) {
-                                            K.impactOccur()
-                                        }
                                     }, label: {
                                         Capsule()
                                             .stroke(style: StrokeStyle(lineWidth: 1))
@@ -148,15 +148,13 @@ struct ProfileView: View {
                                 if (isProfileOwner) {
                                     
                                     Button(action: {
-                                        K.impactOccur()
                                         self.isEditingProfile = true
                                     }, label: {
                                         Capsule()
-//                                            .stroke(style: StrokeStyle(lineWidth: 1))
-//                                            .foregroundColor(Color(.separator))
+                                            .stroke(style: StrokeStyle(lineWidth: 1))
+                                            .foregroundColor(Color(.separator))
                                             .background(.clear)
 //                                            .foregroundColor(Color.secondaryBackgroundColor)
-                                            .foregroundColor(Color.secondaryBackgroundColor)
                                             .overlay {
                                                 Text("Edit Profile")
                                                     .foregroundColor(Color(.label))
@@ -176,14 +174,6 @@ struct ProfileView: View {
                                             }
                                             .cornerRadius(100)
                                     }//: NAVIGATIONLINK
-                                    .simultaneousGesture(
-                                        TapGesture()
-                                            .onEnded({ _ in
-                                                K.impactOccur()
-                                            })
-                                    )//: SIMULTANIOUS
-                                    
-                                    
                                 }//: ISPROFILEOWNER
                             }//: HSTACK
                             .font(.system(size: K.fontSize))
@@ -207,10 +197,9 @@ struct ProfileView: View {
             })//: FULLSCREEN COVER
             .toolbar {
                 
-                if (!isProfileOwner) {
+                if (!isBackButtonHidden) {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: {
-                            K.impactOccur()
                             dismiss()
                         }, label: {
                             CircleIcon(iconName: "arrow.left")
@@ -231,14 +220,10 @@ struct ProfileView: View {
                             } label: {
                                 CircleIcon(iconName: "ellipsis")
                             }//: ELLIPSIS MENU
-                            .onTapGesture {
-                                K.impactOccur()
-                            }//: TAP GESTURE
                         }
                         
                         if (isProfileOwner) {
                             Button(action: {
-                                K.impactOccur()
                                 guard let sharingUsername = user.username else { return }
                                 guard let urlShare = URL(string: "https://merce.app/\(sharingUsername)") else { return }
                                 let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
@@ -250,12 +235,6 @@ struct ProfileView: View {
                             NavigationLink(destination: SettingsView()) {
                                 CircleIcon(iconName: "gearshape")
                             }//: NAVIGATIONLINK
-                            .simultaneousGesture(
-                                TapGesture()
-                                    .onEnded({ _ in
-                                        K.impactOccur()
-                                    })
-                            )//: SIMULTANIOUS
                         }//: NAVIGATION LINK
                         
                     }//: HSTACK

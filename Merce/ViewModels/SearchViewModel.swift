@@ -6,17 +6,27 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 
 class SearchViewModel: ObservableObject {
     
+    let db = Firestore.firestore()
+    
     @Published var searchResults: [MerceUser] = []
     
     func fetchSearch(from searchText: String) -> Void {
-        
+        db.collection("users").whereField("keywordsForLookup", arrayContains: searchText).getDocuments { snapshot, error in
+            guard error == nil else { return }
+            guard let documents = snapshot?.documents else { return }
+            self.searchResults = documents.compactMap({ queryDocumentSnapshot in
+                try? queryDocumentSnapshot.data(as: MerceUser.self)
+            })
+        }
     }
     
-    func fetchSearch2(from searchText: String) -> Void {
+    
+    func fetchLocalSearch(from searchText: String) -> Void {
         
         let allFetchedResults = MerceUser.allEntrepreneurs
         
