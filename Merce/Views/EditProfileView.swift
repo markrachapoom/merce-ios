@@ -31,6 +31,8 @@ struct EditProfileView: View {
     @State private var editingUsername: String = ""
     @State private var editingBio: String = ""
     
+    @State private var isSaving: Bool = false
+    
     private let profileImageSize: CGFloat = 110
     
     
@@ -154,66 +156,81 @@ struct EditProfileView: View {
                             
                             Spacer()
                             
-                            Button(action: {
-                                K.impactOccur()
-                                
-                                var updateData: [AnyHashable:Any] = [:]
-                                
-                                if let selectedCoverUIImage = editingCoverUIImage {
-                                    StorageManager.shared.uploadImage(uid: user.uid, path: .coverImage, imageData: selectedCoverUIImage.jpegData(compressionQuality: 0.3)) { result in
-                                        switch result {
-                                            case .success(let downloadURLString):
-                                            authVM.saveEditProfileChange(
-                                                updateData: [
-                                                    "coverImageURL" : downloadURLString
-                                                ]) { result in
-                                                    switch result {
-                                                    case .success(let message):
-                                                        print(message)
-                                                    case .failure(let merceError):
-                                                        print(merceError.errorMessage)
-                                                    }
-                                                }
-                                            case .failure(let merceErr):
-                                                print(merceErr.errorMessage)
-                                        }
-                                    }
-                                }
-                                
-                                if let selectedProfileUIImage = editingProfileUIImage {
-                                    StorageManager.shared.uploadImage(uid: user.uid, path: .profileImage, imageData: selectedProfileUIImage.jpegData(compressionQuality: 0.3)) { result in
-                                        switch result {
-                                            case .success(let downloadURLString):
-                                            authVM.saveEditProfileChange(
-                                                updateData: [
-                                                    "profileImageURL" : downloadURLString
-                                                ]) { result in
-                                                    switch result {
-                                                    case .success(let message):
-                                                        print(message)
-                                                    case .failure(let merceError):
-                                                        print(merceError.errorMessage)
-                                                    }
-                                                }
-                                            case .failure(let merceErr):
-                                                print(merceErr.errorMessage)
-                                        }
-                                    }
-                                }
-                                
-                                print("update data ", updateData)
-                                
-                                updateData.updateValue(editingName, forKey: "givenName")
-                                updateData.updateValue(editingUsername, forKey: "username")
-                                updateData.updateValue(editingBio, forKey: "bio")
-                                
-                                authVM.saveEditProfileChange(updateData: updateData) { result in
+                            
+                            if (isSaving) {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle())
+                            } else {
+                                Button(action: {
+                                    K.impactOccur()
                                     
-                                }
-                                
-                            }, label: {
-                                Text("Save")
-                            })//: BUTTON
+                                    self.isSaving = true
+                                    
+                                    var updateData: [AnyHashable:Any] = [:]
+                                    
+                                    if let selectedCoverUIImage = editingCoverUIImage {
+                                        StorageManager.shared.uploadImage(uid: user.uid, path: .coverImage, imageData: selectedCoverUIImage.jpegData(compressionQuality: 0.3)) { result in
+                                            switch result {
+                                            case .success(let downloadURLString):
+                                                authVM.saveEditProfileChange(
+                                                    updateData: [
+                                                        "coverImageURL" : downloadURLString
+                                                    ]) { result in
+                                                        switch result {
+                                                        case .success(let message):
+                                                            print(message)
+                                                        case .failure(let merceError):
+                                                            print(merceError.errorMessage)
+                                                        }
+                                                    }
+                                            case .failure(let merceErr):
+                                                print(merceErr.errorMessage)
+                                            }
+                                        }
+                                    }
+                                    
+                                    if let selectedProfileUIImage = editingProfileUIImage {
+                                        StorageManager.shared.uploadImage(uid: user.uid, path: .profileImage, imageData: selectedProfileUIImage.jpegData(compressionQuality: 0.3)) { result in
+                                            switch result {
+                                            case .success(let downloadURLString):
+                                                authVM.saveEditProfileChange(
+                                                    updateData: [
+                                                        "profileImageURL" : downloadURLString
+                                                    ]) { result in
+                                                        switch result {
+                                                        case .success(let message):
+                                                            print(message)
+                                                        case .failure(let merceError):
+                                                            print(merceError.errorMessage)
+                                                        }
+                                                    }
+                                            case .failure(let merceErr):
+                                                print(merceErr.errorMessage)
+                                            }
+                                        }
+                                    }
+                                    
+                                    print("update data ", updateData)
+                                    
+                                    updateData.updateValue(editingName, forKey: "givenName")
+                                    updateData.updateValue(editingUsername, forKey: "username")
+                                    updateData.updateValue(editingBio, forKey: "bio")
+                                    
+                                    authVM.saveEditProfileChange(updateData: updateData) { result in
+                                        switch result {
+                                            case .success(_):
+                                                self.isSaving = false
+                                                dismiss()
+                                            case .failure(let merceError):
+                                                print(merceError.errorMessage)
+                                        }
+                                    }
+                                    
+                                }, label: {
+                                    Text("Save")
+                                        .fontWeight(.semibold)
+                                })//: BUTTON
+                            }//: IS SAVING CONDITION
                             
                         }//: HSTACK
                         .foregroundColor(Color(.label))

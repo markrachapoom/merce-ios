@@ -139,6 +139,8 @@ extension AuthenticationViewModel {
         
         do {
             try Auth.auth().signOut()
+            self.currentUser = nil
+            self.currentMerceUser = nil
             state = .signedOut
         } catch {
             print(error.localizedDescription)

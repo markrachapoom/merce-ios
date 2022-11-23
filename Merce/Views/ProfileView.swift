@@ -146,6 +146,7 @@ struct ProfileView: View {
                                 }//: IS-PROFILE-OWNER
                                 
                                 if (isProfileOwner) {
+                                    
                                     Button(action: {
                                         K.impactOccur()
                                         self.isEditingProfile = true
@@ -161,8 +162,29 @@ struct ProfileView: View {
                                                     .foregroundColor(Color(.label))
                                             }
                                             .cornerRadius(100)
-                                    })
-                                }//: IDPROFILEOWNER
+                                    })//: EDIT BUTTON
+                                    
+                                    NavigationLink(destination: SavedView()) {
+                                        Capsule()
+                                            .stroke(style: StrokeStyle(lineWidth: 1))
+                                            .foregroundColor(Color(.separator))
+                                            .background(.clear)
+//                                            .foregroundColor(Color.secondaryBackgroundColor)
+                                            .overlay {
+                                                Text("Saved")
+                                                    .foregroundColor(Color(.label))
+                                            }
+                                            .cornerRadius(100)
+                                    }//: NAVIGATIONLINK
+                                    .simultaneousGesture(
+                                        TapGesture()
+                                            .onEnded({ _ in
+                                                K.impactOccur()
+                                            })
+                                    )//: SIMULTANIOUS
+                                    
+                                    
+                                }//: ISPROFILEOWNER
                             }//: HSTACK
                             .font(.system(size: K.fontSize))
                             .fontWeight(.semibold)
