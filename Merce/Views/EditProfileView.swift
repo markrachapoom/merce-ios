@@ -15,6 +15,7 @@ struct EditProfileView: View {
     @ObservedObject private var authVM: AuthenticationViewModel
     
     init(user: MerceUser, authVM: AuthenticationViewModel) {
+        UITextView.appearance().textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         self.user = user
         self.authVM = authVM
     }
@@ -30,6 +31,7 @@ struct EditProfileView: View {
     @State private var editingBio: String = ""
     
     private let profileImageSize: CGFloat = 110
+    
     
     var body: some View {
         GeometryReader { geo in
@@ -103,20 +105,21 @@ struct EditProfileView: View {
                             EditRow(title: "Username", alignment: .center) {
                                 TextField("Enter your username", text: $editingUsername)
                                     .textInputAutocapitalization(.never)
+                                    .autocorrectionDisabled(true)
                             }
                             
                             Divider()
                             
                             EditRow(title: "Bio") {
                                 VStack(alignment: .trailing, spacing: 2) {
+                                    
                                     TextEditor(text: $editingBio)
                                         .foregroundColor(Color(.label))
                                         .font(.system(size: K.fontSize))
                                         .frame(height: 125)
-                                        .cornerRadius(13)
                                     //                                    .background(Color.secondaryBackgroundColor)
-                                        .cornerRadius(13)
                                         .scrollContentBackground(.hidden)
+                                        .padding(0)
                                     
                                     Text("\(editingBio.count)/300")
                                         .font(.footnote)
