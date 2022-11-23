@@ -20,12 +20,13 @@ struct EditProfileView: View {
         self.authVM = authVM
     }
     
-    @State private var selectedCoverUIImage: UIImage? = nil
-    @State private var selectedProfileUIImage: UIImage? = nil
     
     @State private var isPickingCoverImage: Bool = false
     @State private var isPickingProfileImage: Bool = false
     
+    // Editing Properties
+    @State private var editingCoverUIImage: UIImage? = nil
+    @State private var editingProfileUIImage: UIImage? = nil
     @State private var editingName: String = ""
     @State private var editingUsername: String = ""
     @State private var editingBio: String = ""
@@ -41,11 +42,12 @@ struct EditProfileView: View {
                     VStack(spacing: 0) {
                         
                         Button(action: {
+                            K.impactOccur()
                             self.isPickingCoverImage = true
                         }, label: {
                             // COVER IMAGE
                             VStack {
-                                if let selectedCoverUIImage = selectedCoverUIImage {
+                                if let selectedCoverUIImage = editingCoverUIImage {
                                     Image(uiImage: selectedCoverUIImage)
                                         .resizable()
                                         .scaledToFill()
@@ -59,19 +61,20 @@ struct EditProfileView: View {
                                             .foregroundColor(.secondaryBackgroundColor)
                                     }
                                 }
-                            }
+                            }//: VSTACK
                             .frame(width: geo.frame(in: .global).width, height: K.coverImageHeight)
                             .clipped()
-                        })
+                        })//: BUTTON
                         
                         VStack(alignment: .leading, spacing: 13) {
                             HStack {
                                 Button(action: {
+                                    K.impactOccur()
                                     self.isPickingProfileImage = true
                                 }, label: {
                                     VStack {
                                         
-                                        if let selectedProfileUIImage = selectedProfileUIImage {
+                                        if let selectedProfileUIImage = editingProfileUIImage {
                                             Image(uiImage: selectedProfileUIImage)
                                                 .resizable()
                                                 .scaledToFill()
@@ -156,7 +159,7 @@ struct EditProfileView: View {
                                 
                                 var updateData: [AnyHashable:Any] = [:]
                                 
-                                if let selectedCoverUIImage = selectedCoverUIImage {
+                                if let selectedCoverUIImage = editingCoverUIImage {
                                     StorageManager.shared.uploadImage(uid: user.uid, path: .coverImage, imageData: selectedCoverUIImage.jpegData(compressionQuality: 0.3)) { result in
                                         switch result {
                                             case .success(let downloadURLString):
@@ -177,7 +180,7 @@ struct EditProfileView: View {
                                     }
                                 }
                                 
-                                if let selectedProfileUIImage = selectedProfileUIImage {
+                                if let selectedProfileUIImage = editingProfileUIImage {
                                     StorageManager.shared.uploadImage(uid: user.uid, path: .profileImage, imageData: selectedProfileUIImage.jpegData(compressionQuality: 0.3)) { result in
                                         switch result {
                                             case .success(let downloadURLString):
@@ -199,6 +202,10 @@ struct EditProfileView: View {
                                 }
                                 
                                 print("update data ", updateData)
+                                
+                                updateData.updateValue(editingName, forKey: "givenName")
+                                updateData.updateValue(editingUsername, forKey: "username")
+                                updateData.updateValue(editingBio, forKey: "bio")
                                 
                                 authVM.saveEditProfileChange(updateData: updateData) { result in
                                     
@@ -235,14 +242,19 @@ struct EditProfileView: View {
                 .edgesIgnoringSafeArea(.top)
             }//: ZSTACK
             .fullScreenCover(isPresented: $isPickingCoverImage, content: {
-                PHPickerView(imagesLimit: 1, selectedImage: $selectedCoverUIImage)
+                PHPickerView(imagesLimit: 1, selectedImage: $editingCoverUIImage)
                     .edgesIgnoringSafeArea(.all)
             })//: FULLSCREEN
             .fullScreenCover(isPresented: $isPickingProfileImage, content: {
-                PHPickerView(imagesLimit: 1, selectedImage: $selectedProfileUIImage)
+                PHPickerView(imagesLimit: 1, selectedImage: $editingProfileUIImage)
                     .edgesIgnoringSafeArea(.all)
             })//: FULLSCREEN
         }//: GEOMETRYREADER
+        .onAppear {
+            self.editingName = user.givenName ?? ""
+            self.editingUsername = user.username ?? ""
+            self.editingBio = user.bio ?? ""
+        }
     }
 }
 

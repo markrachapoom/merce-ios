@@ -30,6 +30,13 @@ struct ProfileView: View {
     
     @State private var isFollowed: Bool = false
     
+    func showActivitySheet() {
+        guard let sharingUsername = user.username else { return }
+        guard let urlShare = URL(string: "https://merce.app/\(sharingUsername)") else { return }
+        let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
+        UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
+    }
+    
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -75,31 +82,6 @@ struct ProfileView: View {
                                 
                                 Spacer()
                                 
-//                                if (isProfileOwner) {
-//                                    Button(action: {
-//                                        K.impactOccur()
-//                                        if (isProfileOwner) {
-//                                            self.isEditingProfile = true
-//                                        } else {
-//                                            withAnimation(.none) {
-//                                                self.isFollowed.toggle()
-//                                            }
-//                                        }
-//                                    }, label: {
-//                                        Text(isProfileOwner ? "Edit Profile" : (isFollowed ? "Followed" : "Follow"))
-//                                            .foregroundColor(Color(.white))
-//                                            .font(.system(size: K.fontSize - 1))
-//                                            .fontWeight(.semibold)
-//                                            .frame(width: 104, height: 34)
-//                                            .background(
-//                                                Capsule()
-//                                                    .stroke(style: StrokeStyle(lineWidth: 1))
-//                                                    .foregroundColor(isFollowed ? .white.opacity(0.65) : Color(.opaqueSeparator))
-//                                            )//: BACKGROUND
-//                                    })//: EDIT PROFILE BUTTON
-//                                    .offset(y: 18 + 13)
-//                                }//: CONDITION
-                                
                             }//: HSTACK
                             
                             VStack(alignment: .leading) {
@@ -121,7 +103,7 @@ struct ProfileView: View {
                                     .foregroundColor(Color(.secondaryLabel))
                             }
                             
-                            if let bio = user.bio {
+                            if let bio = user.bio, !bio.isEmpty {
                                 Text(bio)
                                     .font(.system(size: K.fontSize))
                             }
@@ -169,34 +151,17 @@ struct ProfileView: View {
                                         self.isEditingProfile = true
                                     }, label: {
                                         Capsule()
-                                            .stroke(style: StrokeStyle(lineWidth: 1))
-                                            .foregroundColor(Color(.separator))
+//                                            .stroke(style: StrokeStyle(lineWidth: 1))
+//                                            .foregroundColor(Color(.separator))
                                             .background(.clear)
 //                                            .foregroundColor(Color.secondaryBackgroundColor)
+                                            .foregroundColor(Color.secondaryBackgroundColor)
                                             .overlay {
                                                 Text("Edit Profile")
+                                                    .foregroundColor(Color(.label))
                                             }
                                             .cornerRadius(100)
                                     })
-                                    
-                                    HStack {
-                                        NavigationLink(destination: SettingsView()) {
-                                            Capsule()
-                                                .stroke(style: StrokeStyle(lineWidth: 1))
-                                                .foregroundColor(Color(.separator))
-                                                .background(.clear)
-                                                .overlay {
-                                                    Text("Settings")
-                                                }
-                                                .cornerRadius(100)
-                                        }//: NAVIGATIONLINK
-                                        .simultaneousGesture(
-                                            TapGesture()
-                                                .onEnded({ _ in
-                                                    K.impactOccur()
-                                                })
-                                        )//: SIMULTANIOUS
-                                    }//: HSTACK
                                 }//: IDPROFILEOWNER
                             }//: HSTACK
                             .font(.system(size: K.fontSize))
@@ -234,28 +199,43 @@ struct ProfileView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack(spacing: 4) {
                         
-//                        if (isProfileOwner) {
-//                            NavigationLink(destination: SettingsView()) {
-//                                CircleIcon(iconName: "gearshape")
-//                            }//: NAVIGATIONLINK
-//                            .simultaneousGesture(
-//                                TapGesture()
-//                                    .onEnded({ _ in
-//                                        K.impactOccur()
-//                                    })
-//                            )//: SIMULTANIOUS
-//                        }//: CONDITION
+                        if (!isProfileOwner) {
+                            Menu {
+                                Button(action: {
+                                    showActivitySheet()
+                                }, label: {
+                                    Label("Share Profile", systemImage: "square.and.arrow.up")
+                                })
+                            } label: {
+                                CircleIcon(iconName: "ellipsis")
+                            }//: ELLIPSIS MENU
+                            .onTapGesture {
+                                K.impactOccur()
+                            }//: TAP GESTURE
+                        }
                         
-                        Menu {
-                            Button(action: {}, label: {
-                                Label("Share Profile", systemImage: "square.and.arrow.up")
+                        if (isProfileOwner) {
+                            Button(action: {
+                                K.impactOccur()
+                                guard let sharingUsername = user.username else { return }
+                                guard let urlShare = URL(string: "https://merce.app/\(sharingUsername)") else { return }
+                                let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
+                                UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
+                            }, label: {
+                                CircleIcon(iconName: "square.and.arrow.up")
                             })
-                        } label: {
-                            CircleIcon(iconName: "ellipsis")
-                        }//: ELLIPSIS MENU
-                        .onTapGesture {
-                            K.impactOccur()
-                        }//: TAP GESTURE
+                            
+                            NavigationLink(destination: SettingsView()) {
+                                CircleIcon(iconName: "gearshape")
+                            }//: NAVIGATIONLINK
+                            .simultaneousGesture(
+                                TapGesture()
+                                    .onEnded({ _ in
+                                        K.impactOccur()
+                                    })
+                            )//: SIMULTANIOUS
+                        }//: NAVIGATION LINK
+                        
                     }//: HSTACK
                 }//: TABBARITEM
             }//: TOOLBAR
