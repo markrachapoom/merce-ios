@@ -26,6 +26,7 @@ struct ContentView: View {
     }
     
     var body: some View {
+//        GenerateUserView()
         VStack {
             switch (authVM.state) {
                 case .signedIn: MainTabVIew()

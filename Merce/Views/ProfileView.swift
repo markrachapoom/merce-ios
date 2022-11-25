@@ -70,7 +70,7 @@ struct ProfileView: View {
                         }
                         .frame(width: geo.frame(in: .global).width, height: geo.frame(in: .global).width / 2)
                         
-                        VStack(alignment: .leading, spacing: 13) {
+                        VStack(alignment: .leading, spacing: 8) {
                             HStack {
                                 
                                 AsyncImage(url: URL(string: user.profileImageURL ?? "")) { image in
@@ -81,7 +81,7 @@ struct ProfileView: View {
                                 } placeholder: {
                                     Circle()
                                         .foregroundColor(.secondaryBackgroundColor)
-                                }
+                                }//: ASYNCIMAGE
                                 .frame(width: profileImageSize, height: profileImageSize)
                                 
                                 Spacer()
