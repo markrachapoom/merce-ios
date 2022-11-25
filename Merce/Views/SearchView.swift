@@ -38,9 +38,9 @@ struct SearchView: View {
                                     .textInputAutocapitalization(.never)
                                     .autocorrectionDisabled(true)
                                     .textInputAutocapitalization(.never)
-//                                    .onChange(of: searchText) { newSearchText in
-//                                        searchVM.fetchSearch(from: newSearchText)
-//                                    }
+                                    .onChange(of: searchText) { newSearchText in
+                                        searchVM.fetchSearch(from: newSearchText)
+                                    }
                             } else {
                                 Text("Search Musics")
                                     .foregroundColor(Color(.tertiaryLabel))
@@ -89,16 +89,36 @@ struct SearchView: View {
                         }
                     }
                     
-                    ScrollView(.vertical, showsIndicators: false) {
-                        LazyVStack(spacing: 0) {
-                            ForEach(searchVM.searchResults, id: \.username) { user in
-                                NavigationLink(destination: ProfileView(user: user)) {
-                                    SearchRowView(item: user)
-                                }//: NAVIGATION LINK
-                            }//: LOOP
-                        }//: LAZYVSTACK
-                        .padding(.bottom, 128)
-                    }//: SCROLLVIEW
+                    if (showSearchModal && searchVM.searchResults.isEmpty) {
+                        VStack {
+                            Spacer()
+                            
+                            VStack(spacing: 13) {
+                                Image(systemName: "magnifyingglass")
+                                    .font(.title)
+                                
+                                Text("Try mercing for people, music, or any topicsyou'd like to figure it out")
+                                    .frame(maxWidth: 225)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(Color(.secondaryLabel))
+                                
+                            }//: VSTACK
+                            
+                            Spacer()
+                            
+                        }
+                    } else {
+                        ScrollView(.vertical, showsIndicators: false) {
+                            LazyVStack(spacing: 0) {
+                                ForEach(searchVM.searchResults, id: \.username) { user in
+                                    NavigationLink(destination: ProfileView(user: user)) {
+                                        SearchRowView(item: user)
+                                    }//: NAVIGATION LINK
+                                }//: LOOP
+                            }//: LAZYVSTACK
+                            .padding(.bottom, 128)
+                        }//: SCROLLVIEW
+                    }//: CONDITION
                     
                 }//: VSTACK
                 

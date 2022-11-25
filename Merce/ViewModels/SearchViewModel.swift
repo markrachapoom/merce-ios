@@ -39,7 +39,6 @@ class SearchViewModel: ObservableObject {
                 return fetchedArtist
             })
             self.allArtists = fetchedAllArtists
-            self.searchResults = fetchedAllArtists
         }
     }
     
