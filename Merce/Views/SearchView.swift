@@ -38,9 +38,9 @@ struct SearchView: View {
                                     .textInputAutocapitalization(.never)
                                     .autocorrectionDisabled(true)
                                     .textInputAutocapitalization(.never)
-                                    .onChange(of: searchText) { newSearchText in
-                                        searchVM.fetchSearch(from: newSearchText)
-                                    }
+//                                    .onChange(of: searchText) { newSearchText in
+//                                        searchVM.fetchSearch(from: newSearchText)
+//                                    }
                             } else {
                                 Text("Search Musics")
                                     .foregroundColor(Color(.tertiaryLabel))
@@ -115,7 +115,7 @@ struct SearchRowView: View {
         HStack {
             
             // IMAGE
-            if let type = item.type, type == "user" {
+            if let type = item.type, (type == "user" || type == "artist") {
                 AsyncImage(url: URL(string: item.profileImageURL ?? "")) { image in
                     image
                         .resizable()

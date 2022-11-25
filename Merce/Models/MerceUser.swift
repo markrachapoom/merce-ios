@@ -26,4 +26,5 @@ struct MerceUser: Codable {
     
     static let sampleEntrepreneur: MerceUser = allEntrepreneurs[0]
     static let markrachapoom: MerceUser = allEntrepreneurs[allEntrepreneurs.count - 1]
+    static let akirathedon: MerceUser = allEntrepreneurs[10]
 }

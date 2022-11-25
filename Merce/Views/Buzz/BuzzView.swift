@@ -74,29 +74,29 @@ struct BuzzView: View {
                                                 VStack(alignment: .leading, spacing: 13) {
                                                     HStack(spacing: 13) {
                                                         
-//                                                        NavigationLink(destination: ProfileView(user: buzz, isProfileOwner: false)) {
-//                                                            HStack(spacing: 13) {
-//                                                                AsyncImage(url: URL(string: buzz.profileImageURL ?? "")) { image in
-//                                                                    image
-//                                                                        .resizable()
-//                                                                        .scaledToFill()
-//                                                                } placeholder: {
-//                                                                    Circle()
-//                                                                        .foregroundColor(.secondaryBackgroundColor)
-//                                                                }
-//                                                                .frame(width: 40, height: 40)
-//                                                                .clipShape(Circle())
-//                                                                
-//                                                                VStack(alignment: .leading) {
-//                                                                    Text("\(buzz.givenName ?? "")")
-//                                                                        .font(.system(size: K.fontSize, weight: .medium, design: .default))
-//                                                                    
-//                                                                    Text("@\(buzz.username ?? "")")
-//                                                                        .foregroundColor(Color(.secondaryLabel))
-//                                                                        .font(.system(size: K.fontSize, weight: .regular, design: .default))
-//                                                                }
-//                                                            }//: HSTACK
-//                                                        }//: NAVIGATIONLINK
+                                                        NavigationLink(destination: ProfileView(user: MerceUser.akirathedon)) {
+                                                            HStack(spacing: 13) {
+                                                                AsyncImage(url: URL(string: MerceUser.akirathedon.profileImageURL ?? "")) { image in
+                                                                    image
+                                                                        .resizable()
+                                                                        .scaledToFill()
+                                                                } placeholder: {
+                                                                    Circle()
+                                                                        .foregroundColor(.secondaryBackgroundColor)
+                                                                }
+                                                                .frame(width: 40, height: 40)
+                                                                .clipShape(Circle())
+                                                                
+                                                                VStack(alignment: .leading) {
+                                                                    Text("\(MerceUser.akirathedon.givenName ?? "")")
+                                                                        .font(.system(size: K.fontSize, weight: .medium, design: .default))
+                                                                    
+                                                                    Text("@\(MerceUser.akirathedon.username ?? "")")
+                                                                        .foregroundColor(Color(.secondaryLabel))
+                                                                        .font(.system(size: K.fontSize, weight: .regular, design: .default))
+                                                                }//: VSTACK
+                                                            }//: HSTACK
+                                                        }//: NAVIGATIONLINK
                                                         
                                                         Button(action: {
                                                             withAnimation(.none) {

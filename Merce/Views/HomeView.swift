@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @EnvironmentObject private var playerVM: PlayerViewModel
+    @EnvironmentObject private var searchVM: SearchViewModel
     
 //    @Binding var showMusicPlayerModal: Bool
 //    @Binding var translation: CGSize
@@ -39,12 +40,12 @@ struct HomeView: View {
                                     
                                 }
                                 
-                                SectionView(title: "Entrepreneurs") {
+                                SectionView(title: "Artists") {
                                     ScrollView(.horizontal, showsIndicators: false) {
                                         HStack(spacing: 13) {
-                                            ForEach(MerceUser.allEntrepreneurs, id: \.username) { entrepreneur in
-                                                NavigationLink(destination: ProfileView(user: entrepreneur)) {
-                                                    AsyncImage(url: URL(string: entrepreneur.profileImageURL ?? "")) { image in
+                                            ForEach(searchVM.allArtists, id: \.username) { artist in
+                                                NavigationLink(destination: ProfileView(user: artist)) {
+                                                    AsyncImage(url: URL(string: artist.profileImageURL ?? "")) { image in
                                                         image
                                                             .resizable()
                                                             .scaledToFill()
@@ -136,6 +137,9 @@ struct HomeView: View {
                 .edgesIgnoringSafeArea(.top)
             }//: GEOMETREY READER
         }//: NAVIGATIONVIEW
+        .onAppear {
+            self.searchVM.fetchAllArtists()
+        }
     }
 }
 

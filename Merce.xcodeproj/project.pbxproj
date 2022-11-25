@@ -18,6 +18,7 @@
 		FA07B9DE292037BE00A0A462 /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07B9DD292037BE00A0A462 /* InboxView.swift */; };
 		FA07B9E0292037CC00A0A462 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07B9DF292037CC00A0A462 /* NotificationView.swift */; };
 		FA29788D293095D600CBA89C /* GenerateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29788C293095D600CBA89C /* GenerateUserView.swift */; };
+		FA29788F2931199100CBA89C /* buzz-3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FA29788E2931199100CBA89C /* buzz-3.mp4 */; };
 		FA56D83E291E685D00549439 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA56D83D291E685D00549439 /* SectionView.swift */; };
 		FA56D840291E6EB000549439 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA56D83F291E6EB000549439 /* ProfileView.swift */; };
 		FA5FCE5E292BCA7C006400C4 /* BuzzVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCE5D292BCA7C006400C4 /* BuzzVideoPlayer.swift */; };
@@ -103,6 +104,7 @@
 		FA07B9DD292037BE00A0A462 /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
 		FA07B9DF292037CC00A0A462 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		FA29788C293095D600CBA89C /* GenerateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateUserView.swift; sourceTree = "<group>"; };
+		FA29788E2931199100CBA89C /* buzz-3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "buzz-3.mp4"; sourceTree = "<group>"; };
 		FA56D83D291E685D00549439 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		FA56D83F291E6EB000549439 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		FA5FCE5D292BCA7C006400C4 /* BuzzVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuzzVideoPlayer.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			children = (
 				FA5FCE66292BD295006400C4 /* buzz-1.mp4 */,
 				FA5FCE68292BD401006400C4 /* buzz-2.mp4 */,
+				FA29788E2931199100CBA89C /* buzz-3.mp4 */,
 				FAC2FC6B291BE8CB007B1A6C /* society-always-wants-new-things.mp3 */,
 			);
 			path = Resources;
@@ -503,6 +506,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA5FCE69292BD401006400C4 /* buzz-2.mp4 in Resources */,
+				FA29788F2931199100CBA89C /* buzz-3.mp4 in Resources */,
 				FAA01D0C29237A9C00F06DC9 /* Launch Screen.storyboard in Resources */,
 				FAA01CFA29236EBE00F06DC9 /* GoogleService-Info.plist in Resources */,
 				FAA15164291E5F7300183167 /* entrepreneurs.json in Resources */,

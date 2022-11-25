@@ -15,6 +15,7 @@ class SearchViewModel: ObservableObject {
     let db = Firestore.firestore()
     
     @Published var searchResults: [MerceUser] = []
+    @Published var allArtists: [MerceUser] = []
     
     func fetchSearch(from searchText: String) -> Void {
         
@@ -26,6 +27,19 @@ class SearchViewModel: ObservableObject {
             self.searchResults = documents.compactMap({ queryDocumentSnapshot in
                 try? queryDocumentSnapshot.data(as: MerceUser.self)
             })
+        }
+    }
+    
+    func fetchAllArtists() -> Void {
+        db.collection("users").whereField("type", isEqualTo: "artist").getDocuments { snapshot, error in
+            guard error == nil else { return }
+            guard let documents = snapshot?.documents else { return }
+            let fetchedAllArtists = documents.compactMap({ queryDocSnapshot in
+                let fetchedArtist = try? queryDocSnapshot.data(as: MerceUser.self)
+                return fetchedArtist
+            })
+            self.allArtists = fetchedAllArtists
+            self.searchResults = fetchedAllArtists
         }
     }
     
