@@ -205,7 +205,7 @@ struct EditProfileView: View {
                                             }
                                         }
                                     }
-                                    
+                        
                                     print("update data ", updateData)
                                     
                                     updateData.updateValue(editingName, forKey: "givenName")
@@ -217,7 +217,8 @@ struct EditProfileView: View {
                                     // Keywords For Loopup
                                     let keywordsForLookup: [String] = [
                                         editingUsername.generateStringSequence(),
-                                        editingName.generateStringSequence()
+                                        editingName.generateStringSequence(),
+                                        editingName.generateWordsSplitBySpace()
                                     ].flatMap{$0}.compactMap{$0}
                                     updateData.updateValue(keywordsForLookup, forKey: "keywordsForLookup")
                                     

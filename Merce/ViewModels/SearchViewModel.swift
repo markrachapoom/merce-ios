@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 
 class SearchViewModel: ObservableObject {
@@ -16,7 +17,10 @@ class SearchViewModel: ObservableObject {
     @Published var searchResults: [MerceUser] = []
     
     func fetchSearch(from searchText: String) -> Void {
-        db.collection("users").whereField("keywordsForLookup", arrayContains: searchText.lowercased()).getDocuments { snapshot, error in
+        
+        let formattedSearchText = searchText.lowercased().trimmingCharacters(in: .whitespaces)
+        
+        db.collection("users").whereField("keywordsForLookup", arrayContains: formattedSearchText).getDocuments { snapshot, error in
             guard error == nil else { return }
             guard let documents = snapshot?.documents else { return }
             self.searchResults = documents.compactMap({ queryDocumentSnapshot in
@@ -45,4 +49,33 @@ class SearchViewModel: ObservableObject {
         self.searchResults = filteredResults
     }
     
+}
+
+
+extension String {
+    /// Mark -> [m, ma, mar, mark]
+    func generateStringSequence() -> [String] {
+        guard self.count > 0 else { return [] }
+        var sequences: [String] = []
+        for i in 1...self.count {
+            sequences.append(String(self.prefix(i)).lowercased())
+        }
+        return sequences
+    }
+    
+    func generateWordsSplitBySpace() -> [String] {
+        guard self.count > 0 else { return [] }
+        var sequences: [String] = []
+        
+        // ["Mark", "Rachapoom"]
+        self.split(separator: " ").forEach { word in
+            sequences.append(String(word.lowercased()))
+        }
+        
+        // markrachapoom: join the word
+        let joinedArrayString = sequences.joined().lowercased()
+        sequences.append(joinedArrayString)
+        
+        return sequences
+    }
 }
