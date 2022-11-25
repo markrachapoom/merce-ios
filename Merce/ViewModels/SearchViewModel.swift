@@ -16,7 +16,7 @@ class SearchViewModel: ObservableObject {
     @Published var searchResults: [MerceUser] = []
     
     func fetchSearch(from searchText: String) -> Void {
-        db.collection("users").whereField("keywordsForLookup", arrayContains: searchText).getDocuments { snapshot, error in
+        db.collection("users").whereField("keywordsForLookup", arrayContains: searchText.lowercased()).getDocuments { snapshot, error in
             guard error == nil else { return }
             guard let documents = snapshot?.documents else { return }
             self.searchResults = documents.compactMap({ queryDocumentSnapshot in

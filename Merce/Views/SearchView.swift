@@ -30,9 +30,13 @@ struct SearchView: View {
                                 .foregroundColor(Color(.tertiaryLabel))
                                 .font(.system(size: 20))
                             
+                            
+                            // SEARCH BAR
                             if (showSearchModal) {
                                 TextField("Search Musics", text: $searchText)
                                     .focused($isTextFieldFocused)
+                                    .textInputAutocapitalization(.never)
+                                    .autocorrectionDisabled(true)
                                     .textInputAutocapitalization(.never)
                                     .onChange(of: searchText) { newSearchText in
                                         searchVM.fetchSearch(from: newSearchText)

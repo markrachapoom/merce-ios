@@ -95,14 +95,14 @@ struct MainTabVIew: View {
                                             .background(
                                                 Circle()
                                                     .stroke(style: StrokeStyle(lineWidth: 2))
-                                                    .frame(width: 32, height: 32)
+                                                    .frame(width: 38, height: 28)
                                                     .foregroundColor(tabSelection == 5 ? Color(.label) : .clear)
                                             )//: BACKGROUND
                                     } placeholder: {
                                         Image(systemName: "person")
                                             .font(.system(size: 22, weight: tabSelection == 2 ? .bold : .medium))
                                             .foregroundColor(Color(.label))
-                                            .frame(width: 24, height: 24)
+                                            .frame(width: 26, height: 26)
                                     }//: ASYNCIMAGE
                                     Spacer()
                                 }//: HSTACK

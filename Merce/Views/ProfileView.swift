@@ -146,7 +146,6 @@ struct ProfileView: View {
                                 }//: IS-PROFILE-OWNER
                                 
                                 if (isProfileOwner) {
-                                    
                                     Button(action: {
                                         self.isEditingProfile = true
                                     }, label: {
