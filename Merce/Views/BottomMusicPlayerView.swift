@@ -18,21 +18,15 @@ struct BottomMusicPlayerView: View {
                     
                     HStack {
                         
-                        AsyncImage(url: URL(string: playerVM.currentSong?.artwork?.url ?? "")) { image in
-                            image
-                                .resizable()
-                                .scaledToFill()
-                        } placeholder: {
-                            Rectangle()
-                                .foregroundColor(Color.secondaryBackgroundColor)
-                        }
-                        .frame(width: 40, height: 40)
-                        .cornerRadius(6)
+                        Image("naval-pink")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 40, height: 40)
+                            .cornerRadius(6)
                         
                         VStack(alignment: .leading) {
                             
-//                            Text("Society Always Wants New Things")
-                            Text(playerVM.currentSong?.title ?? "Unknown")
+                            Text("Society Always Wants New Things")
                                 .foregroundColor(Color(.label))
                                 .font(.system(size: K.fontSize))
                                 .fontWeight(.medium)
@@ -69,8 +63,7 @@ struct BottomMusicPlayerView: View {
                 .padding(.all, 11)
                 .background(
                     VisualEffectView(blurEffect: .systemUltraThinMaterial)
-//                        .background(Color.pink.opacity(0.25))
-//                        .background(Color.indigo.opacity(0.25))
+                        .background(Color.pink.opacity(0.25))
                         .cornerRadius(13)
                 )//: BACKGROUND
                 .padding(.horizontal, 6)

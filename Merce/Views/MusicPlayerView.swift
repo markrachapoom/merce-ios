@@ -112,13 +112,13 @@ struct MusicPlayerView: View {
                         // Timer
                         VStack(spacing: 0) {
                             
-//                            if let player = playerVM.audioPlayer {
-//                                Slider(value: $currentTime, in: 0...player.duration, onEditingChanged: { isForwarding in
-//                                    self.isForwardingTime = isForwarding
-////                                    player.currentTime = currentTime
-//                                })
-//                                .tint(.white)
-//                            }
+                            if let player = playerVM.audioPlayer {
+                                Slider(value: $currentTime, in: 0...player.duration, onEditingChanged: { isForwarding in
+                                    self.isForwardingTime = isForwarding
+                                    player.currentTime = currentTime
+                                })
+                                .tint(.white)
+                            }
                             
 //                            RoundedRectangle(cornerRadius: 100)
 ////                                .frame(maxWidth: .infinity, height: 5)
@@ -129,12 +129,12 @@ struct MusicPlayerView: View {
 //                                        .frame(width: 200)
 //                                }
                             
-//                            HStack {
-//                                Text("\(getFormatPlayerTime(interval: currentTime))")
-//                                Spacer()
-//                                Text("\(getFormatPlayerTime(interval: playerVM.audioPlayer?.duration))")
-//                            }
-//                            .font(.footnote)
+                            HStack {
+                                Text("\(getFormatPlayerTime(interval: currentTime))")
+                                Spacer()
+                                Text("\(getFormatPlayerTime(interval: playerVM.audioPlayer?.duration))")
+                            }
+                            .font(.footnote)
                         }
                         
                         HStack {
@@ -156,9 +156,9 @@ struct MusicPlayerView: View {
                             
                             // Back
                             Button(action: {
-                                if let player = playerVM.audioAVPlayer {
-//                                    player.currentTime = 0.0
-//                                    currentTime = 0.0
+                                if let player = playerVM.audioPlayer {
+                                    player.currentTime = 0.0
+                                    currentTime = 0.0
                                 }
                             }, label: {
                                 Image(systemName: "backward.end.fill")
@@ -215,13 +215,13 @@ struct MusicPlayerView: View {
             .foregroundColor(.white)
             .preferredColorScheme(.dark)
 //            .cornerRadius(21)
-//            .onReceive(timer) { _ in
-//                if let audioPlayer = playerVM.audioPlayer {
-//                    if (!isForwardingTime) {
-//                        self.currentTime = audioPlayer.currentTime
-//                    }
-//                }
-//            }
+            .onReceive(timer) { _ in
+                if let audioPlayer = playerVM.audioPlayer {
+                    if (!isForwardingTime) {
+                        self.currentTime = audioPlayer.currentTime
+                    }
+                }
+            }
             
         }//: GEO
     }

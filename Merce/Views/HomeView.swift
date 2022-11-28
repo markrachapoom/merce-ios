@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import AVFoundation
 
 struct HomeView: View {
     
@@ -38,17 +37,7 @@ struct HomeView: View {
                                 }
                                 
                                 SectionView(title: "Discover") {
-                                    ScrollView(.horizontal, showsIndicators: false) {
-                                        HStack(spacing: 13) {
-                                            ForEach(MerceSong.sampleSongs, id: \.id) { song in
-                                                Button(action: {
-                                                    playerVM.playSong(song)
-                                                }, label: {
-                                                    Text("Play \(song.id)")
-                                                })
-                                            }
-                                        }
-                                    }
+                                    
                                 }
                                 
                                 SectionView(title: "Artists") {
