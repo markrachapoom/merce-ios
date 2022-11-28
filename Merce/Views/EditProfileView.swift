@@ -10,7 +10,10 @@ import SwiftUI
 struct EditProfileView: View {
     
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) private var colorScheme
     
+    
+    // INIT
     let user: MerceUser
     @ObservedObject private var authVM: AuthenticationViewModel
     
@@ -19,7 +22,6 @@ struct EditProfileView: View {
         self.user = user
         self.authVM = authVM
     }
-    
     
     @State private var isPickingCoverImage: Bool = false
     @State private var isPickingProfileImage: Bool = false
@@ -59,7 +61,7 @@ struct EditProfileView: View {
                                             .scaledToFill()
                                     } placeholder: {
                                         Rectangle()
-                                            .foregroundColor(.secondaryBackgroundColor)
+                                            .foregroundColor(Color(.secondarySystemBackground))
                                     }
                                 }
                             }//: VSTACK
@@ -85,7 +87,7 @@ struct EditProfileView: View {
                                                     .scaledToFill()
                                             } placeholder: {
                                                 Circle()
-                                                    .foregroundColor(.secondaryBackgroundColor)
+                                                    .foregroundColor(Color(.secondarySystemBackground))
                                             }
                                             
                                         }
@@ -120,7 +122,7 @@ struct EditProfileView: View {
                                         .foregroundColor(Color(.label))
                                         .font(.system(size: K.fontSize))
                                         .frame(height: 125)
-                                    //                                    .background(Color.secondaryBackgroundColor)
+                                    //                                    .background(Color(.secondarySystemBackground))
                                         .scrollContentBackground(.hidden)
                                         .padding(0)
                                     
@@ -253,9 +255,9 @@ struct EditProfileView: View {
                     .padding(.vertical, 13)
                     .padding(.horizontal)
                     .background(
-                        VisualEffectView(blurEffect: .dark)
+                        VisualEffectView(blurEffect: colorScheme == .dark ? .dark : .light)
                             .overlay(
-                                Color.black.opacity(0.65)
+                                Color(.systemBackground).opacity(0.65)
                             )//: OVERLAY
                     )//: BACKGROUND
                     

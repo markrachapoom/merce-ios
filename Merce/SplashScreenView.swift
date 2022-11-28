@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct SplashScreenView: View {
+    
+    @Environment(\.colorScheme) private var colorScheme
+    
     var body: some View {
         ZStack {
             
-            Color.black
+            Color(.systemBackground)
             
-            Image("merce-icon-white")
+            Image("merce-icon-\(colorScheme == .dark ? "white" : "black")")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 50)

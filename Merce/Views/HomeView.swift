@@ -13,6 +13,8 @@ struct HomeView: View {
     @EnvironmentObject private var playerVM: PlayerViewModel
     @EnvironmentObject private var searchVM: SearchViewModel
     
+    @Environment(\.colorScheme) private var colorScheme
+    
 //    @Binding var showMusicPlayerModal: Bool
 //    @Binding var translation: CGSize
     
@@ -49,7 +51,7 @@ struct HomeView: View {
                                                             .scaledToFill()
                                                     } placeholder: {
                                                         Circle()
-                                                            .foregroundColor(.secondaryBackgroundColor)
+                                                            .foregroundColor(Color(.secondarySystemBackground))
                                                     }
                                                     .frame(width: 90, height: 90)
                                                     .clipShape(Circle())
@@ -74,7 +76,7 @@ struct HomeView: View {
                                                                 .scaledToFill()
                                                         } placeholder: {
                                                             Rectangle()
-                                                                .foregroundColor(Color.secondaryBackgroundColor)
+                                                                .foregroundColor(Color(.secondarySystemBackground))
                                                         }
                                                         .frame(width: 115, height: 115)
                                                         .cornerRadius(8)
@@ -109,7 +111,7 @@ struct HomeView: View {
                                             ForEach(Category.allCategories, id: \.title) { category in
                                                 NavigationLink(destination: CategoryView(category: category)) {
                                                     RoundedRectangle(cornerRadius: 8)
-                                                        .foregroundColor(Color.secondaryBackgroundColor)
+                                                        .foregroundColor(Color(.secondarySystemBackground))
                                                         .frame(height: 120)
                                                         .overlay(alignment: .topLeading) {
                                                             VStack(alignment: .leading, spacing: 6) {
@@ -143,10 +145,11 @@ struct HomeView: View {
                     HStack {
                         
                         HStack {
-                            Image("merce-icon-white")
+                            Image("merce-icon-\(colorScheme == .dark ? "white" : "black")")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 16)
+                            
                             Text("Merce")
                                 .fontWeight(.semibold)
                         }//: HSTACK
@@ -169,10 +172,10 @@ struct HomeView: View {
                     .padding(.horizontal)
                     .padding(.top, K.topSafeArea)
                     .background(
-                        VisualEffectView(blurEffect: .dark)
+                        VisualEffectView(blurEffect: colorScheme == .dark ? .dark : .light)
                             .overlay(
 //                                Color.black.opacity(0.65)
-                                Color.black.opacity(0.6)
+                                Color(.systemBackground).opacity(0.6)
                             )
                     )//: BACKGROUND
                     Spacer()

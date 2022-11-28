@@ -20,7 +20,7 @@ struct SearchView: View {
         NavigationView {
             ZStack {
                 
-                Color.black
+                Color(.systemBackground)
                 
                 VStack(spacing: 0) {
                     HStack {
@@ -38,6 +38,7 @@ struct SearchView: View {
                                     .textInputAutocapitalization(.never)
                                     .autocorrectionDisabled(true)
                                     .textInputAutocapitalization(.never)
+                                    .tint(.blue)
                                     .onChange(of: searchText) { newSearchText in
                                         searchVM.fetchSearch(from: newSearchText)
                                     }
@@ -63,8 +64,7 @@ struct SearchView: View {
                             Capsule()
                             //                            .stroke(style: StrokeStyle(lineWidth: 1))
                             //                            .foregroundColor(Color(.separator))
-                                .foregroundColor(Color.secondaryBackgroundColor)
-                                .background(.black)
+                                .foregroundColor(Color(.secondarySystemBackground))
                         )//: BACKGROUND
                         
                         if (showSearchModal) {
@@ -76,8 +76,11 @@ struct SearchView: View {
                                 }
                             }, label: {
                                 Text("Cancel")
-                            })
-                        }
+                                    .foregroundColor(Color(.label))
+                                    .fontWeight(.medium)
+                            })//: BUTTON
+                        }//: CONDITION
+                        
                     }//: HSTACK
                     .padding(.all)
                     .onTapGesture {
@@ -142,7 +145,7 @@ struct SearchRowView: View {
                         .scaledToFill()
                 } placeholder: {
                     Circle()
-                        .foregroundColor(.secondaryBackgroundColor)
+                        .foregroundColor(Color(.secondarySystemBackground))
                 }
                 .frame(width: 48, height: 48)
                 .clipShape(Circle())
@@ -152,6 +155,7 @@ struct SearchRowView: View {
                 
                 // Name
                 Text("\(item.givenName ?? "")")
+                    .foregroundColor(Color(.label))
                 
                 // Username
                 Text("@\(item.username ?? "")")

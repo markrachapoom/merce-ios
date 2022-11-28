@@ -19,7 +19,7 @@ struct MerceApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .preferredColorScheme(.dark)
+//                .preferredColorScheme(.dark)
                 .environmentObject(PlayerViewModel())
                 .environmentObject(AuthenticationViewModel())
                 .environmentObject(SearchViewModel())

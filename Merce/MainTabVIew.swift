@@ -12,6 +12,8 @@ struct MainTabVIew: View {
     @EnvironmentObject private var playerVM: PlayerViewModel
     @EnvironmentObject private var authVM: AuthenticationViewModel
     
+    @Environment(\.colorScheme) private var colorScheme
+    
     @State private var translation: CGSize = .zero
     @State private var showMusicPlayerModal: Bool = false
     @State private var canOpenMusicPlayerModal: Bool = true
@@ -107,7 +109,7 @@ struct MainTabVIew: View {
                                     } placeholder: {
                                         Image(systemName: "person")
                                             .font(.system(size: 22, weight: tabSelection == 2 ? .bold : .medium))
-                                            .foregroundColor(Color(.label))
+                                            .foregroundColor(tabSelection == 3 ? .white : Color(.label))
                                             .frame(width: 26, height: 26)
                                     }//: ASYNCIMAGE
                                     Spacer()
@@ -119,7 +121,7 @@ struct MainTabVIew: View {
                         .frame(height: K.bottomTabBarHeight)
 //                        .background(Color(.systemBackground))
                         .background(
-                            LinearGradient(colors: [.black, .black.opacity(0.75)], startPoint: .bottom, endPoint: .top)
+                            LinearGradient(colors: [Color(tabSelection == 3 ? .black : .systemBackground), Color(tabSelection == 3 ? .black : .systemBackground).opacity(0.75)], startPoint: .bottom, endPoint: .top)
                         )//: BACKGROUND
                     }//: VSTACK
                 }//: VSTACK
@@ -161,7 +163,7 @@ struct TabBarButton: View {
                 Spacer()
                 Image(systemName: "\(iconName)\((canFilled && (tabSelection == tag)) ? ".fill" : "")")
                     .font(.system(size: 22, weight: tabSelection == 2 ? .bold : .medium))
-                    .foregroundColor(Color(.label))
+                    .foregroundColor(tabSelection == 3 ? .white : Color(.label))
                     .frame(width: 24, height: 24)
                 Spacer()
             }//: HSTACK

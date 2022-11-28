@@ -45,7 +45,7 @@ struct ProfileView: View {
         GeometryReader { geo in
             ZStack {
                 
-                Color.black
+                Color(.systemBackground)
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 0) {
@@ -59,7 +59,7 @@ struct ProfileView: View {
                                     .scaledToFill()
                             } placeholder: {
                                 Rectangle()
-                                    .foregroundColor(.secondaryBackgroundColor)
+                                    .foregroundColor(Color(.secondarySystemBackground))
                             }
                             .frame(width: coverImageGeo.size.width, height: minY < -(geo.frame(in: .global).width / 2) ? 0 : abs(coverImageGeo.size.height + minY))
                             .clipped()
@@ -80,7 +80,7 @@ struct ProfileView: View {
                                         .clipShape(Circle())
                                 } placeholder: {
                                     Circle()
-                                        .foregroundColor(.secondaryBackgroundColor)
+                                        .foregroundColor(Color(.secondarySystemBackground))
                                 }//: ASYNCIMAGE
                                 .frame(width: profileImageSize, height: profileImageSize)
                                 
@@ -123,10 +123,10 @@ struct ProfileView: View {
                                         Capsule()
                                             .stroke(style: StrokeStyle(lineWidth: 1))
                                             .foregroundColor(isFollowed ? Color(.separator) : .clear)
-                                            .background(isFollowed ? .clear : .white)
+                                            .background(isFollowed ? .clear : Color(.label))
                                             .overlay {
                                                 Text(isFollowed ? "Followed" : "Follow")
-                                                    .foregroundColor(isFollowed ? .white : .black)
+                                                    .foregroundColor(isFollowed ? Color(.label) : Color(.systemBackground))
                                             }
                                             .cornerRadius(100)
                                     })
@@ -153,7 +153,7 @@ struct ProfileView: View {
                                             .stroke(style: StrokeStyle(lineWidth: 1))
                                             .foregroundColor(Color(.separator))
                                             .background(.clear)
-//                                            .foregroundColor(Color.secondaryBackgroundColor)
+//                                            .foregroundColor(Color(.secondarySystemBackground))
                                             .overlay {
                                                 Text("Edit Profile")
                                                     .foregroundColor(Color(.label))
@@ -166,7 +166,7 @@ struct ProfileView: View {
                                             .stroke(style: StrokeStyle(lineWidth: 1))
                                             .foregroundColor(Color(.separator))
                                             .background(.clear)
-//                                            .foregroundColor(Color.secondaryBackgroundColor)
+//                                            .foregroundColor(Color(.secondarySystemBackground))
                                             .overlay {
                                                 Text("Saved")
                                                     .foregroundColor(Color(.label))

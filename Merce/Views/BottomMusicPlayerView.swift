@@ -24,7 +24,7 @@ struct BottomMusicPlayerView: View {
                                 .scaledToFill()
                         } placeholder: {
                             Rectangle()
-                                .foregroundColor(Color.secondaryBackgroundColor)
+                                .foregroundColor(Color(.secondarySystemBackground))
                         }
                         .frame(width: 40, height: 40)
                         .cornerRadius(6)

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct NavBarView: View {
     
+    @Environment(\.colorScheme) private var colorScheme
+    
     let title: String
     let withBackButton: Bool
     
@@ -25,11 +27,11 @@ struct NavBarView: View {
                 
                 if (withBackButton) {
                     Button(action: {
-                        
                         dismiss()
                     }, label: {
                         Image(systemName: "arrow.left")
                             .font(.system(size: 22))
+                            .foregroundColor(Color(.label))
                     })//: BUTTON
                 }
                 
@@ -43,6 +45,7 @@ struct NavBarView: View {
                 
                 if (withBackButton) {
                     Image(systemName: "arrow.left")
+                        .foregroundColor(Color(.label))
                         .font(.system(size: 22))
                         .opacity(0)
                 }
@@ -52,9 +55,9 @@ struct NavBarView: View {
             .padding(.top, K.topSafeArea)
             .padding(.horizontal)
             .background(
-                VisualEffectView(blurEffect: .dark)
+                VisualEffectView(blurEffect: colorScheme == .dark ? .dark : .light)
                     .overlay(
-                        Color.black.opacity(0.65)
+                        Color(.systemBackground).opacity(0.65)
                     )//: OVERLAY
             )//: BACKGROUND
             

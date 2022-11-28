@@ -14,6 +14,8 @@ class PlayerViewModel: ObservableObject {
     @Published var audioAVPlayer: AVPlayer?
     @Published var currentSong: MerceSong?
     
+    @Published var currentAverageColor: Color?
+    
     @Published var isPlaying: Bool = false
     
 //    @Published var currentTime: TimeInterval = .zero

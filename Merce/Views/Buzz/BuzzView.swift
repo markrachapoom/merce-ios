@@ -28,210 +28,207 @@ struct BuzzView: View {
     var body: some View {
         NavigationView {
             GeometryReader { geo in
-                TabView(selection: $tabSelection) {
+                ZStack {
                     
-//                    ForEach(Array(zip(buzzes.indices, buzzes)), id: \.0) { index, $buzz in
-                    ForEach(buzzes, id: \.id) { buzz in
+                    Color.black
+                        .edgesIgnoringSafeArea(.all)
+                    
+                    TabView(selection: $tabSelection) {
                         
-                        ZStack(alignment: .top) {
+                        //                    ForEach(Array(zip(buzzes.indices, buzzes)), id: \.0) { index, $buzz in
+                        ForEach(buzzes, id: \.id) { buzz in
                             
-                            VStack {
-                                BuzzPlayer(buzz: buzz)
-//                                AsyncImage(url: URL(string: buzz?.profileImageURL ?? "")) { image in
-//                                    image
-//                                        .resizable()
-//                                        .scaledToFill()
-//                                } placeholder: {
-//                                    Rectangle()
-//                                        .foregroundColor(Color.secondaryBackgroundColor)
-//                                }
-                                .frame(width: geo.size.width, height: geo.size.height - K.bottomTabBarHeight)
-//                                .overlay {
-//                                    Color.lightBlue.opacity(0.3)
-//                                }
-                                //                            .frame(width: geo.size.width)
-                                .clipped()
-                                .overlay {
-                                    VStack {
-                                        Spacer()
-//                                        LinearGradient(colors: [.red, .black.opacity(0.8), .black.opacity(0)], startPoint: .bottom, endPoint: .top)
-                                        LinearGradient(colors: [.black.opacity(0.8), .black.opacity(0)], startPoint: .bottom, endPoint: .top)
-                                            .frame(maxHeight: 150)
-                                    }//: VSTACK
-                                }//: OVERLAY
-                                .overlay {
-                                    
-                                    VStack {
-                                        
-                                        Spacer()
-                                        
-                                        HStack(alignment: .bottom, spacing: 13) {
+                            ZStack(alignment: .top) {
+                                
+                                VStack {
+                                    BuzzPlayer(buzz: buzz)
+                                        .frame(width: geo.size.width, height: geo.size.height - K.bottomTabBarHeight)
+                                        .clipped()
+                                        .overlay {
+                                            VStack {
+                                                Spacer()
+                                                //                                        LinearGradient(colors: [.red, .black.opacity(0.8), .black.opacity(0)], startPoint: .bottom, endPoint: .top)
+                                                LinearGradient(colors: [.black.opacity(0.8), .black.opacity(0)], startPoint: .bottom, endPoint: .top)
+                                                    .frame(maxHeight: 150)
+                                            }//: VSTACK
+                                        }//: OVERLAY
+                                        .overlay {
                                             
                                             VStack {
                                                 
                                                 Spacer()
                                                 
-                                                VStack(alignment: .leading, spacing: 13) {
-                                                    HStack(spacing: 13) {
+                                                HStack(alignment: .bottom, spacing: 13) {
+                                                    
+                                                    VStack {
                                                         
-                                                        NavigationLink(destination: ProfileView(user: MerceUser.akirathedon)) {
+                                                        Spacer()
+                                                        
+                                                        VStack(alignment: .leading, spacing: 13) {
                                                             HStack(spacing: 13) {
-                                                                AsyncImage(url: URL(string: MerceUser.akirathedon.profileImageURL ?? "")) { image in
-                                                                    image
-                                                                        .resizable()
-                                                                        .scaledToFill()
-                                                                } placeholder: {
-                                                                    Circle()
-                                                                        .foregroundColor(.secondaryBackgroundColor)
-                                                                }
-                                                                .frame(width: 40, height: 40)
-                                                                .clipShape(Circle())
                                                                 
-                                                                VStack(alignment: .leading) {
-                                                                    Text("\(MerceUser.akirathedon.givenName ?? "")")
-                                                                        .font(.system(size: K.fontSize, weight: .medium, design: .default))
-                                                                    
-                                                                    Text("@\(MerceUser.akirathedon.username ?? "")")
-                                                                        .foregroundColor(Color(.secondaryLabel))
-                                                                        .font(.system(size: K.fontSize, weight: .regular, design: .default))
-                                                                }//: VSTACK
+                                                                NavigationLink(destination: ProfileView(user: MerceUser.akirathedon)) {
+                                                                    HStack(spacing: 13) {
+                                                                        AsyncImage(url: URL(string: MerceUser.akirathedon.profileImageURL ?? "")) { image in
+                                                                            image
+                                                                                .resizable()
+                                                                                .scaledToFill()
+                                                                        } placeholder: {
+                                                                            Circle()
+                                                                                .foregroundColor(Color(.secondarySystemBackground))
+                                                                        }
+                                                                        .frame(width: 40, height: 40)
+                                                                        .clipShape(Circle())
+                                                                        
+                                                                        VStack(alignment: .leading) {
+                                                                            Text("\(MerceUser.akirathedon.givenName ?? "")")
+                                                                                .font(.system(size: K.fontSize, weight: .medium, design: .default))
+                                                                            
+                                                                            Text("@\(MerceUser.akirathedon.username ?? "")")
+                                                                                .foregroundColor(Color(.secondaryLabel))
+                                                                                .font(.system(size: K.fontSize, weight: .regular, design: .default))
+                                                                        }//: VSTACK
+                                                                    }//: HSTACK
+                                                                }//: NAVIGATIONLINK
+                                                                
+                                                                Button(action: {
+                                                                    withAnimation(.none) {
+                                                                        self.isFollowed.toggle()
+                                                                    }
+                                                                }, label: {
+                                                                    Text(isFollowed ? "Followed" : "Follow")
+                                                                        .frame(width: 78, height: 28)
+                                                                        .font(.system(size: K.fontSize - 1, weight: .semibold, design: .default))
+                                                                        .background(
+                                                                            Capsule()
+                                                                                .stroke(style: StrokeStyle(lineWidth: 1))
+                                                                                .foregroundColor(isFollowed ? .white.opacity(0.65) : .white.opacity(0.3))
+                                                                        )//: BACKGROUND
+                                                                })//: BUTTON
+                                                                
                                                             }//: HSTACK
-                                                        }//: NAVIGATIONLINK
+                                                            
+                                                            Text("This is description and thing and ting and things and thing")
+                                                                .font(.system(size: K.fontSize, weight: .regular, design: .default))
+                                                                .foregroundColor(.white)
+                                                                .lineLimit(1)
+                                                            
+                                                            HStack {
+                                                                Image(systemName: "music.note")
+                                                                Text("Society Always Wants New Things - Akira The Don, Naval Ravikant")
+                                                                    .font(.system(size: K.fontSize, weight: .regular, design: .default))
+                                                                    .foregroundColor(.white)
+                                                                    .lineLimit(1)
+                                                            }//: HSTACK
+                                                            
+                                                        }//: VSTACK
+                                                    }//: VSTACK
+                                                    
+                                                    Spacer()
+                                                    
+                                                    VStack(spacing: 21) {
+                                                        
+                                                        VStack(spacing: 6) {
+                                                            Button(action: {
+                                                                withAnimation(.easeInOut(duration: 0.1)) {
+                                                                    isFavorite.toggle()
+                                                                }
+                                                            }, label: {
+                                                                Image(systemName: isFavorite ? "heart.fill" : "heart")
+                                                                    .foregroundColor(isFavorite ? .pink : .white)
+                                                                    .font(.system(size: 28, weight: .regular, design: .default))
+                                                            })
+                                                            
+                                                            Button(action: {
+                                                                
+                                                            }, label: {
+                                                                Text("30K")
+                                                                    .font(.system(size: K.fontSize - 2, weight: .semibold, design: .default))
+                                                            })
+                                                            
+                                                        }//: VSTACK
+                                                        
+                                                        VStack(spacing: 6) {
+                                                            Button(action: {
+                                                                
+                                                            }, label: {
+                                                                Image(systemName: "bubble.left")
+                                                            })
+                                                            
+                                                            Button(action: {}, label: {
+                                                                Text("1.4K")
+                                                                    .font(.system(size: K.fontSize - 2, weight: .semibold, design: .default))
+                                                            })
+                                                        }//: VSTACK
+                                                        
                                                         
                                                         Button(action: {
-                                                            withAnimation(.none) {
-                                                                self.isFollowed.toggle()
+                                                            
+                                                        }, label: {
+                                                            VStack(spacing: 6) {
+                                                                Image(systemName: "paperplane")
+                                                                
+                                                                Text("Share")
+                                                                    .font(.system(size: K.fontSize - 2, weight: .semibold, design: .default))
+                                                            }
+                                                        })
+                                                        
+                                                        
+                                                        
+                                                        Button(action: {
+                                                            withAnimation(.easeInOut(duration: 0.1)) {
+                                                                isSaved.toggle()
                                                             }
                                                         }, label: {
-                                                            Text(isFollowed ? "Followed" : "Follow")
-                                                                .frame(width: 78, height: 28)
-                                                                .font(.system(size: K.fontSize - 1, weight: .semibold, design: .default))
-                                                                .background(
-                                                                    Capsule()
-                                                                        .stroke(style: StrokeStyle(lineWidth: 1))
-                                                                        .foregroundColor(isFollowed ? .white.opacity(0.65) : .white.opacity(0.3))
-                                                                )//: BACKGROUND
-                                                        })//: BUTTON
+                                                            VStack(spacing: 6) {
+                                                                Image(systemName: isSaved ? "bookmark.fill" : "bookmark")
+                                                                
+                                                                Text("Save")
+                                                                    .font(.system(size: K.fontSize - 2, weight: .semibold, design: .default))
+                                                            }
+                                                        })
                                                         
-                                                    }//: HSTACK
-                                                    
-                                                    Text("This is description and thing and ting and things and thing")
-                                                        .font(.system(size: K.fontSize, weight: .regular, design: .default))
-                                                        .lineLimit(1)
-                                                    
-                                                    HStack {
-                                                        Image(systemName: "music.note")
-                                                        Text("Society Always Wants New Things - Akira The Don, Naval Ravikant")
-                                                            .font(.system(size: K.fontSize, weight: .regular, design: .default))
-                                                            .lineLimit(1)
-                                                    }//: HSTACK
-                                                    
-                                                }//: VSTACK
-                                            }//: VSTACK
-                                            
-                                            Spacer()
-                                            
-                                            VStack(spacing: 21) {
-                                                
-                                                VStack(spacing: 6) {
-                                                    Button(action: {
-                                                        withAnimation(.easeInOut(duration: 0.1)) {
-                                                            isFavorite.toggle()
-                                                        }
-                                                    }, label: {
-                                                        Image(systemName: isFavorite ? "heart.fill" : "heart")
-                                                            .foregroundColor(isFavorite ? .pink : .white)
-                                                            .font(.system(size: 28, weight: .regular, design: .default))
-                                                    })
-                                                    
-                                                    Button(action: {
+                                                        Button(action: {
+                                                            
+                                                        }, label: {
+                                                            Image("naval-pink")
+                                                                .resizable()
+                                                                .scaledToFill()
+                                                                .frame(width: 32, height: 32)
+                                                                .clipShape(RoundedRectangle(cornerRadius: 6))
+                                                        })
                                                         
-                                                    }, label: {
-                                                        Text("30K")
-                                                            .font(.system(size: K.fontSize - 2, weight: .semibold, design: .default))
-                                                    })
+                                                    }//: VSTACK
+                                                    .foregroundColor(Color(.white))
+                                                    .font(.system(size: 24, weight: .regular, design: .default))
+                                                    .font(.title)
+                                                    .shadow(color: .black.opacity(0.4), radius: 5, x: 0, y: 0)
                                                     
-                                                }//: VSTACK
-                                                
-                                                VStack(spacing: 6) {
-                                                    Button(action: {
-                                                        
-                                                    }, label: {
-                                                        Image(systemName: "bubble.left")
-                                                    })
-                                                    
-                                                    Button(action: {}, label: {
-                                                        Text("1.4K")
-                                                            .font(.system(size: K.fontSize - 2, weight: .semibold, design: .default))
-                                                    })
-                                                }//: VSTACK
-                                                
-                                                
-                                                Button(action: {
-                                                    
-                                                }, label: {
-                                                    VStack(spacing: 6) {
-                                                        Image(systemName: "paperplane")
-                                                        
-                                                        Text("Share")
-                                                            .font(.system(size: K.fontSize - 2, weight: .semibold, design: .default))
-                                                    }
-                                                })
-                                                
-                                                
-                                                
-                                                Button(action: {
-                                                    withAnimation(.easeInOut(duration: 0.1)) {
-                                                        isSaved.toggle()
-                                                    }
-                                                }, label: {
-                                                    VStack(spacing: 6) {
-                                                        Image(systemName: isSaved ? "bookmark.fill" : "bookmark")
-                                                        
-                                                        Text("Save")
-                                                            .font(.system(size: K.fontSize - 2, weight: .semibold, design: .default))
-                                                    }
-                                                })
-                                                
-                                                Button(action: {
-                                                    
-                                                }, label: {
-                                                    Image("naval-pink")
-                                                        .resizable()
-                                                        .scaledToFill()
-                                                        .frame(width: 32, height: 32)
-                                                        .clipShape(RoundedRectangle(cornerRadius: 6))
-                                                })
+                                                }//: HSTACK
+                                                .padding(.all)
+                                                .background(.clear)
                                                 
                                             }//: VSTACK
-                                            .foregroundColor(Color(.white))
-                                            .font(.system(size: 24, weight: .regular, design: .default))
-                                            .font(.title)
-                                            .shadow(color: .black.opacity(0.4), radius: 5, x: 0, y: 0)
-                                            
-                                        }//: HSTACK
-                                        .padding(.all)
-                                        .background(.clear)
-                                        
-                                    }//: VSTACK
-                                }//: OVERLAY
-                            }
+                                        }//: OVERLAY
+                                }//: VSTACK
+                                .cornerRadius(buzzConerRadius)
+                                .padding(.bottom, K.bottomTabBarHeight)
+                                .colorScheme(.dark)
+                                
+                                
+                                
+                            }//: ZSTACK
                             .cornerRadius(buzzConerRadius)
-                            .padding(.bottom, K.bottomTabBarHeight)
-                                
-                                
-                            
-                        }//: ZSTACK
-                        .cornerRadius(buzzConerRadius)
-                        .frame(width: geo.size.width)
-                        .rotationEffect(.degrees(-90))
-                    }//: FOREACH
-                }//: TABVIEW
-                .rotationEffect(.degrees(90))
-                .frame(width: geo.size.height)
-                .tabViewStyle(.page(indexDisplayMode: .always))
-                .frame(width: geo.size.width)
-                .cornerRadius(buzzConerRadius)
+                            .frame(width: geo.size.width)
+                            .rotationEffect(.degrees(-90))
+                        }//: FOREACH
+                    }//: TABVIEW
+                    .rotationEffect(.degrees(90))
+                    .frame(width: geo.size.height)
+                    .tabViewStyle(.page(indexDisplayMode: .always))
+                    .frame(width: geo.size.width)
+                    .cornerRadius(buzzConerRadius)
+                }//: ZSTACK
             }//: GEOMETRYREADER
         }//: NAVIGATIONVIEW
     }

@@ -49,6 +49,7 @@ struct SettingsView: View {
             }//: SCROLLVIEW
             
             NavBarView(title: "Settings")
+            
         }//: ZSTACK
         .navigationBarBackButtonHidden(true)
         .alert("Log Out?", isPresented: $isLogoutAlertShown) {
