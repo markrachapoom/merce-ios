@@ -11,20 +11,31 @@ import AVKit
 
 class PlayerViewModel: ObservableObject {
     
-    @Published var audioPlayer: AVAudioPlayer?
+    @Published var audioAVPlayer: AVPlayer?
+    @Published var currentSong: MerceSong?
     
     @Published var isPlaying: Bool = false
     
 //    @Published var currentTime: TimeInterval = .zero
     
     init() {
-        let musicPath = Bundle.main.path(forResource: "society-always-wants-new-things", ofType: "mp3")
-        self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(filePath: musicPath!))
+        // Set AvAudio or fetch latest song to play when the app launched
     }
     
-    var currentTime: TimeInterval {
-        audioPlayer?.currentTime ?? 0.0
+    func playSong(_ song: MerceSong) {
+        guard let songURLString = song.url, let songURL = URL(string: songURLString) else {
+            print("Invalid song url")
+            return
+        }
+        self.audioAVPlayer = AVPlayer(url: songURL)
+        self.audioAVPlayer?.play()
+        self.currentSong = song
+        self.isPlaying = true
     }
+    
+//    var currentTime: TimeInterval {
+//        audioPlayer?.currentTime ?? 0.0
+//    }
 
     
     func togglePlay() {
@@ -36,7 +47,7 @@ class PlayerViewModel: ObservableObject {
     }
     
     func play() {
-        if let player = audioPlayer {
+        if let player = audioAVPlayer {
             withAnimation(.none) {
                 player.play()
                 isPlaying = true
@@ -45,7 +56,7 @@ class PlayerViewModel: ObservableObject {
     }
     
     func pause() {
-        if let player = audioPlayer {
+        if let player = audioAVPlayer {
             withAnimation(.none) {
                 player.pause()
                 isPlaying = false
