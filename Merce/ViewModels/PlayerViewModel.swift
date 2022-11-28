@@ -64,3 +64,11 @@ class PlayerViewModel: ObservableObject {
         }
     }
 }
+
+extension PlayerViewModel {
+    func resetState() {
+        self.audioAVPlayer = nil
+        self.currentSong = nil
+        self.isPlaying = false
+    }
+}

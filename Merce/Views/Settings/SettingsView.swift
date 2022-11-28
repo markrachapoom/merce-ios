@@ -11,6 +11,7 @@ import MessageUI
 struct SettingsView: View {
     
     @EnvironmentObject private var authVM: AuthenticationViewModel
+    @EnvironmentObject private var playerVM: PlayerViewModel
     
     @State private var isLogoutAlertShown: Bool = false
     
@@ -53,9 +54,10 @@ struct SettingsView: View {
         .alert("Log Out?", isPresented: $isLogoutAlertShown) {
             Button("Logout", role: .destructive, action: {
 //                authVM.signOut()
-                withAnimation {
+//                withAnimation {
+                    playerVM.resetState()
                     authVM.signOut()
-                }
+//                }
             })
         } message: {
             Text("Are you sure you want to log out?")

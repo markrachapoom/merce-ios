@@ -53,16 +53,18 @@ struct MainTabVIew: View {
                     
                     VStack(spacing: 0) {
                         
-                        Button(action: {
-                            withAnimation(.easeInOut(duration: 0.3)) {
-                                self.showMusicPlayerModal = true
-                                self.canOpenMusicPlayerModal = false
-                            }
-                        }, label: {                        
-                            BottomMusicPlayerView()
-                                .opacity(tabSelection == 3 ? 0 : 1)
-                        })
-                        .disabled(!canOpenMusicPlayerModal)
+                        if (playerVM.currentSong != nil) {
+                            Button(action: {
+                                withAnimation(.easeInOut(duration: 0.3)) {
+                                    self.showMusicPlayerModal = true
+                                    self.canOpenMusicPlayerModal = false
+                                }
+                            }, label: {
+                                BottomMusicPlayerView()
+                                    .opacity(tabSelection == 3 ? 0 : 1)
+                            })//: BUTTON
+                            .disabled(!canOpenMusicPlayerModal)
+                        }
 //                            .offset(y: tabSelection == 3 ? 200 : 0)
                         
                         HStack(spacing: 0) {
@@ -72,13 +74,17 @@ struct MainTabVIew: View {
                             TabBarButton(tabSelection: $tabSelection, tag: 2, iconName: "magnifyingglass", canFilled: false)
                             
                             TabBarButton(tabSelection: $tabSelection, tag: 3, iconName: "rectangle.stack.badge.play")
+                                .onChange(of: tabSelection) { newTabSelection in
+                                    if (newTabSelection == 3) {
+                                        playerVM.pause()
+                                    }
+                                }
                             
                             TabBarButton(tabSelection: $tabSelection, tag: 4, iconName: "bell")
                             
 //                            TabBarButton(tabSelection: $tabSelection, tag: 5, iconName: "person")
                             
                             Button(action: {
-//                                withAnimation(.easeInOut(duration: 0.2)) {
                                 withAnimation(.none) {
                                     self.tabSelection = 5
                                 }

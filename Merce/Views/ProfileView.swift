@@ -234,7 +234,7 @@ struct ProfileView: View {
                             NavigationLink(destination: SettingsView()) {
                                 CircleIcon(iconName: "gearshape")
                             }//: NAVIGATIONLINK
-                        }//: NAVIGATION LINK
+                        }
                         
                     }//: HSTACK
                 }//: TABBARITEM
