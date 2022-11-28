@@ -38,7 +38,7 @@ struct HomeView: View {
                                 }
                                 
                                 SectionView(title: "Songs") {
-                                    ScrollView(.vertical, showsIndicators: false) {
+                                    ScrollView(.horizontal, showsIndicators: false) {
                                         HStack(spacing: 13) {
                                             ForEach(MerceSong.sampleSongs, id: \.id) { song in
                                                 Button(action: {
