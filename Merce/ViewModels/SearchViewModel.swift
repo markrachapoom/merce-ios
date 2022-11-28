@@ -66,6 +66,7 @@ class SearchViewModel: ObservableObject {
 
 
 extension String {
+    
     /// Mark -> [m, ma, mar, mark]
     func generateStringSequence() -> [String] {
         guard self.count > 0 else { return [] }

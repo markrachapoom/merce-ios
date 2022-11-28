@@ -64,6 +64,7 @@
 		FAC2FC68291BE10A007B1A6C /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC2FC67291BE10A007B1A6C /* SearchView.swift */; };
 		FAC2FC6C291BE8CB007B1A6C /* society-always-wants-new-things.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FAC2FC6B291BE8CB007B1A6C /* society-always-wants-new-things.mp3 */; };
 		FAC2FC6F291BE902007B1A6C /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC2FC6E291BE902007B1A6C /* PlayerViewModel.swift */; };
+		FAC918A2293279E40097483F /* MerceSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC918A1293279E40097483F /* MerceSong.swift */; };
 		FACF615729204694008FC1FA /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACF615629204694008FC1FA /* AuthenticationView.swift */; };
 		FACF615929204CBA008FC1FA /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACF615829204CBA008FC1FA /* AuthenticationViewModel.swift */; };
 		FAFD5D8D292CDC070055B9B8 /* MerceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFD5D8C292CDC070055B9B8 /* MerceError.swift */; };
@@ -150,6 +151,7 @@
 		FAC2FC67291BE10A007B1A6C /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		FAC2FC6B291BE8CB007B1A6C /* society-always-wants-new-things.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "society-always-wants-new-things.mp3"; sourceTree = "<group>"; };
 		FAC2FC6E291BE902007B1A6C /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
+		FAC918A1293279E40097483F /* MerceSong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerceSong.swift; sourceTree = "<group>"; };
 		FACF615629204694008FC1FA /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		FACF615829204CBA008FC1FA /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		FAFD5D8C292CDC070055B9B8 /* MerceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerceError.swift; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 				FA63999D291F641F00CA9AA0 /* Category.swift */,
 				FA5FCE5F292BCB5B006400C4 /* Buzz.swift */,
 				FA5FCE61292BCBE4006400C4 /* MediaFile.swift */,
+				FAC918A1293279E40097483F /* MerceSong.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				FA5FCE5E292BCA7C006400C4 /* BuzzVideoPlayer.swift in Sources */,
 				FA07B9D8292025EF00A0A462 /* MailView.swift in Sources */,
 				FAA01D0E29237E3300F06DC9 /* SplashScreenView.swift in Sources */,
+				FAC918A2293279E40097483F /* MerceSong.swift in Sources */,
 				FAC2FC66291BE0A1007B1A6C /* HomeView.swift in Sources */,
 				FA07B9DA2920261E00A0A462 /* SettingsRowView.swift in Sources */,
 				FA6338B8292C08F000CA5BA6 /* StorageManager.swift in Sources */,

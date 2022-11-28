@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 // MARK: - COLOR
 extension Color {
@@ -296,6 +297,15 @@ extension URL {
         }
 
         return fileContainer.appendingPathComponent("\(databaseName).sqlite")
+    }
+}
+
+
+// MARK: AVAUDIO
+
+extension AVPlayer {
+    var isPlaying: Bool {
+        return rate != 0 && error == nil
     }
 }
 
