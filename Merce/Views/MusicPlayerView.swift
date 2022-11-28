@@ -29,11 +29,11 @@ struct MusicPlayerView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                Image("naval")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: geo.frame(in: .global).width, height: geo.frame(in: .global).height)
-                    .clipped()
+//                Image("naval")
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fill)
+//                    .frame(width: geo.frame(in: .global).width, height: geo.frame(in: .global).height)
+//                    .clipped()
                 
                 LinearGradient(colors: [.black, .clear], startPoint: .bottom, endPoint: .top)
                 
@@ -49,13 +49,31 @@ struct MusicPlayerView: View {
                             Image(systemName: "chevron.down")
                                 .foregroundColor(.white)
                                 .font(.title2)
-                        })
+                        })//: BUTTON
                         
                         Spacer()
-                    }
+                    }//: HSTACK
+                    
                     
                     Spacer()
                     
+                    // ARTWORK SECTION
+                    AsyncImage(url: URL(string: playerVM.currentSong?.artwork?.url ?? "")) { image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                    } placeholder: {
+                        Rectangle()
+                            .foregroundColor(Color.secondaryBackgroundColor)
+                    }
+                    .frame(width: 300, height: 300)
+                    .cornerRadius(13)
+
+                    
+                    Spacer()
+                    
+                    
+//                    BOTTOM SECTION
                     VStack(spacing: 16) {
                         HStack {
                             
@@ -206,14 +224,17 @@ struct MusicPlayerView: View {
                         }//: PLAYER BAR
                     }//: VSTACK
                     
+                    Spacer()
+                    
                 }//: VSTACK
                 .padding(.all, 26)
 //                .padding(.top, K.topSafeArea)
-                .padding(.bottom, K.bottomSafeArea)
+//                .padding(.bottom, K.bottomSafeArea)
                 
             }//: ZSTACK
             .foregroundColor(.white)
             .preferredColorScheme(.dark)
+            .edgesIgnoringSafeArea(.bottom)
 //            .cornerRadius(21)
 //            .onReceive(timer) { _ in
 //                if let audioPlayer = playerVM.audioPlayer {
@@ -232,6 +253,9 @@ struct MusicPlayerView_Previews: PreviewProvider {
     @Namespace private static var namespace
     
     static var previews: some View {
-        MusicPlayerView(playerVM: PlayerViewModel(), showMusicPlayerModal: .constant(true))
+        VStack {}
+        .sheet(isPresented: .constant(true), content: {
+            MusicPlayerView(playerVM: PlayerViewModel(), showMusicPlayerModal: .constant(true))
+        })
     }
 }

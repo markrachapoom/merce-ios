@@ -37,47 +37,6 @@ struct HomeView: View {
                                     
                                 }
                                 
-                                SectionView(title: "Songs") {
-                                    ScrollView(.horizontal, showsIndicators: false) {
-                                        HStack(spacing: 13) {
-                                            ForEach(MerceSong.sampleSongs, id: \.id) { song in
-                                                Button(action: {
-                                                    playerVM.playSong(song)
-                                                }, label: {
-                                                    VStack {
-                                                        AsyncImage(url: URL(string: song.artwork?.url ?? "")) { image in
-                                                            image
-                                                                .resizable()
-                                                                .scaledToFill()
-                                                        } placeholder: {
-                                                            Rectangle()
-                                                                .foregroundColor(Color.secondaryBackgroundColor)
-                                                        }
-                                                        .frame(width: 125, height: 125)
-                                                        .cornerRadius(8)
-                                                        
-                                                        Text(song.title ?? "Unknown")
-                                                            .foregroundColor(Color(.label))
-                                                            .font(.system(size: K.fontSize))
-                                                            .lineLimit(1)
-                                                        
-//                                                        if let artists = song.artists {
-                                                        HStack {
-                                                            Text(["Akira The Don", "Naval Ravikant"].joined(separator: ", "))
-                                                                .foregroundColor(Color(.secondaryLabel))
-                                                                .font(.system(size: K.fontSize))
-                                                        }//: HSTACK
-                                                        .lineLimit(1)
-//                                                        }
-                                                        
-                                                    }//: VSTACK
-                                                    .frame(width: 125)
-                                                })//: BUTTON
-                                            }//: LOOP
-                                        }//: HSTACK
-                                        .padding(.horizontal)
-                                    }//: SCROLLVIEW
-                                }//: SECTION
                                 
                                 SectionView(title: "Artists") {
                                     ScrollView(.horizontal, showsIndicators: false) {
@@ -100,6 +59,49 @@ struct HomeView: View {
                                         .padding(.horizontal)
                                     }//: SCROLLVIEW
                                 }
+                                
+                                SectionView(title: "Songs") {
+                                    ScrollView(.horizontal, showsIndicators: false) {
+                                        HStack(spacing: 13) {
+                                            ForEach(MerceSong.sampleSongs, id: \.id) { song in
+                                                Button(action: {
+                                                    playerVM.playSong(song)
+                                                }, label: {
+                                                    VStack(alignment: .leading) {
+                                                        AsyncImage(url: URL(string: song.artwork?.url ?? "")) { image in
+                                                            image
+                                                                .resizable()
+                                                                .scaledToFill()
+                                                        } placeholder: {
+                                                            Rectangle()
+                                                                .foregroundColor(Color.secondaryBackgroundColor)
+                                                        }
+                                                        .frame(width: 115, height: 115)
+                                                        .cornerRadius(8)
+                                                        
+                                                        Text(song.title ?? "Unknown")
+                                                            .foregroundColor(Color(.label))
+                                                            .font(.system(size: K.fontSize))
+                                                            .lineLimit(1)
+                                                        
+//                                                        if let artists = song.artists {
+                                                        HStack {
+                                                            Text(["Akira The Don", "Naval Ravikant"].joined(separator: ", "))
+                                                                .foregroundColor(Color(.secondaryLabel))
+                                                                .font(.system(size: K.fontSize))
+                                                        }//: HSTACK
+                                                        .lineLimit(1)
+//                                                        }
+                                                        
+                                                    }//: VSTACK
+                                                    .frame(width: 115)
+                                                })//: BUTTON
+                                            }//: LOOP
+                                        }//: HSTACK
+                                        .padding(.horizontal)
+                                    }//: SCROLLVIEW
+                                }//: SECTION
+                                
                                 
                                 SectionView(title: "Categories") {
                                     LazyVGrid(

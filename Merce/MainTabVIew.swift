@@ -131,7 +131,6 @@ struct MainTabVIew: View {
                 MusicPlayerView(playerVM: playerVM, showMusicPlayerModal: $showMusicPlayerModal)
 //                    .presentationDetents([.height(geo.frame(in: .global).height)])
                     .presentationDetents([.large])
-                    .edgesIgnoringSafeArea(.bottom)
             })
         }
     }
@@ -174,5 +173,7 @@ struct TabBarButton: View {
 struct MainTabVIew_Previews: PreviewProvider {
     static var previews: some View {
         MainTabVIew()
+            .environmentObject(PlayerViewModel())
+            .environmentObject(AuthenticationViewModel())
     }
 }
