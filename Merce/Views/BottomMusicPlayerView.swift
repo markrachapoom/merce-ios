@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BottomMusicPlayerView: View {
     
+    @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject private var playerVM: PlayerViewModel
     
     var body: some View {
@@ -57,11 +58,20 @@ struct BottomMusicPlayerView: View {
                     }, label: {
                         Circle()
                             .frame(width: 40, height: 40)
-                            .foregroundColor(.white.opacity(0.1))
+                            .foregroundColor(.clear)
+                            .background(
+                                VisualEffectView(blurEffect: .light)
+                                    .cornerRadius(100)
+                            )
+//                            .foregroundColor(.white.opacity(colorScheme == .dark ? 0.2 : 0.65))
+                    
+//                            .foregroundColor(Color(.systemFill))
                             .overlay {
                                 Image(systemName: playerVM.isPlaying ? "pause.fill" : "play.fill")
                                     .font(.title2)
                                     .foregroundColor(.white)
+                                    .foregroundColor(colorScheme == .dark ? .white.opacity(0.75) : .black.opacity(0.7))
+//                                    .foregroundColor(.white)
                             }//: OVERLAY
                     })//: BUTTON
                     
@@ -69,8 +79,7 @@ struct BottomMusicPlayerView: View {
                 .padding(.all, 11)
                 .background(
                     VisualEffectView(blurEffect: .systemUltraThinMaterial)
-//                        .background(Color.pink.opacity(0.25))
-//                        .background(Color.indigo.opacity(0.25))
+                        .background(Color.indigo.opacity(0.3))
                         .cornerRadius(13)
                 )//: BACKGROUND
                 .padding(.horizontal, 6)
@@ -81,7 +90,19 @@ struct BottomMusicPlayerView: View {
 
 struct BottomMusicPlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        BottomMusicPlayerView()
-            .environmentObject(PlayerViewModel())
+        VStack {
+            ZStack {
+                Color.white
+                BottomMusicPlayerView()
+            }
+
+            ZStack {
+                Color.black
+                BottomMusicPlayerView()
+                    .colorScheme(.dark)
+            }
+        }
+        .environmentObject(PlayerViewModel())
+        .previewLayout(.sizeThatFits)
     }
 }
