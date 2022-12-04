@@ -69,8 +69,7 @@ struct BottomMusicPlayerView: View {
                             .overlay {
                                 Image(systemName: playerVM.isPlaying ? "pause.fill" : "play.fill")
                                     .font(.title2)
-                                    .foregroundColor(.white)
-                                    .foregroundColor(colorScheme == .dark ? .white.opacity(0.75) : .black.opacity(0.7))
+                                    .foregroundColor(colorScheme == .dark ? .white.opacity(0.75) : .black)
                                     .shadow()
 //                                    .foregroundColor(.white)
                             }//: OVERLAY
@@ -80,7 +79,7 @@ struct BottomMusicPlayerView: View {
                 .padding(.all, 11)
                 .background(
                     VisualEffectView(blurEffect: .systemUltraThinMaterial)
-                        .background(Color.pink.opacity(0.3))
+//                        .background(Color.pink.opacity(0.3))
                         .cornerRadius(13)
                 )//: BACKGROUND
                 .padding(.horizontal, 6)

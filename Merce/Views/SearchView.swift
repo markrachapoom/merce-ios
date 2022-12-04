@@ -113,7 +113,7 @@ struct SearchView: View {
                     } else {
                         ScrollView(.vertical, showsIndicators: false) {
                             LazyVStack(spacing: 0) {
-                                ForEach(searchVM.allArtists, id: \.username) { user in
+                                ForEach(searchVM.searchResults, id: \.username) { user in
                                     NavigationLink(destination: ProfileView(user: user)) {
                                         SearchRowView(item: user)
                                     }//: NAVIGATION LINK

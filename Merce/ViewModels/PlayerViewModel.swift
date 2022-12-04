@@ -22,17 +22,27 @@ class PlayerViewModel: ObservableObject {
     
     init() {
         // Set AvAudio or fetch latest song to play when the app launched
+        setInitialSong()
     }
     
     func playSong(_ song: MerceSong) {
-        guard let songURLString = song.url, let songURL = URL(string: songURLString) else {
-            print("Invalid song url")
-            return
-        }
-        self.audioAVPlayer = AVPlayer(url: songURL)
+//        guard let songURLString = song.url, let songURL = URL(string: songURLString) else {
+//            print("Invalid song url")
+//            return
+//        }
+//        self.audioAVPlayer = AVPlayer(url: songURL)
+        
+        let path = Bundle.main.path(forResource: "song-\(song.id)", ofType: "mp3") ?? ""
+        self.audioAVPlayer = AVPlayer(url: URL(filePath: path))
         self.audioAVPlayer?.play()
         self.currentSong = song
         self.isPlaying = true
+    }
+    
+    func setInitialSong() {
+        let path = Bundle.main.path(forResource: "song-3", ofType: "mp3") ?? ""
+        self.audioAVPlayer = AVPlayer(url: URL(filePath: path))
+        self.currentSong = MerceSong.sampleSongs[2]
     }
     
 //    var currentTime: TimeInterval {

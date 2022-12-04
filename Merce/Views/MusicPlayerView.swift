@@ -33,12 +33,13 @@ struct MusicPlayerView: View {
 //                Image("naval")
 //                    .resizable()
 //                    .aspectRatio(contentMode: .fill)
+//                    .edgesIgnoringSafeArea(.all)
 //                    .frame(width: geo.frame(in: .global).width, height: geo.frame(in: .global).height)
 //                    .clipped()
                 
                 LinearGradient(colors: [.black, .clear], startPoint: .bottom, endPoint: .top)
                 
-                GeometryReader { innerGeo in
+//                GeometryReader { innerGeo in
                     VStack(alignment: .center) {
                         
                         HStack {
@@ -226,18 +227,19 @@ struct MusicPlayerView: View {
                             }//: PLAYER BAR
                         }//: VSTACK
                         
-                        Spacer()
+//                        Spacer()
                         
                     }//: VSTACK
                     .padding(.all, 26)
                     //                .padding(.top, K.topSafeArea)
-                    //                .padding(.bottom, K.bottomSafeArea)
-                }//: INNER GEO
+                    .padding(.bottom, 26)
+//                }//: INNER GEO
                 
             }//: ZSTACK
             .foregroundColor(.white)
             .preferredColorScheme(.dark)
-            .edgesIgnoringSafeArea(.bottom)
+//            .edgesIgnoringSafeArea(.bottom) // for artwork
+            .edgesIgnoringSafeArea(.all)
 //            .cornerRadius(21)
 //            .onReceive(timer) { _ in
 //                if let audioPlayer = playerVM.audioPlayer {

@@ -17,6 +17,8 @@
 		FA07B9DC29202A9600A0A462 /* CircleIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07B9DB29202A9600A0A462 /* CircleIcon.swift */; };
 		FA07B9DE292037BE00A0A462 /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07B9DD292037BE00A0A462 /* InboxView.swift */; };
 		FA07B9E0292037CC00A0A462 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07B9DF292037CC00A0A462 /* NotificationView.swift */; };
+		FA1B3194293CE3C900A5069B /* song-2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA1B3193293CE3C900A5069B /* song-2.mp3 */; };
+		FA1B3196293CE3D100A5069B /* song-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA1B3195293CE3D100A5069B /* song-1.mp3 */; };
 		FA29788D293095D600CBA89C /* GenerateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29788C293095D600CBA89C /* GenerateUserView.swift */; };
 		FA29788F2931199100CBA89C /* buzz-3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FA29788E2931199100CBA89C /* buzz-3.mp4 */; };
 		FA56D83E291E685D00549439 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA56D83D291E685D00549439 /* SectionView.swift */; };
@@ -62,7 +64,7 @@
 		FAB245922934CCE4006DFA64 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB245912934CCE3006DFA64 /* AccountView.swift */; };
 		FAC2FC66291BE0A1007B1A6C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC2FC65291BE0A1007B1A6C /* HomeView.swift */; };
 		FAC2FC68291BE10A007B1A6C /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC2FC67291BE10A007B1A6C /* SearchView.swift */; };
-		FAC2FC6C291BE8CB007B1A6C /* society-always-wants-new-things.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FAC2FC6B291BE8CB007B1A6C /* society-always-wants-new-things.mp3 */; };
+		FAC2FC6C291BE8CB007B1A6C /* song-3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FAC2FC6B291BE8CB007B1A6C /* song-3.mp3 */; };
 		FAC2FC6F291BE902007B1A6C /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC2FC6E291BE902007B1A6C /* PlayerViewModel.swift */; };
 		FAC918A2293279E40097483F /* MerceSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC918A1293279E40097483F /* MerceSong.swift */; };
 		FACF615729204694008FC1FA /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACF615629204694008FC1FA /* AuthenticationView.swift */; };
@@ -104,6 +106,8 @@
 		FA07B9DB29202A9600A0A462 /* CircleIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIcon.swift; sourceTree = "<group>"; };
 		FA07B9DD292037BE00A0A462 /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
 		FA07B9DF292037CC00A0A462 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		FA1B3193293CE3C900A5069B /* song-2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "song-2.mp3"; sourceTree = "<group>"; };
+		FA1B3195293CE3D100A5069B /* song-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "song-1.mp3"; sourceTree = "<group>"; };
 		FA29788C293095D600CBA89C /* GenerateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateUserView.swift; sourceTree = "<group>"; };
 		FA29788E2931199100CBA89C /* buzz-3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "buzz-3.mp4"; sourceTree = "<group>"; };
 		FA56D83D291E685D00549439 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
@@ -149,7 +153,7 @@
 		FAB245912934CCE3006DFA64 /* AccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		FAC2FC65291BE0A1007B1A6C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; usesTabs = 0; };
 		FAC2FC67291BE10A007B1A6C /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		FAC2FC6B291BE8CB007B1A6C /* society-always-wants-new-things.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "society-always-wants-new-things.mp3"; sourceTree = "<group>"; };
+		FAC2FC6B291BE8CB007B1A6C /* song-3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "song-3.mp3"; sourceTree = "<group>"; };
 		FAC2FC6E291BE902007B1A6C /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		FAC918A1293279E40097483F /* MerceSong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerceSong.swift; sourceTree = "<group>"; };
 		FACF615629204694008FC1FA /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
@@ -238,7 +242,9 @@
 				FA5FCE66292BD295006400C4 /* buzz-1.mp4 */,
 				FA5FCE68292BD401006400C4 /* buzz-2.mp4 */,
 				FA29788E2931199100CBA89C /* buzz-3.mp4 */,
-				FAC2FC6B291BE8CB007B1A6C /* society-always-wants-new-things.mp3 */,
+				FA1B3195293CE3D100A5069B /* song-1.mp3 */,
+				FA1B3193293CE3C900A5069B /* song-2.mp3 */,
+				FAC2FC6B291BE8CB007B1A6C /* song-3.mp3 */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -509,13 +515,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA5FCE69292BD401006400C4 /* buzz-2.mp4 in Resources */,
+				FA1B3196293CE3D100A5069B /* song-1.mp3 in Resources */,
 				FA29788F2931199100CBA89C /* buzz-3.mp4 in Resources */,
 				FAA01D0C29237A9C00F06DC9 /* Launch Screen.storyboard in Resources */,
 				FAA01CFA29236EBE00F06DC9 /* GoogleService-Info.plist in Resources */,
+				FA1B3194293CE3C900A5069B /* song-2.mp3 in Resources */,
 				FAA15164291E5F7300183167 /* entrepreneurs.json in Resources */,
 				FA5FCE67292BD296006400C4 /* buzz-1.mp4 in Resources */,
 				FA778CCB291A878A00452C20 /* Preview Assets.xcassets in Resources */,
-				FAC2FC6C291BE8CB007B1A6C /* society-always-wants-new-things.mp3 in Resources */,
+				FAC2FC6C291BE8CB007B1A6C /* song-3.mp3 in Resources */,
 				FA778CC8291A878A00452C20 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

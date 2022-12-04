@@ -43,7 +43,7 @@ struct MerceSong: Codable {
         MerceSong(
             id: "3",
             title: "Society Always Wants New Things",
-            url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+            url: "http://docs.google.com/uc?export=open&amp;id=1lLV_J_GY7iAk_F0HBu4BvYll2UZgx_rE",
             artists: [MerceUser.markrachapoom,MerceUser.akirathedon],
         artwork: Artwork(url: "https://cdn.shopify.com/s/files/1/0256/1091/1837/products/a0863826809_10_1200x.jpg?v=1668696036"))
     ]
